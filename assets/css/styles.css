@@ -80,15 +80,15 @@ a {
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .site-nav a {
-  padding: 8px 10px;
+  padding: 8px 12px;
   border-bottom: 2px solid transparent;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   white-space: nowrap;
 }
 
