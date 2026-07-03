@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>与谢远定对话 | 寻迹梅庵</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=dialogue-20260703">
+  </head>
+  <body data-page="xie-dialogue">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="寻迹梅庵首页"><img class="brand-icon" src="assets/images/meian-site-icon.png" alt="" width="42" height="42"><span><span class="brand-title" data-i18n="brand.title">寻迹梅庵</span><span class="brand-subtitle" data-i18n="brand.subtitle">Tracing Mei'an</span></span></a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="index.html" data-i18n="nav.home">首页</a><a href="overview.html" data-i18n="nav.overview">项目概览</a><a href="context.html" data-i18n="nav.context">梅庵与团二大</a><a class="active" href="xie-yuanding.html" data-i18n="nav.xie">谢远定数字人</a><a href="meian-site.html" data-i18n="nav.site">梅庵旧址数字化</a><a href="archive.html" data-i18n="nav.archive">往年成果</a>
+      </nav>
+      <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">EN</button>
+    </header>
+
+    <main>
+      <section class="page-hero dialogue-hero">
+        <p class="eyebrow" data-i18n="dialogue.eyebrow">数字人交互原型</p>
+        <h1 data-i18n="dialogue.title">与谢远定对话</h1>
+        <p data-i18n="dialogue.lede">此界面预留 3D 数字人模型与问答窗口。当前为静态交互原型，后续可接入真实模型、语音、知识库和 AI 问答服务。</p>
+      </section>
+
+      <section class="section dialogue-workspace">
+        <div class="avatar-panel">
+          <div class="avatar-stage" aria-label="谢远定数字人 3D 模型占位">
+            <div class="avatar-grid"></div>
+            <div class="avatar-figure">
+              <span class="avatar-head"></span>
+              <span class="avatar-coat"></span>
+              <span class="avatar-stand"></span>
+            </div>
+            <span class="model-badge" data-i18n="dialogue.modelBadge">3D 建模展示位</span>
+          </div>
+          <div class="model-notes">
+            <h2 data-i18n="dialogue.modelTitle">谢远定先生 3D 数字人</h2>
+            <p data-i18n="dialogue.modelText">后续可替换为 GLB/GLTF 模型查看器，支持旋转、缩放、语音讲述与人物动作展示。</p>
+          </div>
+        </div>
+
+        <aside class="chat-panel" aria-label="问答窗口">
+          <div class="chat-header">
+            <div>
+              <p class="eyebrow" data-i18n="dialogue.chatEyebrow">问答窗口</p>
+              <h2 data-i18n="dialogue.chatTitle">史料问答与人物访谈</h2>
+            </div>
+            <span class="status-pill" data-i18n="dialogue.status">原型</span>
+          </div>
+          <div class="chat-log" data-chat-log>
+            <div class="message bot" data-i18n="dialogue.greeting">你好，我是谢远定数字人原型。你可以先从下方问题开始了解我的校友身份、团二大经历和梅庵线索。</div>
+          </div>
+          <div class="prompt-grid">
+            <button type="button" data-question="dialogue.q1" data-answer="dialogue.a1" data-i18n="dialogue.q1">谢远定先生是谁？</button>
+            <button type="button" data-question="dialogue.q2" data-answer="dialogue.a2" data-i18n="dialogue.q2">他与团二大有什么关系？</button>
+            <button type="button" data-question="dialogue.q3" data-answer="dialogue.a3" data-i18n="dialogue.q3">梅庵在项目中代表什么？</button>
+          </div>
+          <form class="chat-input" data-chat-form>
+            <input type="text" data-chat-input data-i18n-placeholder="dialogue.inputPlaceholder" placeholder="输入你想追问的问题">
+            <button type="submit" data-i18n="dialogue.send">发送</button>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p data-i18n="footer.copy">寻迹梅庵社会实践项目 · 东南大学</p><p data-i18n="footer.note">首版为结构展示稿，图片、模型与正文材料待补充。</p></footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

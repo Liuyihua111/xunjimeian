@@ -59,6 +59,7 @@ const translations = {
     "xie.eyebrow": "数字人建设",
     "xie.title": "谢远定先生数字人展示入口",
     "xie.lede": "本页预留谢远定先生 3D 数字人、史料问答、人物访谈与教学展示入口。首版以占位结构呈现，等待模型与知识材料接入。",
+    "xie.talkButton": "与谢远定对话",
     "xie.modelLabel": "3D 数字人模型占位 · 支持后续替换为 GLB/GLTF 或嵌入式展示",
     "xie.card1Title": "人物档案",
     "xie.card1Text": "预留姓名、身份、在校经历、团二大相关经历、史料出处等结构化信息。",
@@ -66,6 +67,25 @@ const translations = {
     "xie.card2Text": "预留讲述、问答、导览、课程展示等能力说明，首版不接真实 AI 对话。",
     "xie.card3Title": "建设进度",
     "xie.card3Text": "可用于展示建模、知识库整理、语音形象、交互原型等阶段成果。",
+    "dialogue.eyebrow": "数字人交互原型",
+    "dialogue.title": "与谢远定对话",
+    "dialogue.lede": "此界面预留 3D 数字人模型与问答窗口。当前为静态交互原型，后续可接入真实模型、语音、知识库和 AI 问答服务。",
+    "dialogue.modelBadge": "3D 建模展示位",
+    "dialogue.modelTitle": "谢远定先生 3D 数字人",
+    "dialogue.modelText": "后续可替换为 GLB/GLTF 模型查看器，支持旋转、缩放、语音讲述与人物动作展示。",
+    "dialogue.chatEyebrow": "问答窗口",
+    "dialogue.chatTitle": "史料问答与人物访谈",
+    "dialogue.status": "原型",
+    "dialogue.greeting": "你好，我是谢远定数字人原型。你可以先从下方问题开始了解我的校友身份、团二大经历和梅庵线索。",
+    "dialogue.q1": "谢远定先生是谁？",
+    "dialogue.a1": "谢远定先生是本项目重点呈现的东南大学校友人物。首版页面先保留人物身份、在校经历、史料出处等信息位，后续会依据正式材料补充。",
+    "dialogue.q2": "他与团二大有什么关系？",
+    "dialogue.a2": "项目将围绕谢远定先生参与团二大的历史线索展开整理。当前回答为原型文本，正式版本会接入经过核验的史料与时间线。",
+    "dialogue.q3": "梅庵在项目中代表什么？",
+    "dialogue.a3": "梅庵是项目的精神线索和校园历史场域。它连接东南大学校史记忆、校友人物叙事与社会实践成果展示。",
+    "dialogue.inputPlaceholder": "输入你想追问的问题",
+    "dialogue.send": "发送",
+    "dialogue.fallback": "这个问题已记录在原型窗口中。后续接入知识库后，数字人会结合史料给出更完整的回答。",
     "site.eyebrow": "旧址数字化",
     "site.title": "为东南大学梅庵旧址预留三维展示空间",
     "site.lede": "首版使用建筑示意占位，后续可替换为实景照片、点云成果、三维模型、导览视频或交互式校园空间展示。",
@@ -151,6 +171,7 @@ const translations = {
     "xie.eyebrow": "Digital Avatar",
     "xie.title": "Entry Point for the Xie Yuanding Digital Avatar",
     "xie.lede": "This page reserves space for the future 3D avatar, historical Q&A, interview materials, and educational presentation modules.",
+    "xie.talkButton": "Talk with Xie Yuanding",
     "xie.modelLabel": "3D avatar placeholder · ready for GLB/GLTF or embedded model replacement",
     "xie.card1Title": "Profile",
     "xie.card1Text": "Reserved for name, identity, university experience, Youth League Congress context, and historical sources.",
@@ -158,6 +179,25 @@ const translations = {
     "xie.card2Text": "Reserved for narration, Q&A, guided explanation, and teaching presentation. No live AI dialogue is included in v1.",
     "xie.card3Title": "Build Progress",
     "xie.card3Text": "Can show modeling, knowledge-base preparation, voice design, and interaction prototype progress.",
+    "dialogue.eyebrow": "Digital Avatar Interaction Prototype",
+    "dialogue.title": "Talk with Xie Yuanding",
+    "dialogue.lede": "This interface reserves space for the 3D avatar model and a Q&A window. It is currently a static prototype and can later connect to a real model, voice, knowledge base, and AI service.",
+    "dialogue.modelBadge": "3D Model Area",
+    "dialogue.modelTitle": "Xie Yuanding 3D Avatar",
+    "dialogue.modelText": "This area can later be replaced by a GLB/GLTF model viewer with rotation, zoom, voice narration, and character motion.",
+    "dialogue.chatEyebrow": "Q&A Window",
+    "dialogue.chatTitle": "Historical Q&A and Interview",
+    "dialogue.status": "Prototype",
+    "dialogue.greeting": "Hello, I am the Xie Yuanding digital avatar prototype. You can start with the questions below to learn about alumni identity, Youth League Congress history, and the Mei'an thread.",
+    "dialogue.q1": "Who was Xie Yuanding?",
+    "dialogue.a1": "Xie Yuanding is the key Southeast University alumnus highlighted by this project. This first version reserves fields for identity, campus experience, and source materials.",
+    "dialogue.q2": "How is he connected to the Second Youth League Congress?",
+    "dialogue.a2": "The project will organize historical clues around Xie Yuanding's participation in the Second Youth League Congress. Formal answers will be based on verified sources and timelines.",
+    "dialogue.q3": "What does Mei'an represent in this project?",
+    "dialogue.a3": "Mei'an is the project's cultural thread and campus historical site. It connects university memory, alumni narrative, and social practice outcomes.",
+    "dialogue.inputPlaceholder": "Type a follow-up question",
+    "dialogue.send": "Send",
+    "dialogue.fallback": "This question has been recorded in the prototype window. After the knowledge base is connected, the avatar can answer with fuller source-based context.",
     "site.eyebrow": "Site Digitization",
     "site.title": "A Reserved 3D Space for the Mei'an Site at Southeast University",
     "site.lede": "The first version uses an architectural placeholder. It can later be replaced by photos, point-cloud results, 3D models, guide videos, or an interactive campus scene.",
@@ -193,6 +233,12 @@ function applyLanguage(lang) {
       element.textContent = translations[lang][key];
     }
   });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+    if (translations[lang][key]) {
+      element.setAttribute("placeholder", translations[lang][key]);
+    }
+  });
   if (langButton) {
     langButton.textContent = lang === "zh" ? "EN" : "中";
   }
@@ -205,5 +251,42 @@ if (langButton) {
   langButton.addEventListener("click", () => {
     const currentLang = localStorage.getItem("meian-lang") || "zh";
     applyLanguage(currentLang === "zh" ? "en" : "zh");
+  });
+}
+
+const chatLog = document.querySelector("[data-chat-log]");
+const chatForm = document.querySelector("[data-chat-form]");
+const chatInput = document.querySelector("[data-chat-input]");
+
+function currentLanguage() {
+  return localStorage.getItem("meian-lang") || "zh";
+}
+
+function appendMessage(text, type) {
+  if (!chatLog) return;
+  const message = document.createElement("div");
+  message.className = `message ${type}`;
+  message.textContent = text;
+  chatLog.appendChild(message);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+document.querySelectorAll("[data-question][data-answer]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const lang = currentLanguage();
+    appendMessage(translations[lang][button.dataset.question], "user");
+    appendMessage(translations[lang][button.dataset.answer], "bot");
+  });
+});
+
+if (chatForm && chatInput) {
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const value = chatInput.value.trim();
+    if (!value) return;
+    const lang = currentLanguage();
+    appendMessage(value, "user");
+    appendMessage(translations[lang]["dialogue.fallback"], "bot");
+    chatInput.value = "";
   });
 }
