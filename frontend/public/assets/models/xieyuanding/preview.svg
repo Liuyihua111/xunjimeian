@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Media placeholder</title>
+  <desc id="desc">A media placeholder for future photos, videos, or model preview images.</desc>
+  <rect width="960" height="540" fill="#e5ded2"/>
+  <rect x="74" y="64" width="812" height="412" fill="#ffffff" opacity=".42" stroke="#d8d2c7" stroke-width="3"/>
+  <circle cx="246" cy="206" r="54" fill="#b68a35" opacity=".38"/>
+  <path d="M148 420L362 270L506 366L606 294L812 420Z" fill="#476150" opacity=".2"/>
+  <text x="480" y="266" fill="#667477" font-family="Georgia, serif" font-size="34" text-anchor="middle">Media Placeholder</text>
+</svg>

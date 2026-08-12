@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Project visual placeholder</title>
+  <desc id="desc">A neutral placeholder for the Tracing Mei'an project website.</desc>
+  <rect width="1200" height="800" fill="#f1eadf"/>
+  <path d="M0 620C180 520 320 575 480 480C660 373 810 380 1200 210V800H0Z" fill="#476150" opacity=".16"/>
+  <path d="M0 0H1200V800H0Z" fill="none" stroke="#d8d2c7" stroke-width="4"/>
+  <rect x="170" y="150" width="860" height="500" fill="#ffffff" opacity=".36" stroke="#d8d2c7" stroke-width="3"/>
+  <text x="600" y="374" fill="#1f2a2c" font-family="Georgia, serif" font-size="54" text-anchor="middle">寻迹梅庵</text>
+  <text x="600" y="435" fill="#667477" font-family="Georgia, serif" font-size="28" text-anchor="middle">Tracing Mei'an Placeholder</text>
+</svg>
