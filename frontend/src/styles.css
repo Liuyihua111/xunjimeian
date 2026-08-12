@@ -224,9 +224,9 @@ h3,
 /* Compact constellation: keep the Mei'an building visible below the map. */
 .constellation-map-compact {
   position: relative;
-  width: min(100%, 720px);
-  height: 430px;
-  margin: 26px 0 0 auto;
+  width: min(100%, 760px);
+  height: 450px;
+  margin: 18px 0 0 auto;
   overflow: visible;
   background:
     radial-gradient(ellipse at 54% 43%, rgba(155, 118, 46, 0.17), transparent 25%),
@@ -246,15 +246,15 @@ h3,
 }
 
 .constellation-map-compact .orbit-one {
-  width: 54%;
-  height: 48%;
+  width: 58%;
+  height: 51%;
   border-color: rgba(155, 118, 46, 0.42);
   transform: translate(-50%, -50%) rotate(-8deg);
 }
 
 .constellation-map-compact .orbit-two {
-  width: 86%;
-  height: 68%;
+  width: 92%;
+  height: 72%;
   border-color: rgba(71, 96, 82, 0.24);
   transform: translate(-50%, -50%) rotate(7deg);
 }
@@ -285,9 +285,9 @@ h3,
 }
 
 .constellation-map-compact .constellation-node {
-  width: 128px;
-  min-height: 96px;
-  padding: 13px 12px;
+  width: 136px;
+  min-height: 102px;
+  padding: 14px 13px;
   border-radius: 50%;
   background: rgba(251, 250, 247, 0.91);
   box-shadow: 0 12px 30px rgba(43, 48, 47, 0.09);
@@ -299,20 +299,20 @@ h3,
 
 .constellation-map-compact .node-title {
   font-family: var(--font-editorial);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .constellation-map-compact .node-summary {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .constellation-map-compact .constellation-node.featured {
   left: 54%;
   top: 43%;
-  width: 188px;
-  min-height: 210px;
-  padding: 16px 18px;
+  width: 200px;
+  min-height: 224px;
+  padding: 17px 19px;
   border-color: rgba(155, 118, 46, 0.76);
   background:
     radial-gradient(circle at 50% 28%, rgba(155, 118, 46, 0.18), transparent 38%),
@@ -320,32 +320,32 @@ h3,
 }
 
 .constellation-map-compact .constellation-node.featured img {
-  width: 66px;
-  height: 66px;
+  width: 70px;
+  height: 70px;
 }
 
 .constellation-map-compact .constellation-node.featured .node-year {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .constellation-map-compact .constellation-node.featured .node-title {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .constellation-map-compact .constellation-node.featured .node-summary {
-  max-width: 132px;
-  font-size: 12px;
+  max-width: 142px;
+  font-size: 13px;
 }
 
 .constellation-map-compact .node-2022 {
   left: 2%;
-  bottom: 27%;
+  bottom: 29%;
 }
 
 .constellation-map-compact .node-2023 {
   right: 4%;
-  bottom: 25%;
+  bottom: 28%;
 }
 
 .constellation-map-compact .node-2024 {

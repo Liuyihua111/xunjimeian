@@ -48,29 +48,6 @@
     </div>
   </section>
 
-  <section class="section band">
-    <div class="section-heading">
-      <p class="eyebrow">{{ t("homeFocusEyebrow") }}</p>
-      <h2>{{ t("homeFocusTitle") }}</h2>
-    </div>
-    <div class="feature-grid">
-      <RouterLink class="feature-card" to="/xie-yuanding">
-        <span class="feature-index">01</span>
-        <h3>{{ t("homeCard1Title") }}</h3>
-        <p>{{ t("homeCard1Text") }}</p>
-      </RouterLink>
-      <RouterLink class="feature-card" to="/archive/2024">
-        <span class="feature-index">02</span>
-        <h3>{{ t("homeCard2Title") }}</h3>
-        <p>{{ t("homeCard2Text") }}</p>
-      </RouterLink>
-      <RouterLink class="feature-card" to="/archive">
-        <span class="feature-index">03</span>
-        <h3>{{ t("homeCard3Title") }}</h3>
-        <p>{{ t("homeCard3Text") }}</p>
-      </RouterLink>
-    </div>
-  </section>
 </template>
 
 <script setup>

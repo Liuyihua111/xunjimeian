@@ -1,0 +1,43 @@
+/* Heritage typography: expressive display, formal headings, readable UI text. */
+:root {
+  --font-brush: "Ma Shan Zheng", "STKaiti", "KaiTi", cursive;
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  --font-editorial: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
+}
+
+html:lang(zh-CN) h1 {
+  font-family: var(--font-brush);
+  font-weight: 400;
+}
+
+html:lang(en) h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+}
+
+h2,
+.home-subtitle,
+.brand-title,
+.archive-state h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+h3,
+.eyebrow,
+.context-label,
+.node-title,
+.xie-accordion summary strong {
+  font-family: var(--font-editorial);
+}
+
+.five-year-hero h1 {
+  line-height: 1.12;
+}
+
+@media (max-width: 620px) {
+  .five-year-hero h1,
+  .page-hero h1 {
+    line-height: 1.14;
+  }
+}
