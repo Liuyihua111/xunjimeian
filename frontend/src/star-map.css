@@ -1,0 +1,120 @@
+/* Final responsive overrides for the compact homepage constellation. */
+@media (max-width: 900px) {
+  .five-year-visual {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .five-year-visual .constellation-map-compact {
+    position: relative;
+    display: block;
+    width: min(calc(100vw - 28px), 700px);
+    height: 410px;
+    min-height: 0;
+    margin: 8px auto 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 620px) {
+  .five-year-visual .constellation-map-compact {
+    width: calc(100vw - 28px);
+    max-width: calc(100vw - 28px);
+    height: 430px;
+  }
+
+  .constellation-map-compact .constellation-node,
+  .constellation-map-compact .constellation-node:hover,
+  .constellation-map-compact .constellation-node:focus-visible {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    width: 104px;
+    min-height: 82px;
+    height: auto;
+    padding: 10px 8px;
+    border-radius: 50%;
+    place-items: center;
+    text-align: center;
+    transform: none;
+  }
+
+  .constellation-map-compact .node-summary {
+    display: none;
+  }
+
+  .constellation-map-compact .constellation-node .node-year,
+  .constellation-map-compact .constellation-node .node-title,
+  .constellation-map-compact .constellation-node .node-summary {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    writing-mode: horizontal-tb;
+  }
+
+  .constellation-map-compact .constellation-node .node-title {
+    font-size: 13px;
+    line-height: 1.25;
+  }
+
+  .constellation-map-compact .constellation-node.featured,
+  .constellation-map-compact .constellation-node.featured:hover,
+  .constellation-map-compact .constellation-node.featured:focus-visible {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    width: 148px;
+    min-height: 174px;
+    height: auto;
+    padding: 14px 16px;
+    transform: translate(-50%, -50%);
+  }
+
+  .constellation-map-compact .constellation-node.featured img,
+  .constellation-map-compact .constellation-node.featured .node-year,
+  .constellation-map-compact .constellation-node.featured .node-title {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .constellation-map-compact .constellation-node.featured .node-summary {
+    display: none;
+  }
+
+  .constellation-map-compact .constellation-node.featured .node-title {
+    font-size: 15px;
+  }
+
+  .constellation-map-compact .node-2022 {
+    right: auto;
+    bottom: 6%;
+    left: 0;
+    top: auto;
+  }
+
+  .constellation-map-compact .node-2023 {
+    right: 0;
+    bottom: 6%;
+    left: auto;
+    top: auto;
+  }
+
+  .constellation-map-compact .node-2024 {
+    right: 0;
+    bottom: auto;
+    left: auto;
+    top: 5%;
+  }
+
+  .constellation-map-compact .node-2025 {
+    right: auto;
+    bottom: auto;
+    left: 0;
+    top: 5%;
+  }
+}

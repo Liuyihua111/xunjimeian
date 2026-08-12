@@ -221,6 +221,245 @@ h3,
   }
 }
 
+/* Compact constellation: keep the Mei'an building visible below the map. */
+.constellation-map-compact {
+  position: relative;
+  width: min(100%, 720px);
+  height: 430px;
+  margin: 26px 0 0 auto;
+  overflow: visible;
+  background:
+    radial-gradient(ellipse at 54% 43%, rgba(155, 118, 46, 0.17), transparent 25%),
+    radial-gradient(ellipse at 54% 43%, rgba(129, 47, 44, 0.06), transparent 57%);
+}
+
+.constellation-map-compact::before {
+  inset: 28px 34px 42px;
+  opacity: 0.2;
+  background-size: 38px 38px;
+  mask-image: radial-gradient(ellipse, #000 18%, transparent 68%);
+}
+
+.constellation-map-compact .orbit {
+  left: 54%;
+  top: 43%;
+}
+
+.constellation-map-compact .orbit-one {
+  width: 54%;
+  height: 48%;
+  border-color: rgba(155, 118, 46, 0.42);
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+
+.constellation-map-compact .orbit-two {
+  width: 86%;
+  height: 68%;
+  border-color: rgba(71, 96, 82, 0.24);
+  transform: translate(-50%, -50%) rotate(7deg);
+}
+
+.constellation-map-compact .constellation-line {
+  left: 54%;
+  top: 43%;
+}
+
+.constellation-map-compact .line-2022 {
+  width: 205px;
+  transform: rotate(161deg);
+}
+
+.constellation-map-compact .line-2023 {
+  width: 192px;
+  transform: rotate(31deg);
+}
+
+.constellation-map-compact .line-2024 {
+  width: 210px;
+  transform: rotate(-12deg);
+}
+
+.constellation-map-compact .line-2025 {
+  width: 188px;
+  transform: rotate(-139deg);
+}
+
+.constellation-map-compact .constellation-node {
+  width: 128px;
+  min-height: 96px;
+  padding: 13px 12px;
+  border-radius: 50%;
+  background: rgba(251, 250, 247, 0.91);
+  box-shadow: 0 12px 30px rgba(43, 48, 47, 0.09);
+}
+
+.constellation-map-compact .node-year {
+  font-family: var(--font-numeral);
+}
+
+.constellation-map-compact .node-title {
+  font-family: var(--font-editorial);
+  font-size: 14px;
+}
+
+.constellation-map-compact .node-summary {
+  font-family: var(--font-body);
+  font-size: 11px;
+}
+
+.constellation-map-compact .constellation-node.featured {
+  left: 54%;
+  top: 43%;
+  width: 188px;
+  min-height: 210px;
+  padding: 16px 18px;
+  border-color: rgba(155, 118, 46, 0.76);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(155, 118, 46, 0.18), transparent 38%),
+    rgba(251, 250, 247, 0.96);
+}
+
+.constellation-map-compact .constellation-node.featured img {
+  width: 66px;
+  height: 66px;
+}
+
+.constellation-map-compact .constellation-node.featured .node-year {
+  font-size: 24px;
+}
+
+.constellation-map-compact .constellation-node.featured .node-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+
+.constellation-map-compact .constellation-node.featured .node-summary {
+  max-width: 132px;
+  font-size: 12px;
+}
+
+.constellation-map-compact .node-2022 {
+  left: 2%;
+  bottom: 27%;
+}
+
+.constellation-map-compact .node-2023 {
+  right: 4%;
+  bottom: 25%;
+}
+
+.constellation-map-compact .node-2024 {
+  right: 0;
+  top: 11%;
+}
+
+.constellation-map-compact .node-2025 {
+  left: 11%;
+  top: 4%;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .constellation-map-compact {
+    transform: scale(0.88);
+    transform-origin: right top;
+  }
+}
+
+@media (max-width: 900px) {
+  .constellation-map-compact {
+    width: min(100%, 700px);
+    height: 410px;
+    margin: 8px auto 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .constellation-map-compact {
+    display: block;
+    height: 448px;
+    padding: 0;
+  }
+
+  .constellation-map-compact::before,
+  .constellation-map-compact::after,
+  .constellation-map-compact .orbit,
+  .constellation-map-compact .constellation-line {
+    display: block;
+  }
+
+  .constellation-map-compact .orbit-one {
+    width: 58%;
+    height: 43%;
+  }
+
+  .constellation-map-compact .orbit-two {
+    width: 92%;
+    height: 66%;
+  }
+
+  .constellation-map-compact .constellation-node,
+  .constellation-map-compact .constellation-node:hover,
+  .constellation-map-compact .constellation-node:focus-visible {
+    position: absolute;
+    display: grid;
+    width: 104px;
+    min-height: 82px;
+    padding: 10px 8px;
+    border-radius: 50%;
+    place-items: center;
+    text-align: center;
+    transform: none;
+  }
+
+  .constellation-map-compact .node-summary {
+    display: none;
+  }
+
+  .constellation-map-compact .constellation-node.featured,
+  .constellation-map-compact .constellation-node.featured:hover,
+  .constellation-map-compact .constellation-node.featured:focus-visible {
+    left: 50%;
+    top: 45%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    width: 148px;
+    min-height: 174px;
+    transform: translate(-50%, -50%);
+  }
+
+  .constellation-map-compact .constellation-node.featured img {
+    grid-row: auto;
+    width: 54px;
+    height: 54px;
+  }
+
+  .constellation-map-compact .constellation-node.featured .node-year,
+  .constellation-map-compact .constellation-node.featured .node-title {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .constellation-map-compact .node-2022 {
+    left: 0;
+    bottom: 9%;
+  }
+
+  .constellation-map-compact .node-2023 {
+    right: 0;
+    bottom: 9%;
+  }
+
+  .constellation-map-compact .node-2024 {
+    right: 0;
+    top: 8%;
+  }
+
+  .constellation-map-compact .node-2025 {
+    left: 0;
+    top: 8%;
+  }
+}
+
 .site-nav a.current-page {
   box-shadow: inset 0 -2px 0 var(--cedar);
 }
