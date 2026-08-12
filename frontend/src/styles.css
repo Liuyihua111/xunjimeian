@@ -5,6 +5,222 @@
   color: var(--ink);
 }
 
+/* Homepage outcomes index and typography system, 2026-08-12 */
+:root {
+  --font-body: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+  --font-display: "STSong", "Songti SC", "SimSun", Georgia, serif;
+  --font-editorial: "STKaiti", "KaiTi", "Kaiti SC", "FangSong", serif;
+  --font-numeral: Georgia, "Times New Roman", serif;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+.brand-title,
+.home-subtitle,
+.archive-state h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+h3,
+.context-label,
+.xie-accordion summary strong {
+  font-family: var(--font-editorial);
+  font-weight: 700;
+}
+
+.eyebrow,
+.feature-index,
+.archive-meta,
+.brand-subtitle,
+.image-note {
+  font-family: var(--font-editorial);
+}
+
+.site-nav,
+.button,
+.lang-toggle,
+.nav-toggle,
+.site-footer,
+.chat-input,
+.prompt-grid {
+  font-family: var(--font-body);
+}
+
+.home-hero .eyebrow,
+.page-hero .eyebrow,
+.section-heading .eyebrow {
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.year-spectrum {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+  width: min(100%, 720px);
+  margin: 36px 0 0 auto;
+  border-top: 2px solid rgba(129, 47, 44, 0.72);
+  background: rgba(251, 250, 247, 0.76);
+  box-shadow: 0 18px 42px rgba(43, 48, 47, 0.08);
+  backdrop-filter: blur(3px);
+}
+
+.year-entry {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 0;
+  min-height: 142px;
+  padding: 18px 16px 14px;
+  border-right: 1px solid rgba(213, 209, 200, 0.9);
+  border-bottom: 1px solid rgba(213, 209, 200, 0.9);
+  color: var(--ink);
+}
+
+.year-entry:nth-child(4) {
+  border-right: 0;
+}
+
+.year-entry:hover,
+.year-entry:focus-visible {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: inset 0 3px 0 var(--cedar);
+  transform: translateY(-2px);
+}
+
+.year-entry-year {
+  color: var(--gold);
+  font-family: var(--font-numeral);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.year-entry-copy {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.year-entry-copy strong {
+  font-family: var(--font-editorial);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.year-entry-copy small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.year-entry-arrow {
+  justify-self: end;
+  color: var(--cedar);
+  font-family: var(--font-body);
+  font-size: 18px;
+}
+
+.year-entry.featured {
+  grid-column: 1 / -1;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  grid-template-rows: 1fr;
+  align-items: center;
+  min-height: 112px;
+  padding: 20px 24px;
+  border-right: 0;
+  border-bottom: 0;
+  background: linear-gradient(90deg, rgba(129, 47, 44, 0.14), rgba(155, 118, 46, 0.08));
+}
+
+.year-entry.featured .year-entry-year {
+  color: var(--cedar);
+  font-size: 42px;
+}
+
+.year-entry.featured .year-entry-copy {
+  gap: 3px;
+  margin-top: 0;
+}
+
+.year-entry.featured .year-entry-copy strong {
+  font-family: var(--font-display);
+  font-size: 25px;
+}
+
+.year-entry.featured .year-entry-copy small {
+  font-size: 14px;
+  white-space: pre-line;
+}
+
+.five-year-visual {
+  min-height: 590px;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .five-year-hero {
+    grid-template-columns: minmax(340px, 0.8fr) minmax(520px, 1.2fr);
+  }
+
+  .year-entry {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .year-entry-copy small {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .year-spectrum {
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .five-year-visual {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .year-spectrum {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .year-entry,
+  .year-entry:nth-child(4) {
+    min-height: 126px;
+    border-right: 1px solid rgba(213, 209, 200, 0.9);
+  }
+
+  .year-entry:nth-child(even) {
+    border-right: 0;
+  }
+
+  .year-entry.featured {
+    grid-column: 1 / -1;
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    min-height: 104px;
+    border-right: 0;
+  }
+
+  .year-entry.featured .year-entry-year {
+    font-size: 34px;
+  }
+
+  .year-entry.featured .year-entry-copy strong {
+    font-size: 21px;
+  }
+}
+
 .site-nav a.current-page {
   box-shadow: inset 0 -2px 0 var(--cedar);
 }

@@ -10,25 +10,21 @@
         <RouterLink class="button secondary" to="/xie-dialogue">{{ t("startChat") }}</RouterLink>
       </div>
     </div>
-    <div class="hero-visual five-year-visual" :aria-label="t('starMapLabel')">
-      <div class="constellation-map">
+    <div class="hero-visual five-year-visual" :aria-label="t('yearIndexLabel')">
+      <div class="year-spectrum">
         <RouterLink
           v-for="node in yearNodes"
           :key="node.year"
-          :class="['constellation-node', `node-${node.year}`, { featured: node.year === 2026 }]"
+          :class="['year-entry', { featured: node.year === 2026 }]"
           :to="`/archive/${node.year}`"
         >
-          <span class="node-year">{{ node.year }}</span>
-          <span class="node-title">{{ node.title }}</span>
-          <span class="node-summary">{{ node.summary }}</span>
-          <img v-if="node.image" :src="node.image" alt="">
+          <span class="year-entry-year">{{ node.year }}</span>
+          <span class="year-entry-copy">
+            <strong>{{ node.title }}</strong>
+            <small>{{ node.summary }}</small>
+          </span>
+          <span class="year-entry-arrow" aria-hidden="true">→</span>
         </RouterLink>
-        <span class="orbit orbit-one"></span>
-        <span class="orbit orbit-two"></span>
-        <span class="constellation-line line-2022"></span>
-        <span class="constellation-line line-2023"></span>
-        <span class="constellation-line line-2024"></span>
-        <span class="constellation-line line-2025"></span>
       </div>
     </div>
   </section>
