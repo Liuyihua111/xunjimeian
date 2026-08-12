@@ -1,8 +1,14 @@
 /* Heritage typography: expressive display, formal headings, readable UI text. */
 :root {
   --font-brush: "Ma Shan Zheng", "STKaiti", "KaiTi", cursive;
-  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  --font-display: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
   --font-editorial: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
+  --font-content: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
+  --font-ui: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+}
+
+html:lang(zh-CN) body {
+  font-family: var(--font-content);
 }
 
 html:lang(zh-CN) h1 {
@@ -10,25 +16,69 @@ html:lang(zh-CN) h1 {
   font-weight: 400;
 }
 
-html:lang(en) h1 {
+html:lang(zh-CN) h2,
+html:lang(zh-CN) h3,
+html:lang(zh-CN) .home-subtitle,
+html:lang(zh-CN) .brand-title,
+html:lang(zh-CN) .archive-state h2,
+html:lang(zh-CN) .eyebrow,
+html:lang(zh-CN) .context-label,
+html:lang(zh-CN) .node-title,
+html:lang(zh-CN) .xie-accordion summary strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+html:lang(zh-CN) p,
+html:lang(zh-CN) li,
+html:lang(zh-CN) figcaption,
+html:lang(zh-CN) .node-summary,
+html:lang(zh-CN) .image-note,
+html:lang(zh-CN) .archive-meta {
+  font-family: var(--font-content);
+  font-weight: 400;
+}
+
+html:lang(en) h1,
+html:lang(en) h2,
+html:lang(en) h3,
+html:lang(en) .home-subtitle,
+html:lang(en) .brand-title,
+html:lang(en) .eyebrow,
+html:lang(en) .context-label,
+html:lang(en) .node-title,
+html:lang(en) .xie-accordion summary strong {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 700;
 }
 
-h2,
-.home-subtitle,
-.brand-title,
-.archive-state h2 {
-  font-family: var(--font-display);
-  font-weight: 600;
+html:lang(en) body {
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-h3,
-.eyebrow,
-.context-label,
-.node-title,
-.xie-accordion summary strong {
-  font-family: var(--font-editorial);
+html:lang(en) p,
+html:lang(en) li,
+html:lang(en) figcaption,
+html:lang(en) .node-summary,
+html:lang(en) .image-note,
+html:lang(en) .archive-meta {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.site-nav,
+.nav-toggle,
+.nav-dropdown-menu,
+.lang-toggle,
+.button,
+button,
+input,
+textarea,
+select,
+.chat-input,
+.prompt-grid,
+.model-status,
+.site-footer {
+  font-family: var(--font-ui);
 }
 
 .five-year-hero h1 {
