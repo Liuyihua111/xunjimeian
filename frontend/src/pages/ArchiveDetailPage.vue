@@ -1,5 +1,17 @@
 <template>
-  <section :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]">
+  <section v-if="loading" class="page-hero archive-detail-hero" aria-live="polite" aria-busy="true">
+    <p class="eyebrow">{{ t("archiveLoading") }}</p>
+    <div class="detail-title-skeleton"></div>
+  </section>
+
+  <section v-else-if="loadError" class="page-hero archive-detail-hero archive-state" role="status">
+    <p class="eyebrow">{{ t("archiveEyebrow") }}</p>
+    <h1>{{ t("archiveErrorTitle") }}</h1>
+    <p>{{ t("archiveErrorText") }}</p>
+    <button class="button secondary" type="button" @click="loadProject">{{ t("retry") }}</button>
+  </section>
+
+  <section v-else :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]">
     <p class="eyebrow">{{ project ? `${project.year} · ${project.directions?.join(" / ")}` : "成果详情" }}</p>
     <h1>{{ project?.title || "年度成果加载中" }}</h1>
     <p>{{ project?.subtitle || project?.summary || "正在读取年度成果内容。" }}</p>
@@ -79,10 +91,14 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { fetchProjects } from "../api.js";
+import { useI18n } from "../i18n.js";
 
 const route = useRoute();
 const router = useRouter();
+const { t } = useI18n();
 const projects = ref([]);
+const loading = ref(true);
+const loadError = ref(false);
 
 const project = computed(() => {
   const slug = String(route.params.year || "");
@@ -95,10 +111,20 @@ const visibleImages = computed(() => {
   return validImages.length ? validImages : [{ title: project.value?.title || "成果图片占位", path: "/assets/images/placeholder-media.svg" }];
 });
 
-onMounted(async () => {
-  const data = await fetchProjects();
-  projects.value = data.results || [];
-});
+async function loadProject() {
+  loading.value = true;
+  loadError.value = false;
+  try {
+    const data = await fetchProjects();
+    projects.value = data.results || [];
+  } catch (error) {
+    loadError.value = true;
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(loadProject);
 
 watch(projects, () => {
   if (projects.value.length && !project.value) {

@@ -7,13 +7,8 @@
 
   <section class="section dialogue-workspace">
     <div class="avatar-panel">
-      <div class="avatar-stage" aria-label="谢远定数字人 3D 模型占位">
-        <div class="avatar-grid"></div>
-        <div class="avatar-figure">
-          <span class="avatar-head"></span>
-          <span class="avatar-coat"></span>
-          <span class="avatar-stand"></span>
-        </div>
+      <div class="avatar-stage" :aria-label="t('avatarAlt')">
+        <img class="dialogue-portrait" src="/assets/projects/2026/xie-yuanding-portrait.jpg" :alt="t('avatarAlt')">
         <span class="model-badge">{{ t("modelBadge") }}</span>
       </div>
       <div class="model-notes">

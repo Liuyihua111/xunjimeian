@@ -7,7 +7,18 @@
         <span class="brand-subtitle">{{ t("brandSubtitle") }}</span>
       </span>
     </RouterLink>
-    <nav class="site-nav" aria-label="主导航">
+    <button
+      class="nav-toggle"
+      type="button"
+      :aria-label="t('navMenu')"
+      :aria-expanded="menuOpen"
+      aria-controls="primary-navigation"
+      @click="menuOpen = !menuOpen"
+    >
+      <span aria-hidden="true">{{ menuOpen ? "×" : "≡" }}</span>
+      <span>{{ t("navMenu") }}</span>
+    </button>
+    <nav id="primary-navigation" :class="['site-nav', { open: menuOpen }]" aria-label="主导航" @click="menuOpen = false">
       <RouterLink to="/" exact-active-class="current-page">{{ t("navHome") }}</RouterLink>
       <RouterLink to="/overview" active-class="current-page">{{ t("navOverview") }}</RouterLink>
       <RouterLink to="/context" active-class="current-page">{{ t("navContext") }}</RouterLink>
@@ -27,14 +38,19 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "../i18n.js";
 
 const { t, toggleLang } = useI18n();
 const route = useRoute();
+const menuOpen = ref(false);
 const archiveYears = [2022, 2023, 2024, 2025, 2026];
 
 const isXieSection = computed(() => route.name === "xie" || route.name === "dialogue");
 const isArchiveSection = computed(() => route.name === "archive" || route.name === "archive-detail");
+
+watch(() => route.fullPath, () => {
+  menuOpen.value = false;
+});
 </script>

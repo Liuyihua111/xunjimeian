@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 const props = defineProps({
   info: {
@@ -30,4 +30,10 @@ const props = defineProps({
 });
 
 const isReady = computed(() => props.info.status === "ready" && props.info.model_url);
+
+watch(isReady, async (ready) => {
+  if (ready && !customElements.get("model-viewer")) {
+    await import("@google/model-viewer");
+  }
+}, { immediate: true });
 </script>

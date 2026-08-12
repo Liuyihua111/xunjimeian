@@ -10,6 +10,7 @@ const messages = {
     navXie: "谢远定数字人",
     navSite: "梅庵旧址数字化",
     navArchive: "历年成果",
+    navMenu: "菜单",
     langLabel: "当前中文展示",
     langButton: "EN",
     footerCopy: "寻迹梅庵社会实践项目 · 东南大学",
@@ -78,6 +79,7 @@ const messages = {
     dialogueTitle: "与谢远定对话",
     dialogueLede: "此界面接入 `/api/chat/`，用于演示基于史料的问答、资料不足提示和参考出处展示。",
     modelBadge: "3D 建模展示位",
+    avatarAlt: "谢远定人物数字形象素材",
     modelTitle: "谢远定先生 3D 数字人",
     modelText: "后续可替换为 GLB/GLTF 模型查看器，支持旋转、缩放、语音讲述与人物动作展示。",
     chatWindow: "问答窗口",
@@ -110,6 +112,12 @@ const messages = {
     archiveEyebrow: "成果归档",
     archiveTitle: "五年成果总览",
     archiveLede: "从项目起点、数字展馆、梅庵元宇宙、AI 青年叙事到 2026 谢远定数字分身，逐年查看“寻迹梅庵”的成果积累。"
+    ,archiveLoading: "正在读取年度成果"
+    ,archiveErrorTitle: "成果暂时无法读取"
+    ,archiveErrorText: "请稍后重试，或返回历年成果总览"
+    ,archiveEmptyTitle: "成果正在整理"
+    ,archiveEmptyText: "年度资料与图片将在整理完成后显示"
+    ,retry: "重新加载"
   },
   en: {
     brandTitle: "Tracing Mei'an",
@@ -120,6 +128,7 @@ const messages = {
     navXie: "Xie Yuanding Avatar",
     navSite: "Mei'an Digitization",
     navArchive: "Yearly Outcomes",
+    navMenu: "Menu",
     langLabel: "Switch to Chinese",
     langButton: "中",
     footerCopy: "Tracing Mei'an Social Practice Project · Southeast University",
@@ -188,6 +197,7 @@ const messages = {
     dialogueTitle: "Talk with Xie Yuanding",
     dialogueLede: "This interface connects to `/api/chat/` to demonstrate source-based Q&A, insufficient-source warnings, and citation display.",
     modelBadge: "3D Model Area",
+    avatarAlt: "Xie Yuanding digital portrait material",
     modelTitle: "Xie Yuanding 3D Avatar",
     modelText: "This area can later be replaced by a GLB/GLTF model viewer with rotation, zoom, narration, and character motion.",
     chatWindow: "Q&A Window",
@@ -220,6 +230,12 @@ const messages = {
     archiveEyebrow: "Archive",
     archiveTitle: "Five-Year Outcome Overview",
     archiveLede: "Explore Tracing Mei'an year by year, from the project origin and digital exhibition to the 2026 Xie Yuanding avatar."
+    ,archiveLoading: "Loading yearly outcomes"
+    ,archiveErrorTitle: "Outcomes are temporarily unavailable"
+    ,archiveErrorText: "Please try again later or return to the yearly overview"
+    ,archiveEmptyTitle: "Outcomes are being organized"
+    ,archiveEmptyText: "Yearly materials and images will appear when ready"
+    ,retry: "Try again"
   }
 };
 

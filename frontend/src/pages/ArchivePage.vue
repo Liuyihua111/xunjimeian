@@ -6,7 +6,18 @@
   </section>
 
   <section class="section archive-timeline-section">
-    <div class="archive-overview-grid" v-if="orderedProjects.length">
+    <div v-if="loading" class="archive-overview-grid" aria-live="polite" aria-busy="true">
+      <article v-for="index in 3" :key="index" class="archive-overview-card archive-skeleton">
+        <div class="archive-card-image"></div>
+        <div class="archive-overview-body"><span></span><span></span><span></span></div>
+      </article>
+    </div>
+    <div v-else-if="loadError" class="archive-state" role="status">
+      <h2>{{ t("archiveErrorTitle") }}</h2>
+      <p>{{ t("archiveErrorText") }}</p>
+      <button class="button secondary" type="button" @click="loadProjects">{{ t("retry") }}</button>
+    </div>
+    <div class="archive-overview-grid" v-else-if="orderedProjects.length">
       <RouterLink
         v-for="project in orderedProjects"
         :key="project.year"
@@ -27,6 +38,10 @@
         </div>
       </RouterLink>
     </div>
+    <div v-else class="archive-state" role="status">
+      <h2>{{ t("archiveEmptyTitle") }}</h2>
+      <p>{{ t("archiveEmptyText") }}</p>
+    </div>
   </section>
 </template>
 
@@ -37,6 +52,8 @@ import { useI18n } from "../i18n.js";
 
 const { t } = useI18n();
 const projects = ref([]);
+const loading = ref(true);
+const loadError = ref(false);
 
 const orderedProjects = computed(() => {
   const list = [...projects.value].sort((a, b) => a.year - b.year);
@@ -50,8 +67,18 @@ function coverImage(project) {
   return images[0] || { title: project.title || "成果图片占位", path: "/assets/images/placeholder-media.svg" };
 }
 
-onMounted(async () => {
-  const data = await fetchProjects();
-  projects.value = data.results || [];
-});
+async function loadProjects() {
+  loading.value = true;
+  loadError.value = false;
+  try {
+    const data = await fetchProjects();
+    projects.value = data.results || [];
+  } catch (error) {
+    loadError.value = true;
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(loadProjects);
 </script>
