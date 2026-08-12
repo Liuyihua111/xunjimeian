@@ -2,7 +2,6 @@
   <section class="page-hero">
     <p class="eyebrow">{{ t("xieEyebrow") }}</p>
     <h1>{{ t("xieTitle") }}</h1>
-    <p>{{ t("xieLede") }}</p>
     <div class="page-actions">
       <RouterLink class="button primary" to="/xie-dialogue">{{ t("xieTalk") }}</RouterLink>
     </div>
@@ -10,23 +9,44 @@
 
   <section class="section split model-layout">
     <ModelViewer :info="modelInfo" />
-    <div class="info-stack">
-      <figure class="xie-asset-card">
-        <img src="/assets/projects/2026/xie-yuanding-fullbody.jpg" alt="谢远定数字分身人物素材">
-        <figcaption>谢远定数字分身人物素材位</figcaption>
-      </figure>
-      <article class="compact-card">
-        <h2>{{ t("xieProfileTitle") }}</h2>
-        <p>{{ t("xieProfileText") }}</p>
-      </article>
-      <article class="compact-card">
-        <h2>{{ t("xieAbilityTitle") }}</h2>
-        <p>{{ t("xieAbilityText") }}</p>
-      </article>
-      <article class="compact-card">
-        <h2>{{ t("xieProgressTitle") }}</h2>
-        <p>{{ t("xieProgressText") }}</p>
-      </article>
+    <div class="xie-accordion-stack">
+      <p class="accordion-hint">{{ t("xieMoreHint") }}</p>
+      <details class="xie-accordion">
+        <summary>
+          <span>
+            <small>{{ t("xieProfileKicker") }}</small>
+            <strong>{{ t("xieProfileTitle") }}</strong>
+            <em>{{ t("xieProfileSummary") }}</em>
+          </span>
+          <span class="accordion-action">{{ t("viewMore") }}</span>
+        </summary>
+        <div class="accordion-content">
+          <p>{{ t("xieProfileText") }}</p>
+          <ul>
+            <li>{{ t("xieProfilePoint1") }}</li>
+            <li>{{ t("xieProfilePoint2") }}</li>
+            <li>{{ t("xieProfilePoint3") }}</li>
+          </ul>
+        </div>
+      </details>
+      <details class="xie-accordion">
+        <summary>
+          <span>
+            <small>{{ t("xieAbilityKicker") }}</small>
+            <strong>{{ t("xieAbilityTitle") }}</strong>
+            <em>{{ t("xieAbilitySummary") }}</em>
+          </span>
+          <span class="accordion-action">{{ t("viewMore") }}</span>
+        </summary>
+        <div class="accordion-content">
+          <p>{{ t("xieAbilityText") }}</p>
+          <ul>
+            <li>{{ t("xieAbilityPoint1") }}</li>
+            <li>{{ t("xieAbilityPoint2") }}</li>
+            <li>{{ t("xieAbilityPoint3") }}</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </section>
 </template>

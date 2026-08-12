@@ -5,25 +5,33 @@
     <p>{{ t("contextLede") }}</p>
   </section>
 
-  <section class="section intro-section">
-    <div class="intro-grid">
-      <article class="intro-block">
-        <p class="eyebrow">{{ t("meianEyebrow") }}</p>
+  <section class="section context-stories">
+    <article class="context-story context-story-meian">
+      <figure class="context-media">
+        <img src="/assets/images/meian-exterior-official.jpg" :alt="t('meianImageAlt')">
+        <figcaption>{{ t("meianPhotoNote") }}</figcaption>
+      </figure>
+      <div class="context-copy">
+        <p class="context-label">{{ t("meianEyebrow") }}</p>
         <h2>{{ t("meianTitle") }}</h2>
         <p>{{ t("meianText") }}</p>
-      </article>
-      <article class="intro-block">
-        <p class="eyebrow">{{ t("tuanEyebrow") }}</p>
+        <p>{{ t("meianTextMore") }}</p>
+        <a class="text-link" href="https://history.seu.edu.cn/2023/0822/c18650a456949/page.htm" target="_blank" rel="noreferrer">{{ t("officialSource") }}</a>
+      </div>
+    </article>
+
+    <article class="context-story context-story-congress">
+      <div class="context-copy">
+        <p class="context-label">{{ t("tuanEyebrow") }}</p>
         <h2>{{ t("tuanTitle") }}</h2>
         <p>{{ t("tuanText") }}</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <article class="info-panel accent">
-      <h2>{{ t("contextXieTitle") }}</h2>
-      <p>{{ t("contextXieText") }}</p>
+        <p>{{ t("tuanTextMore") }}</p>
+        <a class="text-link" href="https://www.seu.edu.cn/2021/0701/c124a376375/page.htm" target="_blank" rel="noreferrer">{{ t("officialSource") }}</a>
+      </div>
+      <figure class="context-media context-media-mark">
+        <img src="/assets/images/meian-historical-official.png" :alt="t('tuanImageAlt')">
+        <figcaption>{{ t("tuanPhotoNote") }}</figcaption>
+      </figure>
     </article>
   </section>
 </template>

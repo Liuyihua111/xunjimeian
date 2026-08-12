@@ -29,6 +29,7 @@
           <span class="nav-caret" aria-hidden="true">⌄</span>
         </RouterLink>
         <div class="nav-dropdown-menu" aria-label="历年成果年份">
+          <RouterLink to="/archive">{{ t("archiveOverviewLink") }}</RouterLink>
           <RouterLink v-for="year in archiveYears" :key="year" :to="`/archive/${year}`">{{ year }}</RouterLink>
         </div>
       </div>

@@ -5,11 +5,8 @@
     <p>{{ t("overviewLede") }}</p>
   </section>
 
-  <section class="section split">
-    <div>
-      <p class="large-text">{{ t("overviewLarge") }}</p>
-    </div>
-    <div class="timeline">
+  <section class="section overview-directory">
+    <div class="timeline overview-timeline">
       <article class="timeline-item">
         <span>01</span>
         <h2>{{ t("overviewStep1Title") }}</h2>
