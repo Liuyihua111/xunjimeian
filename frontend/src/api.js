@@ -10,8 +10,38 @@ async function requestJson(url, options = {}) {
   return response.json();
 }
 
-export function fetchProjects() {
-  return requestJson("/api/projects/").catch(() => requestJson("/assets/data/projects.json"));
+export async function fetchProjects() {
+  const localData = await requestJson("/assets/data/projects.json");
+
+  try {
+    const apiData = await requestJson("/api/projects/");
+    const localProjects = new Map(
+      (localData.results || []).map((project) => [String(project.year), project])
+    );
+
+    const presentationFields = [
+      "slug", "title", "subtitle", "summary", "directions", "cities", "outputs",
+      "images", "links", "highlights", "detail_sections", "inheritance_value", "reusable_assets"
+    ];
+
+    return {
+      ...apiData,
+      results: (apiData.results || []).map((project) => {
+        const localProject = localProjects.get(String(project.year));
+        const presentation = localProject
+          ? Object.fromEntries(presentationFields.map((field) => [field, localProject[field]]))
+          : {};
+
+        return {
+          ...project,
+          ...presentation,
+          images: (localProject?.images || project.images || []).slice(0, 2)
+        };
+      })
+    };
+  } catch {
+    return localData;
+  }
 }
 
 export function fetchModelInfo() {

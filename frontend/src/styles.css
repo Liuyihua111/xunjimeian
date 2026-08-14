@@ -1034,8 +1034,8 @@ h3,
 
 .archive-overview-card {
   display: grid;
-  grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
-  min-height: 260px;
+  grid-template-columns: 1fr;
+  min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.66);
@@ -1044,21 +1044,58 @@ h3,
 
 .archive-overview-card.featured {
   grid-column: 1 / -1;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(420px, 0.94fr) minmax(0, 1.06fr);
   border-color: rgba(124, 45, 42, 0.38);
   background: linear-gradient(135deg, rgba(124, 45, 42, 0.08), rgba(255, 255, 255, 0.72));
 }
 
 .archive-card-image {
-  min-height: 220px;
-  background: #e5ded2;
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  padding: 16px;
+  overflow: hidden;
+  background: #e7e1d7;
 }
 
 .archive-card-image img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+}
+
+.archive-card-image[data-year="2022"] img {
+  object-position: 52% 42%;
+}
+
+.archive-card-image[data-year="2023"] img {
+  object-position: center 58%;
+}
+
+.archive-card-image[data-year="2024"] img {
+  object-position: 54% center;
+}
+
+.archive-card-image[data-year="2025"] img {
+  object-position: 48% center;
+}
+
+.archive-card-image[data-year="2026"] img {
+  object-position: center 20%;
+}
+
+.archive-image-year {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 5px 9px;
+  background: rgba(31, 42, 44, 0.86);
+  color: #fff;
+  font-family: var(--font-numeral);
+  font-size: 16px;
 }
 
 .archive-overview-body {
@@ -1072,6 +1109,14 @@ h3,
   margin: 0 0 12px;
   font-size: clamp(24px, 3vw, 38px);
   line-height: 1.18;
+}
+
+@media (min-width: 821px) {
+  .archive-overview-card.featured .archive-card-image {
+    min-height: 390px;
+    aspect-ratio: auto;
+    padding: 24px;
+  }
 }
 
 .archive-overview-body p {
@@ -1606,7 +1651,7 @@ model-viewer:focus-visible {
 }
 
 .archive-overview-card:hover .archive-card-image img {
-  transform: scale(1.025);
+  transform: none;
 }
 
 .archive-state {
@@ -1700,6 +1745,39 @@ model-viewer:focus-visible {
   object-fit: cover;
   object-position: center 22%;
   filter: saturate(0.78) contrast(1.04);
+}
+
+@media (min-width: 821px) {
+  .dialogue-workspace {
+    height: 760px;
+  }
+
+  .avatar-panel,
+  .chat-panel {
+    min-height: 0;
+    height: 100%;
+  }
+
+  .avatar-panel {
+    grid-template-rows: minmax(0, 1fr) auto;
+    overflow: hidden;
+  }
+
+  .avatar-stage,
+  .dialogue-portrait {
+    min-height: 0;
+  }
+
+  .chat-panel {
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+  }
+
+  .chat-log {
+    min-height: 0;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
 }
 
 .avatar-stage .model-badge {
@@ -2176,12 +2254,6 @@ model-viewer:focus-visible {
   gap: 14px;
 }
 
-.accordion-hint {
-  margin: 0 0 4px;
-  color: var(--muted);
-  font-size: 15px;
-}
-
 .xie-accordion {
   border: 1px solid var(--line);
   background: var(--surface);
@@ -2273,6 +2345,55 @@ model-viewer:focus-visible {
   color: var(--ink);
 }
 
+.profile-timeline {
+  display: grid;
+  gap: 0;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-timeline li {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-left: 0;
+}
+
+.profile-timeline strong {
+  color: var(--cedar);
+  font-family: var(--font-editorial);
+  line-height: 1.5;
+}
+
+.profile-timeline span {
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+.profile-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: baseline;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.profile-sources strong {
+  color: var(--ink);
+}
+
+.profile-sources a {
+  color: var(--cedar);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .xie-accordion:last-child .accordion-content li {
   border-left-color: var(--moss);
 }
@@ -2314,6 +2435,11 @@ model-viewer:focus-visible {
 }
 
 @media (max-width: 720px) {
+  .profile-timeline li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
   .nav-dropdown-menu {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

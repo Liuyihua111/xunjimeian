@@ -8,7 +8,7 @@
       <span class="status-pill">{{ loading ? t("chatLoading") : t("chatReady") }}</span>
     </div>
 
-    <div class="chat-log" ref="chatLog">
+    <div class="chat-log" ref="chatLog" tabindex="0" aria-live="polite">
       <div class="message bot">{{ t("chatGreeting") }}</div>
       <template v-for="message in messages" :key="message.id">
         <div :class="['message', message.type]">{{ message.text }}</div>

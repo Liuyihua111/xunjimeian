@@ -107,7 +107,7 @@ const project = computed(() => {
 
 const visibleImages = computed(() => {
   const images = project.value?.images || [];
-  const validImages = images.filter((image) => image?.path);
+  const validImages = images.filter((image) => image?.path).slice(0, 2);
   return validImages.length ? validImages : [{ title: project.value?.title || "成果图片占位", path: "/assets/images/placeholder-media.svg" }];
 });
 

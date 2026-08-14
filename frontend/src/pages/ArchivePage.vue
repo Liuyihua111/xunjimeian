@@ -24,8 +24,9 @@
         :class="['archive-overview-card', { featured: project.year === 2026 }]"
         :to="`/archive/${project.slug || project.year}`"
       >
-        <div class="archive-card-image">
+        <div class="archive-card-image" :data-year="project.year">
           <img :src="coverImage(project).path" :alt="coverImage(project).title || project.title">
+          <span class="archive-image-year" aria-hidden="true">{{ project.year }}</span>
         </div>
         <div class="archive-overview-body">
           <span class="archive-meta">{{ project.year }} · {{ project.directions?.join(" / ") }}</span>
@@ -64,7 +65,8 @@ const orderedProjects = computed(() => {
 
 function coverImage(project) {
   const images = project.images || [];
-  return images[0] || { title: project.title || "成果图片占位", path: "/assets/images/placeholder-media.svg" };
+  const fallback = { title: project.title || "成果图片占位", path: "/assets/images/placeholder-media.svg" };
+  return images[0] || fallback;
 }
 
 async function loadProjects() {
