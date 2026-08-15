@@ -6,6 +6,7 @@
   </section>
 
   <section class="section overview-directory">
+    <PageMotif variant="overview" />
     <div class="timeline overview-timeline">
       <article class="timeline-item">
         <span>01</span>
@@ -27,6 +28,7 @@
 </template>
 
 <script setup>
+import PageMotif from "../components/PageMotif.vue";
 import { useI18n } from "../i18n.js";
 
 const { t } = useI18n();

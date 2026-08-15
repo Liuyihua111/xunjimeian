@@ -99,7 +99,7 @@ const messages = {
 
     dialogueEyebrow: "数字人交互原型",
     dialogueTitle: "与谢远定对话",
-    dialogueLede: "此界面接入 `/api/chat/`，用于演示基于史料的问答、资料不足提示和参考出处展示。",
+    dialogueLede: "通过人物史料检索与数字人回答，你可以围绕谢远定的生平、求学经历和团二大实践展开提问，并展开史料依据核验回答来源。",
     modelBadge: "3D 建模展示位",
     avatarAlt: "谢远定人物数字形象素材",
     modelTitle: "谢远定先生 3D 数字人",
@@ -245,7 +245,7 @@ const messages = {
 
     dialogueEyebrow: "Digital Avatar Prototype",
     dialogueTitle: "Talk with Xie Yuanding",
-    dialogueLede: "This interface connects to `/api/chat/` to demonstrate source-based Q&A, insufficient-source warnings, and citation display.",
+    dialogueLede: "Ask about Xie Yuanding's life, education, and work around the Second CYL Congress. Each avatar response can be checked against retrieved historical sources.",
     modelBadge: "3D Model Area",
     avatarAlt: "Xie Yuanding digital portrait material",
     modelTitle: "Xie Yuanding 3D Avatar",

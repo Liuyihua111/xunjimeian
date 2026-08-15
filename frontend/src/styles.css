@@ -1875,6 +1875,18 @@ model-viewer:focus-visible {
   border-color: var(--cedar);
 }
 
+.prompt-grid {
+  gap: 7px;
+  padding: 0 20px 14px;
+}
+
+.prompt-grid button {
+  min-height: 44px;
+  padding: 6px 9px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 .avatar-stage {
   isolation: isolate;
   background: #deddd7;
@@ -1954,6 +1966,26 @@ model-viewer:focus-visible {
     height: auto;
     max-height: none;
     box-shadow: 0 18px 52px rgba(48, 42, 36, 0.2);
+  }
+}
+
+@media (max-width: 900px) {
+  .prompt-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .prompt-grid {
+    gap: 6px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .prompt-grid button {
+    min-height: 42px;
+    padding: 5px 7px;
+    font-size: 12px;
   }
 }
 
@@ -2671,4 +2703,311 @@ model-viewer:focus-visible {
   .accordion-content {
     padding: 0 22px 24px;
   }
+}
+
+/* Page-specific archival motifs and annual detail alignment, 2026-08-15 */
+.page-motif {
+  position: absolute;
+  z-index: 0;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 26%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 26%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.page-motif img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: saturate(0.62) contrast(0.9) brightness(1.035);
+  animation: motif-drift 18s ease-in-out infinite alternate;
+}
+
+.motif-trace {
+  position: absolute;
+  left: 12%;
+  top: 56%;
+  width: 42%;
+  height: 1px;
+  background: rgba(129, 47, 44, 0.32);
+  transform-origin: left center;
+  animation: motif-trace 6s ease-in-out infinite;
+}
+
+.motif-node {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgba(129, 47, 44, 0.48);
+  border-radius: 50%;
+  background: rgba(243, 241, 236, 0.88);
+  animation: motif-node 4.8s ease-in-out infinite;
+}
+
+.motif-node-one {
+  left: 54%;
+  top: 38%;
+}
+
+.motif-node-two {
+  right: 18%;
+  bottom: 24%;
+  border-color: rgba(71, 96, 82, 0.5);
+  animation-delay: -2.2s;
+}
+
+.page-hero:has(> .page-motif) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.page-hero > :not(.page-motif),
+.overview-directory > :not(.page-motif) {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero > .page-motif {
+  left: 0;
+  right: 0;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+}
+
+.overview-directory {
+  position: relative;
+  isolation: isolate;
+  min-height: 520px;
+}
+
+.overview-directory > .page-motif-overview {
+  top: -8%;
+  right: -13vw;
+  width: min(760px, 58vw);
+  height: 116%;
+  opacity: 0.34;
+}
+
+.context-hero > .page-motif-context {
+  top: -24%;
+  right: 0;
+  width: 100%;
+  height: 148%;
+  opacity: 0.34;
+}
+
+.context-hero > .page-motif-context img {
+  object-position: center 54%;
+}
+
+.xie-hero > .page-motif-xie {
+  top: -28%;
+  right: 0;
+  width: 100%;
+  height: 154%;
+  opacity: 0.3;
+}
+
+.xie-hero > .page-motif-xie img {
+  width: 130%;
+  max-width: none;
+  margin-left: -15%;
+  transform-origin: center center;
+  animation-name: motif-drift-mirrored-right;
+}
+
+.dialogue-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.dialogue-hero > .page-motif-dialogue {
+  top: -18%;
+  right: 0;
+  width: 100%;
+  height: 138%;
+  opacity: 0.35;
+}
+
+.archive-hero > .page-motif-archive {
+  top: -25%;
+  right: 0;
+  width: 100%;
+  height: 150%;
+  opacity: 0.31;
+}
+
+.annual-motif {
+  top: -24%;
+  right: 0;
+  width: 100%;
+  height: 152%;
+  opacity: 0.32;
+}
+
+.page-motif-year-2022 img {
+  object-position: center 58%;
+}
+
+.page-motif-year-2023 img {
+  object-position: 58% 48%;
+}
+
+.page-motif-year-2024 img {
+  object-position: 35% 52%;
+}
+
+.page-motif-year-2022 img,
+.page-motif-year-2024 img {
+  animation-name: motif-drift-mirrored;
+}
+
+.page-motif-year-2025 img {
+  object-position: center 46%;
+}
+
+.page-motif-year-2026 img {
+  object-position: 58% 45%;
+}
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.prompt-grid button {
+  border-radius: 6px;
+}
+
+@media (min-width: 821px) {
+  .archive-detail-hero[data-year="2022"] h1 {
+    max-width: none;
+    font-size: clamp(40px, 4.45vw, 58px);
+    white-space: nowrap;
+  }
+
+  .archive-detail-layout {
+    align-items: stretch;
+  }
+
+  .archive-detail-media {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    min-height: 0;
+  }
+
+  .archive-detail-media.single {
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .archive-detail-media img {
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .archive-detail-content {
+    height: 100%;
+  }
+
+  .dialogue-workspace:has(> .evidence-drawer) .prompt-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .archive-detail-media {
+    grid-template-rows: none;
+  }
+
+  .archive-detail-media img {
+    height: auto;
+    min-height: 0;
+    max-height: 420px;
+    object-fit: contain;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .overview-directory {
+    min-height: 0;
+  }
+
+  .overview-directory > .page-motif-overview {
+    top: 8%;
+    right: -76%;
+    width: 140%;
+    height: 84%;
+    opacity: 0.2;
+  }
+
+  .context-hero > .page-motif-context,
+  .xie-hero > .page-motif-xie,
+  .dialogue-hero > .page-motif-dialogue,
+  .archive-hero > .page-motif-archive,
+  .archive-detail-hero > .annual-motif {
+    top: -4%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 108%;
+    opacity: 0.18;
+  }
+
+  .dialogue-hero > .page-motif-dialogue {
+    right: 0;
+  }
+
+  .prompt-grid {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+  }
+
+  .prompt-grid button {
+    flex: 0 0 min(72vw, 230px);
+    min-height: 44px;
+    scroll-snap-align: start;
+  }
+}
+
+@keyframes motif-drift {
+  from { transform: translate3d(-4px, 0, 0) scale(1.006); }
+  to { transform: translate3d(5px, -4px, 0) scale(1.012); }
+}
+
+@keyframes motif-drift-mirrored {
+  from { transform: translate3d(4px, 0, 0) scale(-1.006, 1.006); }
+  to { transform: translate3d(-5px, -4px, 0) scale(-1.012, 1.012); }
+}
+
+@keyframes motif-drift-mirrored-right {
+  from { transform: translate3d(10%, 0, 0) scale(-1.006, 1.006); }
+  to { transform: translate3d(calc(10% - 5px), -4px, 0) scale(-1.012, 1.012); }
+}
+
+@keyframes motif-trace {
+  0%, 18% { transform: scaleX(0); opacity: 0; }
+  48%, 82% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes motif-node {
+  0%, 100% { transform: scale(0.78); opacity: 0.36; }
+  50% { transform: scale(1.18); opacity: 0.9; }
 }

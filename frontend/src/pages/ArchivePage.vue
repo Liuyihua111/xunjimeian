@@ -1,5 +1,6 @@
 <template>
-  <section class="page-hero">
+  <section class="page-hero archive-hero">
+    <PageMotif variant="archive" />
     <p class="eyebrow">{{ t("archiveEyebrow") }}</p>
     <h1>{{ t("archiveTitle") }}</h1>
     <p>{{ t("archiveLede") }}</p>
@@ -50,6 +51,7 @@
 import { computed, onMounted, ref } from "vue";
 import { fetchProjects } from "../api.js";
 import { useI18n } from "../i18n.js";
+import PageMotif from "../components/PageMotif.vue";
 
 const { t } = useI18n();
 const projects = ref([]);

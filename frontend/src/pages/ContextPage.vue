@@ -1,5 +1,6 @@
 <template>
-  <section class="page-hero">
+  <section class="page-hero context-hero">
+    <PageMotif variant="context" />
     <p class="eyebrow">{{ t("contextEyebrow") }}</p>
     <h1>{{ t("contextTitle") }}</h1>
     <p>{{ t("contextLede") }}</p>
@@ -37,6 +38,7 @@
 </template>
 
 <script setup>
+import PageMotif from "../components/PageMotif.vue";
 import { useI18n } from "../i18n.js";
 
 const { t } = useI18n();

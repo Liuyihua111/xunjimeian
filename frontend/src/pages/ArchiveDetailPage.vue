@@ -11,7 +11,8 @@
     <button class="button secondary" type="button" @click="loadProject">{{ t("retry") }}</button>
   </section>
 
-  <section v-else :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]">
+  <section v-else :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]" :data-year="project?.year">
+    <PageMotif v-if="project" :variant="`year-${project.year}`" class="annual-motif" />
     <p class="eyebrow">{{ project ? `${project.year} · ${project.directions?.join(" / ")}` : "成果详情" }}</p>
     <h1>{{ project?.title || "年度成果加载中" }}</h1>
     <p>{{ project?.subtitle || project?.summary || "正在读取年度成果内容。" }}</p>
@@ -22,7 +23,7 @@
   </section>
 
   <section v-if="project" class="section archive-detail-layout">
-    <div class="archive-detail-media">
+    <div :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
       <img
         v-for="image in visibleImages"
         :key="image.path"
@@ -92,6 +93,7 @@ import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { fetchProjects } from "../api.js";
 import { useI18n } from "../i18n.js";
+import PageMotif from "../components/PageMotif.vue";
 
 const route = useRoute();
 const router = useRouter();

@@ -1,5 +1,6 @@
 <template>
   <section class="page-hero dialogue-hero">
+    <PageMotif variant="dialogue" />
     <p class="eyebrow">{{ t("dialogueEyebrow") }}</p>
     <h1>{{ t("dialogueTitle") }}</h1>
     <p>{{ t("dialogueLede") }}</p>
@@ -22,6 +23,7 @@
 
 <script setup>
 import ChatPanel from "../components/ChatPanel.vue";
+import PageMotif from "../components/PageMotif.vue";
 import { useI18n } from "../i18n.js";
 
 const { t } = useI18n();

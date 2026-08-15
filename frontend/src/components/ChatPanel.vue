@@ -87,10 +87,7 @@ const { t } = useI18n();
 const promptQueries = {
   q1: "谢远定是谁？",
   q2: "谢远定和东南大学有什么关系？",
-  q3: "谢远定为什么参加团二大？",
-  q4: "团二大为什么在梅庵召开？",
-  q5: "当时南京高师的青年氛围是什么样的？",
-  q6: "你想对今天的东大学生说什么？"
+  q3: "谢远定为什么参加团二大？"
 };
 const prompts = computed(() => Object.keys(promptQueries).map((key) => ({
   key,

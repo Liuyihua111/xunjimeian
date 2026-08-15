@@ -1,5 +1,6 @@
 <template>
-  <section class="page-hero">
+  <section class="page-hero xie-hero">
+    <PageMotif variant="xie" />
     <p class="eyebrow">{{ t("xieEyebrow") }}</p>
     <h1>{{ t("xieTitle") }}</h1>
     <div class="page-actions">
@@ -60,6 +61,7 @@
 <script setup>
 import { computed, onMounted, ref } from "vue";
 import ModelViewer from "../components/ModelViewer.vue";
+import PageMotif from "../components/PageMotif.vue";
 import { fetchModelInfo } from "../api.js";
 import { useI18n } from "../i18n.js";
 
