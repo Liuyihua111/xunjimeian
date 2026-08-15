@@ -22,7 +22,9 @@
     </div>
   </section>
 
-  <section v-if="project" class="section archive-detail-layout">
+  <AnnualFeatureArticle v-if="project && isEditorialYear" :project="project" />
+
+  <section v-if="project && !isEditorialYear" class="section archive-detail-layout">
     <div :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
       <img
         v-for="image in visibleImages"
@@ -59,7 +61,7 @@
     </div>
   </section>
 
-  <section v-if="project" class="section detail-section-grid">
+  <section v-if="project && !isEditorialYear" class="section detail-section-grid">
     <article v-for="section in project.detail_sections" :key="section.title" class="intro-block">
       <p class="eyebrow">{{ project.year }}</p>
       <h2>{{ section.title }}</h2>
@@ -67,7 +69,7 @@
     </article>
   </section>
 
-  <section v-if="project" class="section archive-links-section">
+  <section v-if="project && !isEditorialYear" class="section archive-links-section">
     <div class="section-heading">
       <p class="eyebrow">成果链接</p>
       <h2>继续查看相关成果</h2>
@@ -94,6 +96,7 @@ import { useRoute, useRouter } from "vue-router";
 import { fetchProjects } from "../api.js";
 import { useI18n } from "../i18n.js";
 import PageMotif from "../components/PageMotif.vue";
+import AnnualFeatureArticle from "../components/AnnualFeatureArticle.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -105,6 +108,11 @@ const loadError = ref(false);
 const project = computed(() => {
   const slug = String(route.params.year || "");
   return projects.value.find((item) => String(item.slug || item.year) === slug);
+});
+
+const isEditorialYear = computed(() => {
+  const year = Number(project.value?.year);
+  return year >= 2022 && year <= 2025 && Boolean(project.value?.article_blocks?.length);
 });
 
 const visibleImages = computed(() => {

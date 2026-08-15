@@ -33,7 +33,12 @@
           "path": "/assets/projects/2022/practice-route.png"
         }
       ],
-      "links": [],
+      "links": [
+        {
+          "title": "查看 2022 年原报道",
+          "url": "https://mp.weixin.qq.com/s?__biz=Mzg5NzYzNjM1OQ==&mid=2247505957&idx=1&sn=303db5128d0910ef04500675d4371336"
+        }
+      ],
       "highlights": [
         "访谈纪录片《寻迹梅庵》",
         "东南大学-襄阳团市委社会实践基地",
@@ -55,7 +60,101 @@
         }
       ],
       "inheritance_value": "2022 年奠定谢远定数字分身的人物数据基础、情感锚点和“人物 + 地域”联动模式。",
-      "reusable_assets": "可复用人物资料、口述史料、寻访路线和实践基地资源。"
+      "reusable_assets": "可复用人物资料、口述史料、寻访路线和实践基地资源。",
+      "embedded_result": {
+        "status": "building",
+        "type": "video",
+        "title": "纪录片《寻迹梅庵》",
+        "description": "实践团以影像记录寻访团二大代表红色足迹的过程，视频文件交付后可直接在此播放。",
+        "media_url": "",
+        "poster_url": "/assets/projects/2022/article/06.gif",
+        "external_url": "",
+        "gallery": [],
+        "status_text": "纪录片视频文件待接入"
+      },
+      "article_blocks": [
+        {
+          "type": "paragraph",
+          "text": "团二大在东南大学的召开是团史、青运史上的一件大事，其最突出的成就是将团与党的关系从“协定”调整为“服从”，从此宣示了共青团“永远跟党走”的初心，这对于每一位团员、每一位东大学子来说都有着重大的现实意义。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2022年是党的二十大召开之年，也是中国共产主义青年团成立100周年。东南大学仪器科学与工程学院组建了“寻迹梅庵”实践团，大力开展团二大主题社会实践活动。团队在前期完成了访谈纪录片《寻迹梅庵》的拍摄，并于2021年新生文艺汇演上首映，在全校党课、团课、思政大课等多种场合播放数十余次，并获推参与第六届全国大学生网络文化节。"
+        },
+        {
+          "type": "section_heading",
+          "index": "01",
+          "text": "一路向东，追寻团二大代表红色足迹"
+        },
+        {
+          "type": "paragraph",
+          "text": "2022年暑期，实践团成员从全国6个城市先后出发，汇聚于荆楚之地，从襄阳到黄冈，再到常州，最终回到南京梅庵，一路向东，追寻着团二大代表的红色足迹。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2022/article/01.webp",
+          "caption": "实践团寻访路径"
+        },
+        {
+          "type": "section_heading",
+          "index": "02",
+          "text": "以谢远定为纽带，建立社会实践基地"
+        },
+        {
+          "type": "paragraph",
+          "text": "襄阳人谢远定是团二大代表中唯一一位东南大学校友。他不仅是南京第一个党组织的负责人，同时还是襄阳团组织的创始人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实践团以此为纽带，成功牵线共青团襄阳市委员会，共同在襄阳建立了东南大学首个社会实践基地。实践基地的建立，让新时代东大人继续追寻谢远定学长的足迹，在其家乡大力宣传团二大历史的同时，也在产学研合作、志愿服务等方面贡献东大智慧、东大力量。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2022/article/02.webp",
+              "caption": "共同观看《寻迹梅庵》"
+            },
+            {
+              "path": "/assets/projects/2022/article/03.webp",
+              "caption": "东南大学与襄阳团市委社会实践基地揭牌"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "实践团还联系到了谢远定出生地兴隆镇的有关负责人，从零碎信息和稀缺资料中整理挖掘，带回了关于谢远定早期事迹的重要史料，这对于补充和完善团二大历史资料库有着重大意义。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2022/article/04.webp",
+          "caption": "寻访中收集的谢远定相关人物史料"
+        },
+        {
+          "type": "section_heading",
+          "index": "03",
+          "text": "记录口述史料，让革命记忆薪火相传"
+        },
+        {
+          "type": "paragraph",
+          "text": "在黄冈，实践团得遇中国共产党早期领导人、团二大代表林育英的亲侄女、88岁的林瑞兰女士，听她亲身讲解林育英的革命事迹。团队全程录制讲解过程并加以整理，为林育英革命史、团二大历史记录下珍贵史料。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2022/article/05.webp",
+          "caption": "林瑞兰女士讲解林育英事迹"
+        },
+        {
+          "type": "paragraph",
+          "text": "在实践过程中，团队再度拍摄纪录片《寻迹梅庵，薪火相传》，完整记录追寻团二大代表红色足迹的过程，以青年视角讲述红色历史。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2022/article/06.gif",
+          "caption": "纪录片寻访影像"
+        }
+      ]
     },
     {
       "year": 2023,
@@ -91,6 +190,10 @@
         {
           "title": "数字梅庵展馆",
           "url": "https://www.720yun.com/vr/658jOzey5w8"
+        },
+        {
+          "title": "查看 2023 年原报道",
+          "url": "https://mp.weixin.qq.com/s?__biz=MjM5NjQxMDE2MQ==&mid=2650997858&idx=1&sn=cb330bfb4f72bf3f3fabc4f983d3192a"
         }
       ],
       "highlights": [
@@ -99,6 +202,142 @@
         "500 余小时建模",
         "28 次内容修改",
         "VR 全景展馆上线"
+      ],
+      "embedded_result": {
+        "status": "ready",
+        "type": "iframe",
+        "title": "梅庵3D模型与数字展馆",
+        "description": "基于实地测绘和三维建模成果搭建的数字梅庵展馆，可在线浏览建筑外观与展陈空间。",
+        "media_url": "https://www.720yun.com/vr/658jOzey5w8",
+        "poster_url": "/assets/projects/2023/article/11.webp",
+        "external_url": "https://www.720yun.com/vr/658jOzey5w8",
+        "gallery": []
+      },
+      "article_blocks": [
+        {
+          "type": "paragraph",
+          "text": "2023年是全面贯彻党的二十大精神的开局之年。值此契机，东南大学仪器科学与工程学院“寻迹梅庵”实践团立足专业知识，深挖梅庵故事，强化数字赋能，历时两月建成“数字梅庵展馆”，打造沉浸式梅庵记忆。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2023/article/01.webp",
+          "caption": "数字梅庵展馆三维模型"
+        },
+        {
+          "type": "section_heading",
+          "index": "01",
+          "text": "实地勘测，力求深度还原"
+        },
+        {
+          "type": "paragraph",
+          "text": "初心照梅庵，永远跟党走。2021年，中国社会主义青年团第二次全国代表大会史料展在东南大学梅庵建成。东南大学立足梅庵展馆持续加强对团二大历史及意义的宣传推广，将梅庵打造为青年参与红色历史学习、接受红色教育的品牌阵地。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为力求真实复刻实体展馆，深度还原梅庵样貌，实践团成员集体自学测绘学和建筑学知识，多次走进梅庵展馆，实地测量建筑尺寸，手绘梅庵平面草图，并开展团二大史料展素材的收集取景工作。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2023/article/02.webp",
+              "caption": "实践团走进梅庵开展实地调研"
+            },
+            {
+              "path": "/assets/projects/2023/article/03.webp",
+              "caption": "实践团成员测量梅庵外围尺寸"
+            },
+            {
+              "path": "/assets/projects/2023/article/04.webp",
+              "caption": "测量门窗与建筑细部"
+            },
+            {
+              "path": "/assets/projects/2023/article/05.webp",
+              "caption": "记录梅庵内部展陈空间"
+            },
+            {
+              "path": "/assets/projects/2023/article/06.webp",
+              "caption": "收集团二大史料展素材"
+            },
+            {
+              "path": "/assets/projects/2023/article/07.webp",
+              "caption": "实践团成员手绘梅庵平面草图"
+            }
+          ]
+        },
+        {
+          "type": "section_heading",
+          "index": "02",
+          "text": "层层布局，以匠心铸精品"
+        },
+        {
+          "type": "paragraph",
+          "text": "为了使数字梅庵展馆的呈现效果更加真实和精细，团队放弃通过拍摄全景照片快速搭建的方式，转而使用专业软件建立梅庵三维模型。从一砖一瓦、一撮茅草到木质门的反光，模型搭建处处凸显细节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "500余小时的建模、28次内容修改，每次渲染都要耗费十余小时，这是团队成员“以匠心铸精品”的坚持，也是东大人用实际行动赓续红色基因的写照。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2023/article/08.webp",
+              "caption": "梅庵建筑尺寸与模型结构校核"
+            },
+            {
+              "path": "/assets/projects/2023/article/09.webp",
+              "caption": "梅庵三维模型阶段成果"
+            }
+          ]
+        },
+        {
+          "type": "section_heading",
+          "index": "03",
+          "text": "身临其境，唤醒梅庵记忆"
+        },
+        {
+          "type": "paragraph",
+          "text": "数字梅庵展馆的建立，是为了进一步用好东大的红色资源，引导广大青年以直观、便捷、多样的方式观看团二大史料展，突破时空限制，唤醒更多当代青年的梅庵记忆。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2023/article/10.webp",
+              "caption": "数字梅庵展馆扫码体验"
+            },
+            {
+              "path": "/assets/projects/2023/article/11.webp",
+              "caption": "数字梅庵展馆外观"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "实践团成员在梅庵三维模型的基础上完成了VR全景制作，突破传统的简单图文排列模式，强化展示立面的层次感与手段的丰富度，使图文信息、艺术装置、场景复原和实物文件得到多维呈现。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2023/article/12.gif",
+              "caption": "在线浏览数字梅庵展馆"
+            },
+            {
+              "path": "/assets/projects/2023/article/13.gif",
+              "caption": "数字展馆内部展陈空间"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "未来，团队将继续深入优化数字梅庵展馆建设，结合专业所学增添智能语音讲解、人机交互体验等功能，打造沉浸式、体验式、互动式三位一体的学习线路。"
+        }
       ],
       "detail_sections": [
         {
@@ -152,13 +391,138 @@
           "path": "/assets/projects/2024/historical-meian.jpeg"
         }
       ],
-      "links": [],
+      "links": [
+        {
+          "title": "查看 2024 年原报道",
+          "url": "https://mp.weixin.qq.com/s?__biz=MzU0NDA1OTY3OA==&mid=2247578549&idx=5&sn=f93b57ee782e9eca6ecee68cb34863ce"
+        }
+      ],
       "highlights": [
         "五地数字场馆调研",
         "UE5 梅庵故园场景",
         "蓝图触发文字交互",
         "Pico VR 设备方案",
         "线下语音导览系统"
+      ],
+      "embedded_result": {
+        "status": "planned",
+        "type": "placeholder",
+        "title": "2024 年度数字成果",
+        "description": "该年度的代表性内嵌成果形式尚未确定，位置已预留。",
+        "media_url": "",
+        "poster_url": "",
+        "external_url": "",
+        "gallery": [],
+        "status_text": "年度数字成果形式待确定"
+      },
+      "article_blocks": [
+        {
+          "type": "paragraph",
+          "text": "2024年，为进一步用好、用活红色资源，实践团再次出发，在前两年工作的基础上致力于全面打造“梅庵元宇宙”。团队基于现有数字化成果和资源，深入学习各地红色场馆数字化建设的先进理念与成功经验。"
+        },
+        {
+          "type": "section_heading",
+          "index": "01",
+          "text": "深入调研，探索数字技术应用形态"
+        },
+        {
+          "type": "paragraph",
+          "text": "寻迹梅庵实践团以“数字化武装梅庵”为核心目标，前往南京、镇江、常州、无锡、苏州五地，深入调研各大场馆和数字产品体验馆，了解数字技术在实体场馆中的现实应用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队了解到多种创新性数字化转型项目与成果，在与场馆工作人员的交流中，进一步加深了对数字化赋能梅庵故事的理解。AR视觉增强、3DVR体验和全景场景制作等手段，为团队后续的技术选型、系统架构和数据处理提供了参考。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2024/article/01.webp",
+              "caption": "团队调研数字化场馆建设资料"
+            },
+            {
+              "path": "/assets/projects/2024/article/02.webp",
+              "caption": "体验场馆语音导览设施"
+            }
+          ]
+        },
+        {
+          "type": "section_heading",
+          "index": "02",
+          "text": "VR赋能，虚实结合丰富体验"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队再度前往梅庵，追寻百年前的梅庵印象，为利用虚拟现实技术复原老梅庵风貌收集素材。通过记录校园中复原的老梅庵影像，并结合早期旧照片，团队着手打造交互式团二大与会场景。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2024/article/03.webp",
+              "caption": "梅庵故园历史影像"
+            },
+            {
+              "path": "/assets/projects/2024/article/04.webp",
+              "caption": "校园内复原的梅庵建筑"
+            },
+            {
+              "path": "/assets/projects/2024/article/05.webp",
+              "caption": "梅庵故园数字场景参考"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "团队以第五代Unreal Engine实时3D创作平台为基础，经过建模、渲染和细节描绘，复现梅庵故园的一砖一瓦、一草一木，并在场景中加入历史科普展板与互动体验功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在搭建基本场景后，团队选择使用UE5蓝图类实现文字的互动式触发，增强虚拟梅庵的互动性和参观沉浸感。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2024/article/06.webp",
+          "caption": "UE5 蓝图交互逻辑"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队配合Pico VR眼镜与操作设备实现梅庵故园场景模型的虚实转换，突破物理空间限制，使参观者能够在参观当今梅庵展馆的同时，沉浸式观看旧时梅庵。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2024/article/08.webp",
+              "caption": "实践团成员体验 VR 梅庵场景"
+            },
+            {
+              "path": "/assets/projects/2024/article/09.webp",
+              "caption": "调试 Pico VR 设备方案"
+            }
+          ]
+        },
+        {
+          "type": "section_heading",
+          "index": "03",
+          "text": "智能导览，让梅庵故事听得见"
+        },
+        {
+          "type": "paragraph",
+          "text": "在前期调研的基础上，团队结合梅庵实体展馆的实际需求，搭建线下语音导览系统，实现团二大史料展从人工讲解到机器讲解的转化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实践团基于讲解文案划分语音讲解点位，利用AI技术比较不同声线，将讲解文字生成适配的语音音频，嵌入公众号并转化为二维码入口。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2024/article/07.webp",
+          "caption": "梅庵语音导览点位与音频整理"
+        }
       ],
       "detail_sections": [
         {
@@ -210,13 +574,142 @@
           "path": "/assets/projects/2025/field-research.jpeg"
         }
       ],
-      "links": [],
+      "links": [
+        {
+          "title": "查看 2025 年原报道",
+          "url": "https://mp.weixin.qq.com/s?__biz=Mzg5NzYzNjM1OQ==&mid=2247524216&idx=1&sn=58954bd9d6f8246bccad83c1e9c6762a"
+        }
+      ],
       "highlights": [
         "三地红色调研",
         "纪录片《走向梅庵：青年思想长征》",
         "Blender 建模梅小安",
         "Spark-TTS 语音",
         "DeepSeek-R1 知识库问答"
+      ],
+      "embedded_result": {
+        "status": "building",
+        "type": "gallery",
+        "title": "梅小安虚拟形象建模",
+        "description": "从设计稿和白模出发，逐步完成梅小安的面部拓扑、角色细节与数字形象呈现。",
+        "media_url": "",
+        "poster_url": "/assets/projects/2025/article/07.webp",
+        "external_url": "",
+        "gallery": [
+          {
+            "path": "/assets/projects/2025/article/07.webp",
+            "caption": "Blender 中的梅小安角色建模"
+          },
+          {
+            "path": "/assets/projects/2025/article/06.webp",
+            "caption": "梅小安白模与面部拓扑调整"
+          },
+          {
+            "path": "/assets/projects/2025/article/08.webp",
+            "caption": "梅小安虚拟智能体交互形象"
+          }
+        ]
+      },
+      "article_blocks": [
+        {
+          "type": "paragraph",
+          "text": "2025年，实践团以AI浪潮下团二大红色历史的青年叙事为主题，分组前往广州、长沙、常州开展实地调研，并将影像记录、虚拟形象、知识库与人机交互汇聚为新的传播成果。"
+        },
+        {
+          "type": "section_heading",
+          "index": "01",
+          "text": "三地寻访，丈量青年思想长征"
+        },
+        {
+          "type": "paragraph",
+          "text": "在广州团一大纪念馆，泛黄的会议记录与“建立青年组织”条款彰显着共青团的诞生经过理性筹备，成员们在此触摸到共青团萌芽的温度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在长沙毛泽东故居，带有时代印记的展品和故事让成员们回溯一代革命青年领袖的成长历程；在常州瞿秋白纪念馆，团队从会议文献和历史复原场景中捕捉共青团从萌芽走向成熟的思想转变。"
+        },
+        {
+          "type": "image_group",
+          "columns": 3,
+          "images": [
+            {
+              "path": "/assets/projects/2025/article/01.webp",
+              "caption": "广州团一大纪念馆"
+            },
+            {
+              "path": "/assets/projects/2025/article/02.webp",
+              "caption": "长沙毛泽东故居"
+            },
+            {
+              "path": "/assets/projects/2025/article/03.webp",
+              "caption": "常州瞿秋白纪念馆"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "成员们用足迹丈量“团一大萌芽、革命青年成长、团二大思想转折与成熟、精神传承至当下”的初心路途，从实地寻访中汲取红色前行力量。"
+        },
+        {
+          "type": "section_heading",
+          "index": "02",
+          "text": "影像记录，制作《走向梅庵：青年思想长征》"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队根据三地实地探访的珍贵素材，精心剪辑制作主题纪录片《走向梅庵：青年思想长征》，以影像记录前辈的思想长征之路。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2025/article/04.webp",
+          "caption": "纪录片《走向梅庵：青年思想长征》"
+        },
+        {
+          "type": "section_heading",
+          "index": "03",
+          "text": "塑造梅小安，打造红色传播新载体"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队选用开源三维软件Blender，将设计图作为参考背景导入。从球体出发逐步拉伸头部轮廓，通过切割与挤压构建五官结构，反复调整眼距、鼻梁和嘴角弧度，仅面部拓扑结构就修改了5版。"
+        },
+        {
+          "type": "image_group",
+          "columns": 2,
+          "images": [
+            {
+              "path": "/assets/projects/2025/article/06.webp",
+              "caption": "梅小安白模与面部拓扑"
+            },
+            {
+              "path": "/assets/projects/2025/article/07.webp",
+              "caption": "Blender 中的角色建模过程"
+            }
+          ]
+        },
+        {
+          "type": "section_heading",
+          "index": "04",
+          "text": "从静态呈现到智能交互"
+        },
+        {
+          "type": "paragraph",
+          "text": "语言部分采用Spark-TTS模型，形象与动作构成角色的躯壳，国产大模型DeepSeek-R1则成为梅小安的“大脑”。团队将团二大展览讲解词、梅庵红色史料汇编等近万字文本导入系统，构建专属知识库。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2025/article/05.webp",
+          "caption": "Spark-TTS 语音生成实验"
+        },
+        {
+          "type": "paragraph",
+          "text": "在此基础上，实践团整合全部素材，设计梅庵AI虚拟智能体小程序交互界面。界面融入动作控制、提问交流和语音播报等功能，让团二大历史与红色梅庵故事在AI时代以新的方式呈现。"
+        },
+        {
+          "type": "image",
+          "path": "/assets/projects/2025/article/08.webp",
+          "caption": "梅小安虚拟智能体交互界面"
+        }
       ],
       "detail_sections": [
         {

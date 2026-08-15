@@ -21,7 +21,8 @@ export async function fetchProjects() {
 
     const presentationFields = [
       "slug", "title", "subtitle", "summary", "directions", "cities", "outputs",
-      "images", "links", "highlights", "detail_sections", "inheritance_value", "reusable_assets"
+      "images", "links", "highlights", "detail_sections", "inheritance_value", "reusable_assets",
+      "article_blocks", "embedded_result"
     ];
 
     return {
