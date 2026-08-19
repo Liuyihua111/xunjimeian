@@ -62,3 +62,27 @@ export function askQuestion(question) {
     body: JSON.stringify({ question })
   });
 }
+
+export async function generateSpeech(text) {
+  const response = await fetch("/api/speech/", {
+    method: "POST",
+    headers: jsonHeaders,
+    body: JSON.stringify({ text })
+  });
+
+  let data = {};
+  try {
+    data = await response.json();
+  } catch {
+    // The UI still needs a stable failure state when an upstream service returns non-JSON.
+  }
+
+  if (!response.ok || !data.audio_url) {
+    const error = new Error(`Speech request failed: ${response.status}`);
+    error.code = data.error?.code || "SPEECH_REQUEST_FAILED";
+    error.userMessage = data.error?.message || "";
+    throw error;
+  }
+
+  return data;
+}

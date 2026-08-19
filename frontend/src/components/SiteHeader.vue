@@ -1,7 +1,7 @@
 <template>
   <header class="site-header">
     <RouterLink class="brand" to="/" :aria-label="t('brandTitle')">
-      <img class="brand-icon" src="/assets/images/meian-site-icon.png" alt="" width="42" height="42">
+      <img class="brand-icon" src="/assets/images/seu-emblem.png" alt="" width="52" height="52">
       <span>
         <span class="brand-title">{{ t("brandTitle") }}</span>
         <span class="brand-subtitle">{{ t("brandSubtitle") }}</span>
@@ -20,9 +20,8 @@
     </button>
     <nav id="primary-navigation" :class="['site-nav', { open: menuOpen }]" aria-label="主导航" @click="menuOpen = false">
       <RouterLink to="/" exact-active-class="current-page">{{ t("navHome") }}</RouterLink>
-      <RouterLink to="/overview" active-class="current-page">{{ t("navOverview") }}</RouterLink>
-      <RouterLink to="/context" active-class="current-page">{{ t("navContext") }}</RouterLink>
-      <RouterLink to="/xie-yuanding" :class="{ 'current-page': isXieSection }">{{ t("navXie") }}</RouterLink>
+      <RouterLink to="/meian" active-class="current-page">{{ t("navMeian") }}</RouterLink>
+      <RouterLink to="/cyl-congress" active-class="current-page">{{ t("navCongress") }}</RouterLink>
       <div :class="['nav-dropdown', { 'current-page': isArchiveSection }]">
         <RouterLink class="nav-dropdown-trigger" to="/archive" active-class="current-page">
           {{ t("navArchive") }}
@@ -48,7 +47,6 @@ const route = useRoute();
 const menuOpen = ref(false);
 const archiveYears = [2022, 2023, 2024, 2025, 2026];
 
-const isXieSection = computed(() => route.name === "xie" || route.name === "dialogue");
 const isArchiveSection = computed(() => route.name === "archive" || route.name === "archive-detail");
 
 watch(() => route.fullPath, () => {
