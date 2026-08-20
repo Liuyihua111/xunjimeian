@@ -2,7 +2,7 @@
   <section class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
     <img
       class="home-official-hero-image"
-      src="/assets/images/home-archive-background-dongda-meian-gate-20260819.png"
+      src="/assets/images/home-archive-background-dongda-meian-accurate-20260820.png"
       alt="东大梅庵，数字化体验平台"
     >
   </section>

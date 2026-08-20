@@ -59,7 +59,7 @@ const loading = ref(true);
 const loadError = ref(false);
 
 const orderedProjects = computed(() => {
-  const list = [...projects.value].sort((a, b) => a.year - b.year);
+  const list = [...projects.value].sort((a, b) => b.year - a.year);
   const featured = list.find((project) => project.year === 2026);
   const rest = list.filter((project) => project.year !== 2026);
   return featured ? [featured, ...rest] : list;

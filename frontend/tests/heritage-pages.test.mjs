@@ -7,12 +7,23 @@ const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf
 test("site header uses the official university lockup", () => {
   const header = read("src/components/SiteHeader.vue");
   const i18n = read("src/i18n.js");
+  const styles = read("src/styles.css");
 
   assert.match(header, /seu-emblem\.png/);
+  assert.match(header, /width="58" height="58"/);
   assert.match(i18n, /brandTitle:\s*"东南大学"/);
   assert.match(i18n, /brandSubtitle:\s*"SOUTHEAST UNIVERSITY"/);
   assert.match(header, /window\.scrollY > 24/);
   assert.match(header, /is-scrolled/);
+  assert.match(styles, /\.site-header \.brand-icon \{[\s\S]*?width:\s*58px;[\s\S]*?height:\s*58px;/);
+  assert.match(styles, /@media \(max-width: 760px\)[\s\S]*?\.site-header \.brand-icon \{ width: 44px; height: 44px; \}/);
+});
+
+test("archive overview keeps 2026 featured and orders earlier years newest first", () => {
+  const page = read("src/pages/ArchivePage.vue");
+
+  assert.match(page, /sort\(\(a, b\) => b\.year - a\.year\)/);
+  assert.match(page, /featured \? \[featured, \.\.\.rest\] : list/);
 });
 
 test("home page separates the avatar and gallery with a quiet chapter marker", () => {

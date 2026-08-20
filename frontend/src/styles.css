@@ -1595,8 +1595,8 @@ model-viewer:focus-visible {
   z-index: 80;
   grid-template-columns: minmax(190px, auto) minmax(0, 1fr) auto;
   width: 100%;
-  min-height: 76px;
-  padding: 12px clamp(16px, 3.6vw, 52px);
+  min-height: 82px;
+  padding: 10px clamp(16px, 3.6vw, 52px);
   border-bottom: 1px solid transparent;
   background: transparent;
   box-shadow: none;
@@ -1658,7 +1658,7 @@ model-viewer:focus-visible {
 }
 
 .page-hero {
-  padding-top: calc(76px + clamp(54px, 7vw, 88px));
+  padding-top: calc(82px + clamp(54px, 7vw, 88px));
 }
 
 .page-hero::before {
@@ -1685,7 +1685,7 @@ model-viewer:focus-visible {
   width: min(1320px, calc(100% - 32px));
   grid-template-columns: minmax(390px, 0.78fr) minmax(650px, 1.22fr);
   gap: clamp(16px, 2.5vw, 38px);
-  min-height: calc(100dvh - 76px);
+  min-height: calc(100dvh - 82px);
   padding: 24px 0 30px;
 }
 
@@ -2027,7 +2027,7 @@ model-viewer:focus-visible {
 @media (max-width: 1039px) {
   .evidence-drawer {
     position: fixed;
-    top: 76px;
+    top: 82px;
     right: 16px;
     bottom: 16px;
     z-index: 45;
@@ -2068,16 +2068,16 @@ model-viewer:focus-visible {
 /* Heritage exhibition pages and official university lockup, 2026-08-19 */
 .site-header .brand {
   display: inline-grid;
-  grid-template-columns: 52px minmax(0, auto);
+  grid-template-columns: 58px minmax(0, auto);
   gap: 12px;
   align-items: center;
-  min-width: 235px;
+  min-width: 254px;
   color: var(--ink);
 }
 
 .site-header .brand-icon {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
   border: 0;
   background: transparent;
   object-fit: contain;
@@ -2090,14 +2090,14 @@ model-viewer:focus-visible {
 
 .site-header .brand-title {
   font-family: "LXGW WenKai", "STSong", "Songti SC", serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.05;
 }
 
 .site-header .brand-subtitle {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1.2;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -2560,16 +2560,16 @@ model-viewer:focus-visible {
 .heritage-chapter.meian-video-section { padding-bottom: clamp(48px, 7vw, 92px); }
 
 @media (max-width: 1100px) {
-  .site-header .brand { min-width: 198px; }
+  .site-header .brand { min-width: 214px; }
   .site-header .brand-subtitle { display: block; }
   .heritage-layout { grid-template-columns: 150px minmax(0, 1fr); gap: 36px; }
   .heritage-opening { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
-  .site-header .brand { grid-template-columns: 42px minmax(0, auto); gap: 9px; min-width: 0; }
-  .site-header .brand-icon { width: 42px; height: 42px; }
-  .site-header .brand-title { font-size: 17px; }
+  .site-header .brand { grid-template-columns: 44px minmax(0, auto); gap: 9px; min-width: 0; }
+  .site-header .brand-icon { width: 44px; height: 44px; }
+  .site-header .brand-title { font-size: 18px; }
   .site-header .brand-subtitle { font-size: 7px; letter-spacing: 0.04em; }
   .heritage-layout { grid-template-columns: 1fr; gap: 30px; padding-top: 10px; }
   .heritage-index { position: relative; top: auto; overflow-x: auto; padding-bottom: 4px; }
@@ -2754,7 +2754,7 @@ model-viewer:focus-visible {
 
 @media (max-width: 560px) {
   .site-header {
-    min-height: 68px;
+    min-height: 72px;
     padding: 10px 14px;
   }
 
@@ -2768,7 +2768,7 @@ model-viewer:focus-visible {
 
   .site-nav {
     grid-template-columns: 1fr;
-    max-height: calc(100dvh - 68px);
+    max-height: calc(100dvh - 72px);
     overflow-y: auto;
   }
 
@@ -2782,7 +2782,11 @@ model-viewer:focus-visible {
   }
 
   .page-hero {
-    padding-top: calc(68px + 48px);
+    padding-top: calc(72px + 48px);
+  }
+
+  .evidence-drawer {
+    top: 72px;
   }
 
   .page-hero h1 {

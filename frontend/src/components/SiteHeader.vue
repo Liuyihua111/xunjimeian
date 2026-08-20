@@ -1,7 +1,7 @@
 <template>
   <header :class="['site-header', { 'is-scrolled': isScrolled, 'menu-open': menuOpen }]">
     <RouterLink class="brand" to="/" :aria-label="t('brandTitle')">
-      <img class="brand-icon" src="/assets/images/seu-emblem.png" alt="" width="52" height="52">
+      <img class="brand-icon" src="/assets/images/seu-emblem.png" alt="" width="58" height="58">
       <span>
         <span class="brand-title">{{ t("brandTitle") }}</span>
         <span class="brand-subtitle">{{ t("brandSubtitle") }}</span>
