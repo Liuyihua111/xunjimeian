@@ -1,10 +1,11 @@
-/* Heritage typography: expressive display, formal headings, readable UI text. */
+/* Heritage typography: expressive display, formal headings, official UI text. */
 :root {
   --font-brush: "Ma Shan Zheng", "STKaiti", "KaiTi", cursive;
   --font-display: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
   --font-editorial: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
-  --font-content: "LXGW WenKai", "STKaiti", "KaiTi", "Kaiti SC", serif;
   --font-ui: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+  --font-content: var(--font-ui);
+  --font-numeral: var(--font-ui);
 }
 
 html:lang(zh-CN) body {
@@ -53,7 +54,7 @@ html:lang(en) .xie-accordion summary strong {
 }
 
 html:lang(en) body {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-ui);
 }
 
 html:lang(en) p,
@@ -62,7 +63,7 @@ html:lang(en) figcaption,
 html:lang(en) .node-summary,
 html:lang(en) .image-note,
 html:lang(en) .archive-meta {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-content);
 }
 
 .site-nav,

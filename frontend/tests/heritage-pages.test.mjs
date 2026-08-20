@@ -19,6 +19,18 @@ test("site header uses the official university lockup", () => {
   assert.match(styles, /@media \(max-width: 760px\)[\s\S]*?\.site-header \.brand-icon \{ width: 44px; height: 44px; \}/);
 });
 
+test("formal body typography keeps the heritage title hierarchy", () => {
+  const typography = read("src/heritage-type.css");
+  const styles = read("src/styles.css");
+
+  assert.match(typography, /--font-content:\s*var\(--font-ui\);/);
+  assert.match(typography, /--font-numeral:\s*var\(--font-ui\);/);
+  assert.match(typography, /html:lang\(en\) body\s*\{\s*font-family:\s*var\(--font-ui\);/);
+  assert.match(typography, /html:lang\(zh-CN\) h1\s*\{\s*font-family:\s*var\(--font-brush\);/);
+  assert.match(typography, /html:lang\(zh-CN\) h2,[\s\S]*?font-family:\s*var\(--font-display\);/);
+  assert.match(styles, /\.heritage-timeline time\s*\{[\s\S]*?font-family:\s*var\(--font-ui\);/);
+});
+
 test("archive overview keeps 2026 featured and orders earlier years newest first", () => {
   const page = read("src/pages/ArchivePage.vue");
 

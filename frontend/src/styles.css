@@ -2153,7 +2153,7 @@ model-viewer:focus-visible {
 
 .heritage-index a span {
   color: var(--gold);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: 11px;
 }
 
@@ -2272,7 +2272,7 @@ model-viewer:focus-visible {
 
 .heritage-facts-numeric dt {
   color: var(--cedar);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: clamp(22px, 2.4vw, 34px);
 }
 
@@ -2379,7 +2379,7 @@ model-viewer:focus-visible {
 
 .heritage-timeline time {
   color: var(--cedar);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: 18px;
   font-weight: 700;
 }
@@ -2469,7 +2469,7 @@ model-viewer:focus-visible {
 .heritage-decision-list li::before {
   content: counter(decisions, decimal-leading-zero);
   color: var(--gold);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
 }
 
 .heritage-archive-grid {
@@ -2488,7 +2488,7 @@ model-viewer:focus-visible {
 
 .heritage-archive-stat strong {
   color: var(--cedar);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: clamp(72px, 10vw, 130px);
   font-weight: 400;
   line-height: 0.9;
@@ -4555,7 +4555,7 @@ model-viewer:focus-visible {
   padding-right: 8px;
   border-right: 1px solid rgba(129, 47, 44, 0.28);
   color: var(--cedar);
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: 11px;
   font-weight: 400;
 }
