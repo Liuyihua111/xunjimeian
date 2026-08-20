@@ -11,6 +11,15 @@ test("site header uses the official university lockup", () => {
   assert.match(header, /seu-emblem\.png/);
   assert.match(i18n, /brandTitle:\s*"东南大学"/);
   assert.match(i18n, /brandSubtitle:\s*"SOUTHEAST UNIVERSITY"/);
+  assert.match(header, /window\.scrollY > 24/);
+  assert.match(header, /is-scrolled/);
+});
+
+test("home page separates the avatar and gallery with a quiet chapter marker", () => {
+  const page = read("src/pages/HomePage.vue");
+
+  assert.match(page, /home-section-divider/);
+  assert.match(page, /home-divider-seal[^>]*>梅</);
 });
 
 test("chat panel keeps the window label without the secondary interview title", () => {
@@ -27,6 +36,7 @@ test("Mei'an page exposes the complete exhibition sequence and local news video"
     assert.match(page, new RegExp(`id="${id}"`));
   }
   assert.match(page, /meian-nanjing-news\.mp4/);
+  assert.doesNotMatch(page, /li-ruiqing-statue/);
 });
 
 test("Second CYL Congress page exposes the complete exhibition sequence", () => {
@@ -35,4 +45,16 @@ test("Second CYL Congress page exposes the complete exhibition sequence", () => 
   for (const id of ["congress-overview", "congress-background", "congress-preparation", "congress-agenda", "congress-relations", "congress-archives", "congress-legacy"]) {
     assert.match(page, new RegExp(`id="${id}"`));
   }
+  assert.match(page, /heritage-gallery-ideas/);
+  assert.doesNotMatch(page, /marxism-exhibit/);
+});
+
+test("only the 2023 editorial page keeps its embedded annual result entry", () => {
+  const detailPage = read("src/pages/ArchiveDetailPage.vue");
+  const article = read("src/components/AnnualFeatureArticle.vue");
+
+  assert.match(detailPage, /const yearsWithoutEmbeddedResult = new Set\(\[2022, 2024, 2025\]\)/);
+  assert.match(detailPage, /:show-embedded-result="showEmbeddedResult"/);
+  assert.match(article, /v-if="showEmbeddedResult" class="annual-result-entry"/);
+  assert.match(article, /v-if="showEmbeddedResult"\s+ref="resultModal"/);
 });

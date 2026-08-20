@@ -38,7 +38,7 @@
           <h2>{{ copy.backgroundTitle }}</h2>
           <p>{{ copy.backgroundText }}</p>
         </header>
-        <div class="heritage-gallery heritage-gallery-triptych">
+        <div class="heritage-gallery heritage-gallery-ideas">
           <figure v-for="image in copy.backgroundImages" :key="image.src">
             <img :src="image.src" :alt="image.alt"><figcaption>{{ image.caption }}</figcaption>
           </figure>
@@ -136,7 +136,6 @@ const zh = {
   backgroundText: "五四运动后，少年中国学会南京分会、马克思主义研究活动与南京青年团组织相继发展。东南大学及其前身汇聚的一批进步师生，为团二大在南京召开准备了思想与组织基础。",
   backgroundImages: [
     { src: "/assets/exhibitions/congress/young-china-society.webp", alt: "少年中国学会相关史料展陈", caption: "少年中国学会与南京新思想传播" },
-    { src: "/assets/exhibitions/congress/marxism-exhibit.webp", alt: "马克思主义传播相关史料", caption: "马克思主义研究与青年觉醒" },
     { src: "/assets/exhibitions/congress/nanjing-league.webp", alt: "南京青年团组织相关展陈", caption: "南京青年团组织的建立与发展" }
   ],
   preparationKicker: "大会筹备", preparationTitle: "从长沙到南京梅庵",

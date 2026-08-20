@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header">
+  <header :class="['site-header', { 'is-scrolled': isScrolled, 'menu-open': menuOpen }]">
     <RouterLink class="brand" to="/" :aria-label="t('brandTitle')">
       <img class="brand-icon" src="/assets/images/seu-emblem.png" alt="" width="52" height="52">
       <span>
@@ -38,18 +38,32 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "../i18n.js";
 
 const { t, toggleLang } = useI18n();
 const route = useRoute();
 const menuOpen = ref(false);
+const isScrolled = ref(false);
 const archiveYears = [2022, 2023, 2024, 2025, 2026];
 
 const isArchiveSection = computed(() => route.name === "archive" || route.name === "archive-detail");
 
 watch(() => route.fullPath, () => {
   menuOpen.value = false;
+});
+
+function updateHeaderState() {
+  isScrolled.value = window.scrollY > 24;
+}
+
+onMounted(() => {
+  updateHeaderState();
+  window.addEventListener("scroll", updateHeaderState, { passive: true });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", updateHeaderState);
 });
 </script>

@@ -4,7 +4,7 @@
       <p>{{ leadBlock?.text || project.summary }}</p>
     </div>
 
-    <section class="annual-result-entry" aria-labelledby="annual-result-entry-title">
+    <section v-if="showEmbeddedResult" class="annual-result-entry" aria-labelledby="annual-result-entry-title">
       <div>
         <p>{{ project.year }} · 年度数字成果</p>
         <h2 id="annual-result-entry-title">{{ project.embedded_result.title }}</h2>
@@ -74,6 +74,7 @@
     </footer>
 
     <AnnualResultModal
+      v-if="showEmbeddedResult"
       ref="resultModal"
       :result="project.embedded_result"
       :year="project.year"
@@ -89,6 +90,10 @@ const props = defineProps({
   project: {
     type: Object,
     required: true
+  },
+  showEmbeddedResult: {
+    type: Boolean,
+    default: true
   }
 });
 

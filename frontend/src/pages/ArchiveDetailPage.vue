@@ -22,7 +22,11 @@
     </div>
   </section>
 
-  <AnnualFeatureArticle v-if="project && isEditorialYear" :project="project" />
+  <AnnualFeatureArticle
+    v-if="project && isEditorialYear"
+    :project="project"
+    :show-embedded-result="showEmbeddedResult"
+  />
 
   <section v-if="project && !isEditorialYear" class="section archive-detail-layout">
     <div :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
@@ -114,6 +118,9 @@ const isEditorialYear = computed(() => {
   const year = Number(project.value?.year);
   return year >= 2022 && year <= 2025 && Boolean(project.value?.article_blocks?.length);
 });
+
+const yearsWithoutEmbeddedResult = new Set([2022, 2024, 2025]);
+const showEmbeddedResult = computed(() => !yearsWithoutEmbeddedResult.has(Number(project.value?.year)));
 
 const visibleImages = computed(() => {
   const images = project.value?.images || [];

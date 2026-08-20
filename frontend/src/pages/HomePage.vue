@@ -24,6 +24,12 @@
     </div>
   </section>
 
+  <div class="home-section-divider" aria-hidden="true">
+    <span class="home-divider-line"></span>
+    <span class="home-divider-seal">梅</span>
+    <span class="home-divider-line"></span>
+  </div>
+
   <section id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
     <div class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.galleryEyebrow }}</p>

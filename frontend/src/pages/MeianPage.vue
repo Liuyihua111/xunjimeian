@@ -40,17 +40,13 @@
           <p class="heritage-chapter-no">02 / {{ copy.originKicker }}</p>
           <h2>{{ copy.originTitle }}</h2>
         </header>
-        <div class="heritage-asymmetric-grid">
+        <div class="heritage-asymmetric-grid heritage-origin-grid">
           <div class="heritage-prose">
             <p v-for="paragraph in copy.originText" :key="paragraph">{{ paragraph }}</p>
           </div>
           <figure class="heritage-portrait-figure">
             <img src="/assets/exhibitions/meian/li-ruiqing-portrait.webp" :alt="copy.images.portrait.alt">
             <figcaption>{{ copy.images.portrait.caption }}</figcaption>
-          </figure>
-          <figure class="heritage-wide-figure">
-            <img src="/assets/exhibitions/meian/li-ruiqing-statue.webp" :alt="copy.images.statue.alt">
-            <figcaption>{{ copy.images.statue.caption }}</figcaption>
           </figure>
         </div>
       </section>
@@ -173,7 +169,6 @@ const zh = {
   images: {
     exterior: { alt: "梅庵正面建筑与匾额", caption: "梅庵正面，匾额高悬" },
     portrait: { alt: "李瑞清人物画像", caption: "李瑞清（1867—1920），字仲麟，号梅庵" },
-    statue: { alt: "梅庵前的李瑞清雕像", caption: "梅庵前的李瑞清先生雕像" },
     historical: { alt: "早期梅庵建筑历史影像", caption: "早期梅庵建筑历史影像" },
     rebuilt: { alt: "改建后的梅庵建筑", caption: "改建后的梅庵，保留中西合璧的建筑特征" },
     protected: { alt: "梅庵与团二大会址纪念碑", caption: "梅庵建筑与团二大会址纪念碑" },
