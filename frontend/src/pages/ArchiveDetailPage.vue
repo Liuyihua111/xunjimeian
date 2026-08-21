@@ -119,7 +119,7 @@ const isEditorialYear = computed(() => {
   return year >= 2022 && year <= 2025 && Boolean(project.value?.article_blocks?.length);
 });
 
-const yearsWithoutEmbeddedResult = new Set([2022, 2024, 2025]);
+const yearsWithoutEmbeddedResult = new Set([2022, 2025]);
 const showEmbeddedResult = computed(() => !yearsWithoutEmbeddedResult.has(Number(project.value?.year)));
 
 const visibleImages = computed(() => {

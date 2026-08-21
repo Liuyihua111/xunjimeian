@@ -72,12 +72,17 @@ test("Second CYL Congress page exposes the complete exhibition sequence", () => 
   assert.doesNotMatch(page, /marxism-exhibit/);
 });
 
-test("only the 2023 editorial page keeps its embedded annual result entry", () => {
+test("the 2023 exhibit and 2024 Windows VR download keep annual result entries", () => {
   const detailPage = read("src/pages/ArchiveDetailPage.vue");
   const article = read("src/components/AnnualFeatureArticle.vue");
+  const projects = read("public/assets/data/projects.json");
 
-  assert.match(detailPage, /const yearsWithoutEmbeddedResult = new Set\(\[2022, 2024, 2025\]\)/);
+  assert.match(detailPage, /const yearsWithoutEmbeddedResult = new Set\(\[2022, 2025\]\)/);
   assert.match(detailPage, /:show-embedded-result="showEmbeddedResult"/);
   assert.match(article, /v-if="showEmbeddedResult" class="annual-result-entry"/);
-  assert.match(article, /v-if="showEmbeddedResult"\s+ref="resultModal"/);
+  assert.match(article, /v-if="isDownloadEntry"/);
+  assert.match(article, /download/);
+  assert.match(article, /v-if="showEmbeddedResult && !isDownloadEntry"\s+ref="resultModal"/);
+  assert.match(projects, /meian-windows-demo-2024\.zip/);
+  assert.match(projects, /Windows 体验版 · 约 12\.2GB/);
 });

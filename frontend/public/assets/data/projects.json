@@ -405,15 +405,17 @@
         "线下语音导览系统"
       ],
       "embedded_result": {
-        "status": "planned",
-        "type": "placeholder",
-        "title": "2024 年度数字成果",
-        "description": "该年度的代表性内嵌成果形式尚未确定，位置已预留。",
+        "status": "ready",
+        "type": "download",
+        "title": "梅庵故园 VR 临感模型",
+        "description": "Windows 本地体验版，下载后解压并运行根目录“梅庵故园.exe”。",
+        "meta": "Windows 体验版 · 约 12.2GB",
+        "action_label": "下载 Windows 体验版",
         "media_url": "",
         "poster_url": "",
-        "external_url": "",
+        "external_url": "https://xunji-meian-download.oss-cn-hangzhou.aliyuncs.com/meian/meian-windows-demo-2024.zip",
         "gallery": [],
-        "status_text": "年度数字成果形式待确定"
+        "status_text": "Windows 本地体验版下载入口"
       },
       "article_blocks": [
         {

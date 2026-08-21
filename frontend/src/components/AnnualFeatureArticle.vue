@@ -9,8 +9,21 @@
         <p>{{ project.year }} · 年度数字成果</p>
         <h2 id="annual-result-entry-title">{{ project.embedded_result.title }}</h2>
         <span>{{ project.embedded_result.description }}</span>
+        <p v-if="project.embedded_result.meta" class="annual-result-entry-meta">
+          {{ project.embedded_result.meta }}
+        </p>
       </div>
-      <button class="button primary" type="button" @click="openResult">
+      <a
+        v-if="isDownloadEntry"
+        class="button primary"
+        :href="project.embedded_result.external_url"
+        download
+        rel="noopener"
+        referrerpolicy="no-referrer"
+      >
+        {{ project.embedded_result.action_label || "下载 Windows 体验版" }}
+      </a>
+      <button v-else class="button primary" type="button" @click="openResult">
         查看年度数字成果
       </button>
     </section>
@@ -74,7 +87,7 @@
     </footer>
 
     <AnnualResultModal
-      v-if="showEmbeddedResult"
+      v-if="showEmbeddedResult && !isDownloadEntry"
       ref="resultModal"
       :result="project.embedded_result"
       :year="project.year"
@@ -101,6 +114,7 @@ const resultModal = ref(null);
 const blocks = computed(() => props.project.article_blocks || []);
 const leadBlock = computed(() => blocks.value[0]?.type === "paragraph" ? blocks.value[0] : null);
 const remainingBlocks = computed(() => leadBlock.value ? blocks.value.slice(1) : blocks.value);
+const isDownloadEntry = computed(() => props.project.embedded_result?.type === "download");
 
 function openResult() {
   resultModal.value?.open();

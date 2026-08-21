@@ -3796,6 +3796,13 @@ model-viewer:focus-visible {
   line-height: 1.7;
 }
 
+.annual-result-entry .annual-result-entry-meta {
+  margin: 5px 0 0;
+  color: var(--cedar);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .annual-result-entry .button {
   white-space: nowrap;
 }
