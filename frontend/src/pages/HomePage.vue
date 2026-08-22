@@ -1,10 +1,13 @@
 <template>
   <section class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
-    <img
-      class="home-official-hero-image"
-      src="/assets/images/home-archive-background-dongda-meian-title-small-20260821.png"
-      alt="东大梅庵，数字化体验平台"
-    >
+    <picture class="home-official-hero-picture">
+      <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-20260822.png">
+      <img
+        class="home-official-hero-image"
+        src="/assets/images/home-archive-background-dongda-meian-title-small-20260821.png"
+        alt="东大梅庵，数字化体验平台"
+      >
+    </picture>
   </section>
 
   <section id="home-xie-avatar" class="section home-feature-section home-xie-section">
@@ -17,7 +20,7 @@
         <ModelViewer :info="modelInfo" />
         <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
           <span>{{ homeCopy.xieLink }}</span>
-          <span class="home-profile-arrow" aria-hidden="true">↗</span>
+          <span class="home-profile-arrow" aria-hidden="true">→</span>
         </button>
       </div>
       <ChatPanel />

@@ -4253,6 +4253,12 @@ model-viewer:focus-visible {
     linear-gradient(90deg, rgba(244, 240, 232, 0.24), transparent 22%, transparent 78%, rgba(244, 240, 232, 0.24));
 }
 
+.home-official-hero-picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .home-official-hero-image {
   display: block;
   position: absolute;
@@ -4435,14 +4441,14 @@ model-viewer:focus-visible {
   height: 28px;
   border-left: 1px solid rgba(255, 250, 240, 0.34);
   color: #e5c98d;
-  font-family: Georgia, serif;
+  font-family: var(--font-ui);
   font-size: 18px;
   transition: transform 160ms ease;
 }
 
 .home-profile-trigger:hover .home-profile-arrow,
 .home-profile-trigger:focus-visible .home-profile-arrow {
-  transform: translate(2px, -2px);
+  transform: translateX(2px);
 }
 
 .home-xie-grid .chat-panel {
