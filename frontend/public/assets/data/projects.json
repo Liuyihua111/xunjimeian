@@ -460,7 +460,7 @@
         },
         {
           "type": "image_group",
-          "columns": 2,
+          "columns": 3,
           "images": [
             {
               "path": "/assets/projects/2024/article/03.webp",

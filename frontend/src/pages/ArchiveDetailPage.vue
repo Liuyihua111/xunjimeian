@@ -11,7 +11,7 @@
     <button class="button secondary" type="button" @click="loadProject">{{ t("retry") }}</button>
   </section>
 
-  <section v-else :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]" :data-year="project?.year">
+  <section v-else v-reveal :class="['page-hero archive-detail-hero', { featured: project?.year === 2026 }]" :data-year="project?.year">
     <PageMotif v-if="project" :variant="`year-${project.year}`" class="annual-motif" />
     <p class="eyebrow">{{ project ? `${project.year} · ${project.directions?.join(" / ")}` : "成果详情" }}</p>
     <h1>{{ project?.title || "年度成果加载中" }}</h1>
@@ -28,7 +28,7 @@
     :show-embedded-result="showEmbeddedResult"
   />
 
-  <section v-if="project && !isEditorialYear" class="section archive-detail-layout">
+  <section v-if="project && !isEditorialYear" v-reveal="80" class="section archive-detail-layout">
     <div :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
       <img
         v-for="image in visibleImages"
@@ -65,15 +65,15 @@
     </div>
   </section>
 
-  <section v-if="project && !isEditorialYear" class="section detail-section-grid">
-    <article v-for="section in project.detail_sections" :key="section.title" class="intro-block">
+  <section v-if="project && !isEditorialYear" v-reveal="120" class="section detail-section-grid">
+    <article v-for="(section, index) in project.detail_sections" :key="section.title" v-reveal="index * 90" class="intro-block">
       <p class="eyebrow">{{ project.year }}</p>
       <h2>{{ section.title }}</h2>
       <p>{{ section.body }}</p>
     </article>
   </section>
 
-  <section v-if="project && !isEditorialYear" class="section archive-links-section">
+  <section v-if="project && !isEditorialYear" v-reveal="140" class="section archive-links-section">
     <div class="section-heading">
       <p class="eyebrow">成果链接</p>
       <h2>继续查看相关成果</h2>

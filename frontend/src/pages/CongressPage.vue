@@ -1,5 +1,5 @@
 <template>
-  <section class="page-hero context-hero congress-hero">
+  <section v-reveal class="page-hero context-hero congress-hero">
     <PageMotif variant="context" />
     <p class="eyebrow">{{ t("congressEyebrow") }}</p>
     <h1>{{ t("congressPageTitle") }}</h1>
@@ -17,7 +17,7 @@
     </aside>
 
     <article class="heritage-flow">
-      <section id="congress-overview" class="heritage-chapter heritage-opening">
+      <section id="congress-overview" v-reveal class="heritage-chapter heritage-opening">
         <figure class="heritage-lead-image">
           <img src="/assets/exhibitions/congress/meeting-room.webp" :alt="copy.images.meeting.alt">
           <figcaption>{{ copy.images.meeting.caption }}</figcaption>
@@ -32,7 +32,7 @@
         </div>
       </section>
 
-      <section id="congress-background" class="heritage-chapter">
+      <section id="congress-background" v-reveal class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">02 / {{ copy.backgroundKicker }}</p>
           <h2>{{ copy.backgroundTitle }}</h2>
@@ -45,13 +45,13 @@
         </div>
       </section>
 
-      <section id="congress-preparation" class="heritage-chapter heritage-document-split">
+      <section id="congress-preparation" v-reveal class="heritage-chapter heritage-document-split">
         <div>
           <header class="heritage-section-heading">
             <p class="heritage-chapter-no">03 / {{ copy.preparationKicker }}</p>
             <h2>{{ copy.preparationTitle }}</h2>
           </header>
-          <ol class="heritage-timeline heritage-timeline-compact">
+          <ol v-reveal="120" class="heritage-timeline heritage-timeline-compact">
             <li v-for="item in copy.preparation" :key="item.date"><time>{{ item.date }}</time><p>{{ item.text }}</p></li>
           </ol>
         </div>
@@ -61,7 +61,7 @@
         </figure>
       </section>
 
-      <section id="congress-agenda" class="heritage-chapter heritage-agenda">
+      <section id="congress-agenda" v-reveal class="heritage-chapter heritage-agenda">
         <figure>
           <img src="/assets/exhibitions/congress/committee-record.webp" :alt="copy.images.committee.alt">
           <figcaption>{{ copy.images.committee.caption }}</figcaption>
@@ -74,7 +74,7 @@
         </div>
       </section>
 
-      <section id="congress-relations" class="heritage-chapter heritage-quote-chapter">
+      <section id="congress-relations" v-reveal class="heritage-chapter heritage-quote-chapter">
         <div class="heritage-quote-copy">
           <p class="heritage-chapter-no">05 / {{ copy.relationsKicker }}</p>
           <h2>{{ copy.relationsTitle }}</h2>
@@ -87,7 +87,7 @@
         </figure>
       </section>
 
-      <section id="congress-archives" class="heritage-chapter heritage-archive-feature">
+      <section id="congress-archives" v-reveal class="heritage-chapter heritage-archive-feature">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">06 / {{ copy.archivesKicker }}</p>
           <h2>{{ copy.archivesTitle }}</h2>
@@ -98,14 +98,14 @@
         </div>
       </section>
 
-      <section id="congress-legacy" class="heritage-chapter heritage-legacy">
+      <section id="congress-legacy" v-reveal class="heritage-chapter heritage-legacy">
         <p class="heritage-chapter-no">07 / {{ copy.legacyKicker }}</p>
         <h2>{{ copy.legacyTitle }}</h2>
         <p>{{ copy.legacyText }}</p>
         <div class="heritage-legacy-lines"><span v-for="item in copy.legacy" :key="item">{{ item }}</span></div>
       </section>
 
-      <section class="heritage-sources" :aria-label="copy.sourcesTitle">
+      <section v-reveal class="heritage-sources" :aria-label="copy.sourcesTitle">
         <h2>{{ copy.sourcesTitle }}</h2>
         <a href="https://history.seu.edu.cn/2023/0822/c18650a456949/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceHistory }}</a>
         <a href="https://www.seu.edu.cn/2023/0820/c124a456859/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceUniversity }}</a>

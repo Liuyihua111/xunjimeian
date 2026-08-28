@@ -1,5 +1,5 @@
 <template>
-  <section class="page-hero context-hero meian-hero">
+  <section v-reveal class="page-hero context-hero meian-hero">
     <PageMotif variant="context" />
     <p class="eyebrow">{{ t("meianEyebrow") }}</p>
     <h1>{{ t("meianPageTitle") }}</h1>
@@ -17,7 +17,7 @@
     </aside>
 
     <article class="heritage-flow">
-      <section id="meian-profile" class="heritage-chapter heritage-opening">
+      <section id="meian-profile" v-reveal class="heritage-chapter heritage-opening">
         <figure class="heritage-lead-image">
           <img src="/assets/exhibitions/meian/exterior.webp" :alt="copy.images.exterior.alt">
           <figcaption>{{ copy.images.exterior.caption }}</figcaption>
@@ -35,7 +35,7 @@
         </div>
       </section>
 
-      <section id="meian-origin" class="heritage-chapter">
+      <section id="meian-origin" v-reveal class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">02 / {{ copy.originKicker }}</p>
           <h2>{{ copy.originTitle }}</h2>
@@ -51,7 +51,7 @@
         </div>
       </section>
 
-      <section id="meian-spirit" class="heritage-chapter heritage-quote-chapter">
+      <section id="meian-spirit" v-reveal class="heritage-chapter heritage-quote-chapter">
         <div class="heritage-quote-copy">
           <p class="heritage-chapter-no">03 / {{ copy.spiritKicker }}</p>
           <blockquote>{{ copy.spiritQuote }}</blockquote>
@@ -63,12 +63,12 @@
         </figure>
       </section>
 
-      <section id="meian-timeline" class="heritage-chapter">
+      <section id="meian-timeline" v-reveal class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">04 / {{ copy.timelineKicker }}</p>
           <h2>{{ copy.timelineTitle }}</h2>
         </header>
-        <ol class="heritage-timeline">
+        <ol v-reveal="120" class="heritage-timeline">
           <li v-for="item in copy.timeline" :key="item.year">
             <time>{{ item.year }}</time>
             <div><strong>{{ item.title }}</strong><p>{{ item.text }}</p></div>
@@ -86,7 +86,7 @@
         </div>
       </section>
 
-      <section id="meian-today" class="heritage-chapter">
+      <section id="meian-today" v-reveal class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">05 / {{ copy.todayKicker }}</p>
           <h2>{{ copy.todayTitle }}</h2>
@@ -104,7 +104,7 @@
         </div>
       </section>
 
-      <section id="meian-video" class="heritage-chapter meian-video-section" aria-labelledby="meian-video-title">
+      <section id="meian-video" v-reveal class="heritage-chapter meian-video-section" aria-labelledby="meian-video-title">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">06 / {{ t("meianVideoEyebrow") }}</p>
           <h2 id="meian-video-title">{{ t("meianVideoTitle") }}</h2>
@@ -117,7 +117,7 @@
         </figure>
       </section>
 
-      <section class="heritage-sources" :aria-label="copy.sourcesTitle">
+      <section v-reveal class="heritage-sources" :aria-label="copy.sourcesTitle">
         <h2>{{ copy.sourcesTitle }}</h2>
         <a href="https://splgwh.seu.edu.cn/2021/0426/c25044a369506/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceHeritage }}</a>
         <a href="https://history.seu.edu.cn/2023/0822/c18650a456949/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceHistory }}</a>
@@ -148,8 +148,9 @@ const zh = {
   ],
   originKicker: "梅庵溯源", originTitle: "因人得名，也因教育理想而延续",
   originText: [
-    "南京高等师范学校成立后，校长江谦为纪念两江师范学堂监督李瑞清的办学之功，在六朝松旁以带皮松木为梁架建起三间茅屋，并取李瑞清之号命名为“梅庵”。",
-    "李瑞清是近代书法家、美术教育先驱和高等教育的重要奠基者。他重视中西学术融通，也格外珍视青年人才，将学校视作家族、学生视作子弟。"
+    "南京高等师范学校成立后，校长江谦为纪念两江师范学堂监督李瑞清的办学之功，在六朝松旁以带皮松木为梁架建起三间茅屋，并取李瑞清之号命名为“梅庵”。建筑虽小，却从一开始就被赋予纪念教育先驱、凝聚校园精神的意义。",
+    "李瑞清是近代书法家、美术教育先驱和高等教育的重要奠基者。任职两江师范学堂期间，他重视中西学术融通，也格外珍视青年人才；“梅庵”之名由此将一位教育者的理想，与师生可以进入、使用并共同维护的校园公共空间相连。",
+    "梅庵建成后，门前曾悬挂“嚼得菜根，做得大事”的校训木匾；1916 年，古琴家王燕卿曾在此授琴。进入 20 世纪 20 年代，这里又成为会议、讲习和青年活动的场所，从纪念空间逐渐承接校园中的思想交流与红色历史。"
   ],
   spiritKicker: "菜根精神", spiritQuote: "嚼得菜根，做得大事",
   spiritText: "这句校训强调耐劳、务实与担当。1916 年，古琴家王燕卿在此授琴，梅庵也成为梅庵琴派传播的重要空间。建筑、艺术与育人传统由此交织。",
@@ -193,8 +194,9 @@ const en = {
   ],
   originKicker: "Origins", originTitle: "Named for an educator and sustained by an educational ideal",
   originText: [
-    "After Nanjing Higher Normal School was founded, president Jiang Qian built a three-room thatched hall beside the Six Dynasties Pine in memory of Li Ruiqing and named it after Li's art name, Mei'an.",
-    "Li Ruiqing was a calligrapher, art-education pioneer, and influential modern educator who advocated learning across Chinese and Western traditions and cared deeply for young talent."
+    "After Nanjing Higher Normal School was founded, president Jiang Qian built a three-room thatched hall beside the Six Dynasties Pine in memory of Li Ruiqing and named it after Li's art name, Mei'an. Though modest in scale, it was conceived as a memorial to an educational pioneer and a shared campus ideal.",
+    "Li Ruiqing was a calligrapher, art-education pioneer, and influential modern educator. His commitment to learning across Chinese and Western traditions and to young talent gave the building a lasting educational meaning; Mei'an turned remembrance into a public place shared by teachers and students.",
+    "The maxim 'Endure humble fare; accomplish great work' once hung at the entrance, and guqin master Wang Yanqing taught here in 1916. By the 1920s, Mei'an was also used for meetings, lectures, and youth activities, linking its memorial role with campus intellectual exchange and later revolutionary history."
   ],
   spiritKicker: "Caigen Spirit", spiritQuote: "Endure humble fare; accomplish great work",
   spiritText: "The maxim values endurance, practical effort, and responsibility. In 1916, guqin master Wang Yanqing taught here, making Mei'an an important home of the Mei'an school of qin music.",

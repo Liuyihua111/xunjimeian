@@ -1,10 +1,10 @@
 <template>
   <article class="annual-feature-article">
-    <div class="annual-article-lede">
+    <div v-reveal class="annual-article-lede">
       <p>{{ leadBlock?.text || project.summary }}</p>
     </div>
 
-    <section v-if="showEmbeddedResult" class="annual-result-entry" aria-labelledby="annual-result-entry-title">
+    <section v-if="showEmbeddedResult" class="annual-result-entry" v-reveal="80" aria-labelledby="annual-result-entry-title">
       <div>
         <p>{{ project.year }} · 年度数字成果</p>
         <h2 id="annual-result-entry-title">{{ project.embedded_result.title }}</h2>
@@ -30,7 +30,7 @@
 
     <div class="annual-article-flow">
       <template v-for="(block, index) in remainingBlocks" :key="`${block.type}-${index}`">
-        <header v-if="block.type === 'section_heading'" class="annual-article-section-title">
+        <header v-if="block.type === 'section_heading'" v-reveal class="annual-article-section-title">
           <span v-if="block.index">{{ block.index }}</span>
           <h2>{{ block.text }}</h2>
         </header>
@@ -39,13 +39,14 @@
           {{ block.text }}
         </p>
 
-        <figure v-else-if="block.type === 'image'" class="annual-article-figure">
+        <figure v-else-if="block.type === 'image'" v-reveal="80" class="annual-article-figure">
           <img :src="block.path" :alt="block.alt || block.caption || project.title" loading="lazy">
           <figcaption v-if="block.caption">{{ block.caption }}</figcaption>
         </figure>
 
         <div
           v-else-if="block.type === 'image_group'"
+          v-reveal="80"
           :class="['annual-article-image-group', `columns-${block.columns || 2}`]"
         >
           <figure v-for="image in block.images" :key="image.path">
@@ -70,7 +71,7 @@
       </template>
     </div>
 
-    <footer class="annual-article-footer">
+    <footer v-reveal class="annual-article-footer">
       <p>相关成果与原报道</p>
       <div>
         <a

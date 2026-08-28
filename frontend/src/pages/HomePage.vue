@@ -8,15 +8,19 @@
         alt="东大梅庵，数字化体验平台"
       >
     </picture>
+    <div class="home-hero-atmosphere" aria-hidden="true">
+      <span v-for="index in 8" :key="`petal-${index}`" class="home-hero-petal"></span>
+      <span v-for="index in 7" :key="`fiber-${index}`" class="home-hero-fiber"></span>
+    </div>
   </section>
 
   <section id="home-xie-avatar" class="section home-feature-section home-xie-section">
-    <div class="section-heading home-section-heading">
+    <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.xieEyebrow }}</p>
       <h2>{{ homeCopy.xieTitle }}</h2>
     </div>
     <div class="home-xie-grid">
-      <div class="home-model-column">
+      <div v-reveal="80" class="home-model-column">
         <ModelViewer :info="modelInfo" />
         <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
           <span>{{ homeCopy.xieLink }}</span>
@@ -27,19 +31,19 @@
     </div>
   </section>
 
-  <div class="home-section-divider" aria-hidden="true">
+  <div v-reveal class="home-section-divider" aria-hidden="true">
     <span class="home-divider-line"></span>
     <span class="home-divider-seal">梅</span>
     <span class="home-divider-line"></span>
   </div>
 
   <section id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
-    <div class="section-heading home-section-heading">
+    <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.galleryEyebrow }}</p>
       <h2>{{ homeCopy.galleryTitle }}</h2>
     </div>
 
-    <div class="home-gallery-frame">
+    <div v-reveal="100" class="home-gallery-frame">
       <div class="home-gallery-toolbar">
         <div>
           <strong>{{ homeCopy.galleryCardTitle }}</strong>
@@ -64,7 +68,7 @@
     </div>
   </section>
 
-  <nav class="home-quick-nav" aria-label="首页快速定位">
+  <nav v-reveal="180" class="home-quick-nav" aria-label="首页快速定位">
     <button type="button" @click="scrollToSection('home-xie-avatar')">
       <span class="home-quick-index">01</span>
       <span>{{ homeCopy.quickXie }}</span>

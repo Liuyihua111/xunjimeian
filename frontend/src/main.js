@@ -4,8 +4,9 @@ import "lxgw-wenkai-webfont/lxgwwenkai-regular.css";
 import "lxgw-wenkai-webfont/lxgwwenkai-bold.css";
 import App from "./App.vue";
 import router from "./router.js";
+import { revealDirective } from "./motion.js";
 import "./styles.css";
 import "./star-map.css";
 import "./heritage-type.css";
 
-createApp(App).use(router).mount("#app");
+createApp(App).directive("reveal", revealDirective).use(router).mount("#app");

@@ -1,5 +1,5 @@
 <template>
-  <aside class="chat-panel" aria-label="问答窗口">
+  <aside v-reveal="160" class="chat-panel" aria-label="问答窗口">
     <div class="chat-header">
       <div>
         <p class="eyebrow">{{ t("chatWindow") }}</p>
@@ -64,6 +64,7 @@
     <aside
       v-if="activeEvidence"
       id="evidence-drawer"
+      v-reveal
       class="evidence-drawer"
       :aria-label="t('chatEvidenceTitle')"
     >

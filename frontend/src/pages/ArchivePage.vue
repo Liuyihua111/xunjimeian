@@ -1,12 +1,12 @@
 <template>
-  <section class="page-hero archive-hero">
+  <section v-reveal class="page-hero archive-hero">
     <PageMotif variant="archive" />
     <p class="eyebrow">{{ t("archiveEyebrow") }}</p>
     <h1>{{ t("archiveTitle") }}</h1>
     <p>{{ t("archiveLede") }}</p>
   </section>
 
-  <section class="section archive-timeline-section">
+  <section v-reveal="80" class="section archive-timeline-section">
     <div v-if="loading" class="archive-overview-grid" aria-live="polite" aria-busy="true">
       <article v-for="index in 3" :key="index" class="archive-overview-card archive-skeleton">
         <div class="archive-card-image"></div>
@@ -23,6 +23,7 @@
         v-for="project in orderedProjects"
         :key="project.year"
         :class="['archive-overview-card', { featured: project.year === 2026 }]"
+        v-reveal="project.year === 2026 ? 0 : (2026 - project.year) * 80"
         :to="`/archive/${project.slug || project.year}`"
       >
         <div class="archive-card-image" :data-year="project.year">

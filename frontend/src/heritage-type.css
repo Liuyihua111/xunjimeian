@@ -19,6 +19,10 @@ html:lang(zh-CN) h1 {
 
 html:lang(zh-CN) h2,
 html:lang(zh-CN) h3,
+html:lang(zh-CN) .heritage-chapter h2,
+html:lang(zh-CN) .heritage-chapter h3,
+html:lang(zh-CN) .heritage-quote-copy blockquote,
+html:lang(zh-CN) .heritage-sources h2,
 html:lang(zh-CN) .home-subtitle,
 html:lang(zh-CN) .brand-title,
 html:lang(zh-CN) .archive-state h2,
