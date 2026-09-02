@@ -30,23 +30,23 @@
 
     <div class="annual-article-flow">
       <template v-for="(block, index) in remainingBlocks" :key="`${block.type}-${index}`">
-        <header v-if="block.type === 'section_heading'" v-reveal class="annual-article-section-title">
+        <header v-if="block.type === 'section_heading'" v-reveal="blockRevealDelay(index)" class="annual-article-section-title">
           <span v-if="block.index">{{ block.index }}</span>
           <h2>{{ block.text }}</h2>
         </header>
 
-        <p v-else-if="block.type === 'paragraph'" class="annual-article-paragraph">
+        <p v-else-if="block.type === 'paragraph'" v-reveal="blockRevealDelay(index)" class="annual-article-paragraph">
           {{ block.text }}
         </p>
 
-        <figure v-else-if="block.type === 'image'" v-reveal="80" class="annual-article-figure">
+        <figure v-else-if="block.type === 'image'" v-reveal="blockRevealDelay(index)" class="annual-article-figure">
           <img :src="block.path" :alt="block.alt || block.caption || project.title" loading="lazy">
           <figcaption v-if="block.caption">{{ block.caption }}</figcaption>
         </figure>
 
         <div
           v-else-if="block.type === 'image_group'"
-          v-reveal="80"
+          v-reveal="blockRevealDelay(index)"
           :class="['annual-article-image-group', `columns-${block.columns || 2}`]"
         >
           <figure v-for="image in block.images" :key="image.path">
@@ -55,12 +55,13 @@
           </figure>
         </div>
 
-        <p v-else-if="block.type === 'caption'" class="annual-article-standalone-caption">
+        <p v-else-if="block.type === 'caption'" v-reveal="blockRevealDelay(index)" class="annual-article-standalone-caption">
           {{ block.text }}
         </p>
 
         <a
           v-else-if="block.type === 'link'"
+          v-reveal="blockRevealDelay(index)"
           class="annual-article-inline-link"
           :href="block.url"
           target="_blank"
@@ -116,6 +117,10 @@ const blocks = computed(() => props.project.article_blocks || []);
 const leadBlock = computed(() => blocks.value[0]?.type === "paragraph" ? blocks.value[0] : null);
 const remainingBlocks = computed(() => leadBlock.value ? blocks.value.slice(1) : blocks.value);
 const isDownloadEntry = computed(() => props.project.embedded_result?.type === "download");
+
+function blockRevealDelay(index) {
+  return (index % 3) * 60;
+}
 
 function openResult() {
   resultModal.value?.open();

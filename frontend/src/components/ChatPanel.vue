@@ -7,7 +7,7 @@
       <span class="status-pill">{{ loading ? t("chatLoading") : t("chatReady") }}</span>
     </div>
 
-    <div class="chat-log" ref="chatLog" tabindex="0" aria-live="polite">
+    <div class="chat-log" ref="chatLog" tabindex="0" aria-live="polite" :aria-busy="loading">
       <div class="message bot">{{ t("chatGreeting") }}</div>
       <template v-for="message in messages" :key="message.id">
         <div :class="['message', message.type]" :data-message-id="message.id">
@@ -48,6 +48,12 @@
           </span>
         </button>
       </template>
+      <div v-if="loading" class="message bot chat-answer-skeleton" role="status">
+        <span class="chat-skeleton-kicker">{{ t("chatLoading") }}</span>
+        <span class="chat-skeleton-line is-long"></span>
+        <span class="chat-skeleton-line"></span>
+        <span class="chat-skeleton-line is-short"></span>
+      </div>
     </div>
 
     <div class="prompt-grid">

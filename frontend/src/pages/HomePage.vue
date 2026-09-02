@@ -1,5 +1,5 @@
 <template>
-  <section class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
+  <section ref="heroSection" id="home-hero" class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
     <picture class="home-official-hero-picture">
       <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-20260822.png">
       <img
@@ -14,7 +14,20 @@
     </div>
   </section>
 
-  <section id="home-xie-avatar" class="section home-feature-section home-xie-section">
+  <nav class="home-chapter-preview" :aria-label="homeCopy.chapterPreviewLabel">
+    <button type="button" @click="scrollToSection('home-xie-avatar')">
+      <span>01</span>
+      <strong>{{ homeCopy.xieTitle }}</strong>
+    </button>
+    <span class="home-chapter-preview-rule" aria-hidden="true"></span>
+    <button type="button" @click="scrollToSection('home-digital-meian')">
+      <span>02</span>
+      <strong>{{ homeCopy.galleryTitle }}</strong>
+    </button>
+  </nav>
+
+  <section ref="xieSection" id="home-xie-avatar" class="section home-feature-section home-xie-section">
+    <span class="home-chapter-watermark" aria-hidden="true">01</span>
     <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.xieEyebrow }}</p>
       <h2>{{ homeCopy.xieTitle }}</h2>
@@ -32,12 +45,71 @@
   </section>
 
   <div v-reveal class="home-section-divider" aria-hidden="true">
-    <span class="home-divider-line"></span>
-    <span class="home-divider-seal">梅</span>
-    <span class="home-divider-line"></span>
+    <svg class="home-divider-path home-divider-path-desktop" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet">
+      <g class="home-divider-source-nodes">
+        <path pathLength="1" d="M58 84 L108 58 L150 94" />
+        <circle cx="58" cy="84" r="4" />
+        <circle cx="108" cy="58" r="5" />
+        <circle cx="150" cy="94" r="3.5" />
+      </g>
+      <path class="home-divider-branch" pathLength="1" d="M58 84 C196 92 290 49 418 67 C536 84 631 103 753 78 C824 64 874 63 931 72" />
+      <g class="home-divider-twigs">
+        <path pathLength="1" d="M344 60 C377 44 394 33 408 16" />
+        <path pathLength="1" d="M388 57 C417 42 439 37 463 39" />
+        <path pathLength="1" d="M497 77 C525 59 539 44 548 25" />
+        <path pathLength="1" d="M688 88 C716 106 733 112 760 114" />
+      </g>
+      <g class="home-divider-blossom" transform="translate(578 65)">
+        <circle class="home-divider-petal" cx="0" cy="-10" r="7" />
+        <circle class="home-divider-petal" cx="9.5" cy="-3" r="7" />
+        <circle class="home-divider-petal" cx="5.5" cy="8" r="7" />
+        <circle class="home-divider-petal" cx="-5.5" cy="8" r="7" />
+        <circle class="home-divider-petal" cx="-9.5" cy="-3" r="7" />
+        <circle class="home-divider-heart" cx="0" cy="0" r="3.5" />
+      </g>
+      <g class="home-divider-building">
+        <path pathLength="1" d="M900 67 L900 58 L922 58 L922 48 L1125 48 L1125 58 L1147 58 L1147 67" />
+        <path pathLength="1" d="M918 67 L918 121 L1127 121 L1127 67" />
+        <path pathLength="1" d="M907 67 L1147 67" />
+        <path pathLength="1" d="M941 121 L941 81 L968 81 L968 121 M986 121 L986 81 L1013 81 L1013 121" />
+        <path pathLength="1" d="M1035 121 L1035 76 L1073 76 L1073 121 M1091 121 L1091 82 L1113 82 L1113 121" />
+        <path pathLength="1" d="M1046 88 L1054 80 L1062 88 L1062 100 L1054 108 L1046 100 Z" />
+        <path pathLength="1" d="M1021 121 L1021 128 L1087 128 L1087 121" />
+      </g>
+    </svg>
+
+    <svg class="home-divider-path home-divider-path-mobile" viewBox="0 0 390 104" preserveAspectRatio="xMidYMid meet">
+      <g class="home-divider-source-nodes">
+        <path pathLength="1" d="M18 61 L46 44 L72 66" />
+        <circle cx="18" cy="61" r="3" />
+        <circle cx="46" cy="44" r="4" />
+        <circle cx="72" cy="66" r="3" />
+      </g>
+      <path class="home-divider-branch" pathLength="1" d="M18 61 C86 72 121 36 181 51 C224 62 255 68 286 57" />
+      <g class="home-divider-twigs">
+        <path pathLength="1" d="M118 46 C135 35 145 25 151 13" />
+        <path pathLength="1" d="M145 43 C162 34 174 32 186 33" />
+      </g>
+      <g class="home-divider-blossom" transform="translate(198 54)">
+        <circle class="home-divider-petal" cx="0" cy="-8" r="5.5" />
+        <circle class="home-divider-petal" cx="7.5" cy="-2" r="5.5" />
+        <circle class="home-divider-petal" cx="4.5" cy="6.5" r="5.5" />
+        <circle class="home-divider-petal" cx="-4.5" cy="6.5" r="5.5" />
+        <circle class="home-divider-petal" cx="-7.5" cy="-2" r="5.5" />
+        <circle class="home-divider-heart" cx="0" cy="0" r="2.8" />
+      </g>
+      <g class="home-divider-building">
+        <path pathLength="1" d="M276 56 L276 50 L285 50 L285 43 L366 43 L366 50 L375 50 L375 56" />
+        <path pathLength="1" d="M283 56 L283 84 L368 84 L368 56" />
+        <path pathLength="1" d="M279 56 L375 56" />
+        <path pathLength="1" d="M292 84 L292 65 L305 65 L305 84 M314 84 L314 65 L327 65 L327 84" />
+        <path pathLength="1" d="M337 84 L337 62 L354 62 L354 84" />
+      </g>
+    </svg>
   </div>
 
-  <section id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
+  <section ref="gallerySection" id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
+    <span class="home-chapter-watermark" aria-hidden="true">02</span>
     <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.galleryEyebrow }}</p>
       <h2>{{ homeCopy.galleryTitle }}</h2>
@@ -68,14 +140,24 @@
     </div>
   </section>
 
-  <nav v-reveal="180" class="home-quick-nav" aria-label="首页快速定位">
-    <button type="button" @click="scrollToSection('home-xie-avatar')">
+  <nav :class="['home-quick-nav', { 'is-visible': activeChapter }]" :aria-label="homeCopy.quickNavLabel">
+    <button
+      type="button"
+      :class="{ 'is-active': activeChapter === 'home-xie-avatar' }"
+      :aria-current="activeChapter === 'home-xie-avatar' ? 'location' : undefined"
+      @click="scrollToSection('home-xie-avatar')"
+    >
       <span class="home-quick-index">01</span>
-      <span>{{ homeCopy.quickXie }}</span>
+      <span class="home-quick-label">{{ homeCopy.quickXie }}</span>
     </button>
-    <button type="button" @click="scrollToSection('home-digital-meian')">
+    <button
+      type="button"
+      :class="{ 'is-active': activeChapter === 'home-digital-meian' }"
+      :aria-current="activeChapter === 'home-digital-meian' ? 'location' : undefined"
+      @click="scrollToSection('home-digital-meian')"
+    >
       <span class="home-quick-index">02</span>
-      <span>{{ homeCopy.quickGallery }}</span>
+      <span class="home-quick-label">{{ homeCopy.quickGallery }}</span>
     </button>
   </nav>
 
@@ -143,7 +225,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import ChatPanel from "../components/ChatPanel.vue";
 import ModelViewer from "../components/ModelViewer.vue";
 import { fetchModelInfo } from "../api.js";
@@ -154,6 +236,11 @@ const digitalMeianUrl = "https://www.720yun.com/vr/658jOzey5w8";
 const galleryDialog = ref(null);
 const profileDialog = ref(null);
 const profileTrigger = ref(null);
+const heroSection = ref(null);
+const xieSection = ref(null);
+const gallerySection = ref(null);
+const activeChapter = ref("");
+let chapterObserver;
 const modelInfo = ref({
   name: "谢远定数字分身模型",
   model_url: "",
@@ -192,8 +279,10 @@ const homeCopy = computed(() => {
       galleryCardMeta: "3D modeling · VR exhibition",
       enlarge: "Enlarge",
       openExternal: "Open in new window",
-      quickXie: "Avatar",
-      quickGallery: "Exhibition"
+      chapterPreviewLabel: "Explore the two digital exhibition chapters",
+      quickNavLabel: "Home chapter navigation",
+      quickXie: "Xie Yuanding Avatar",
+      quickGallery: "Digital Mei'an"
     };
   }
 
@@ -225,17 +314,44 @@ const homeCopy = computed(() => {
     galleryCardMeta: "三维建模 · VR 全景展陈",
     enlarge: "放大查看",
     openExternal: "新窗口打开",
+    chapterPreviewLabel: "浏览首页两项数字展陈",
+    quickNavLabel: "首页章节定位",
     quickXie: "谢远定数字人",
-    quickGallery: "梅庵数字展馆"
+    quickGallery: "数字梅庵展馆"
   };
 });
 
-onMounted(async () => {
-  modelInfo.value = await fetchModelInfo();
+onMounted(() => {
+  chapterObserver = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (visibleEntry?.target.id) {
+      activeChapter.value = visibleEntry.target.id === "home-hero" ? "" : visibleEntry.target.id;
+    }
+  }, {
+    rootMargin: "-30% 0px -48% 0px",
+    threshold: [0, 0.15, 0.4]
+  });
+
+  [heroSection.value, xieSection.value, gallerySection.value].forEach((section) => {
+    if (section) chapterObserver.observe(section);
+  });
+
+  fetchModelInfo().then((info) => {
+    modelInfo.value = info;
+  });
+});
+
+onBeforeUnmount(() => {
+  chapterObserver?.disconnect();
 });
 
 function scrollToSection(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  activeChapter.value = id;
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById(id)?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
 }
 
 function openProfile() {

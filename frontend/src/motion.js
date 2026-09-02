@@ -26,8 +26,8 @@ function getObserver() {
       observer = undefined;
     }
   }, {
-    rootMargin: "0px 0px -10% 0px",
-    threshold: 0.08
+    rootMargin: "0px 0px -6% 0px",
+    threshold: 0.12
   });
 
   return observer;
@@ -46,6 +46,9 @@ export const revealDirective = {
     }
 
     element.classList.add("motion-reveal", "is-reveal-pending");
+    if (element.matches(".archive-overview-card, .intro-block, .avatar-panel, .chat-panel, .home-gallery-frame, .annual-result-entry, .annual-article-figure, .annual-article-image-group")) {
+      element.classList.add("motion-reveal-card");
+    }
     observedElements.set(element, true);
     getObserver()?.observe(element);
   },
