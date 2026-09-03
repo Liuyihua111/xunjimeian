@@ -69,6 +69,10 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(page, /activeChapter === 'home-xie-avatar'/);
   assert.match(page, /activeChapter === 'home-digital-meian'/);
   assert.match(page, /IntersectionObserver/);
+  assert.match(page, /profileCloseButton\.value\?\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(page, /profileTrigger\.value\?\.focus\(\{ preventScroll: true \}\)/);
+  assert.match(page, /document\.body\.classList\.add\("profile-modal-open"\)/);
+  assert.match(page, /function releaseProfileScroll\(\)/);
   assert.match(styles, /\.home-chapter-preview\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-layered-scroll\s*\{[\s\S]*?isolation:\s*isolate;/);
   assert.match(styles, /\.home-official-hero\s*\{[\s\S]*?position:\s*sticky;[\s\S]*?top:\s*0;[\s\S]*?height:\s*100dvh;/);
@@ -83,6 +87,8 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(styles, /\.home-xie-grid \.model-fallback\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-gallery-frame\s*\{[\s\S]*?border:\s*0;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-xie-grid\s*\{[\s\S]*?background:\s*rgba\(248, 247, 243, 0\.36\);/);
+  assert.match(styles, /\.home-profile-dialog\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?inset:\s*0;/);
+  assert.match(styles, /body\.profile-modal-open\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?--profile-modal-scroll-offset/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;[\s\S]*?\.home-section-divider\.is-reveal-visible \.home-divider-blossom\s*\{\s*animation:\s*none;/);
 });
 

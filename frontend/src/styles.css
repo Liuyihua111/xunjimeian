@@ -1597,6 +1597,15 @@ body {
   background-size: 100% 32px;
 }
 
+body.profile-modal-open {
+  position: fixed;
+  top: var(--profile-modal-scroll-offset, 0);
+  right: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: scroll;
+}
+
 main {
   overflow: clip;
 }
@@ -5219,9 +5228,12 @@ model-viewer:focus-visible {
 .heritage-timeline.is-reveal-visible li:nth-child(n + 6) { transition-delay: 480ms; }
 
 .home-profile-dialog {
+  position: fixed;
+  inset: 0;
   width: min(1040px, calc(100vw - 40px));
   max-width: none;
   max-height: 88dvh;
+  margin: auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -5363,9 +5375,12 @@ model-viewer:focus-visible {
 }
 
 .home-gallery-dialog {
+  position: fixed;
+  inset: 0;
   width: min(1180px, calc(100vw - 40px));
   max-width: none;
   max-height: 90dvh;
+  margin: auto;
   padding: 0;
   border: 0;
   background: transparent;

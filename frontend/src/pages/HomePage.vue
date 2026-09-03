@@ -184,7 +184,7 @@
           <h2>{{ homeCopy.profileTitle }}</h2>
           <p>{{ homeCopy.profileIntro }}</p>
         </div>
-        <button type="button" class="home-gallery-close" @click="closeProfile" :aria-label="homeCopy.profileClose">×</button>
+        <button ref="profileCloseButton" type="button" class="home-gallery-close" @click="closeProfile" :aria-label="homeCopy.profileClose">×</button>
       </header>
 
       <div class="home-profile-dialog-body">
@@ -251,11 +251,13 @@ const digitalMeianUrl = "https://www.720yun.com/vr/658jOzey5w8";
 const galleryDialog = ref(null);
 const profileDialog = ref(null);
 const profileTrigger = ref(null);
+const profileCloseButton = ref(null);
 const heroSection = ref(null);
 const xieSection = ref(null);
 const gallerySection = ref(null);
 const activeChapter = ref("");
 let chapterObserver;
+let profileScrollPosition = 0;
 const modelInfo = ref({
   name: "谢远定数字分身模型",
   model_url: "",
@@ -361,6 +363,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   chapterObserver?.disconnect();
+  releaseProfileScroll();
 });
 
 function scrollToSection(id) {
@@ -371,7 +374,13 @@ function scrollToSection(id) {
 
 function openProfile() {
   if (profileDialog.value && !profileDialog.value.open) {
+    profileScrollPosition = window.scrollY;
+    document.documentElement.style.setProperty("--profile-modal-scroll-offset", `-${profileScrollPosition}px`);
+    document.body.classList.add("profile-modal-open");
     profileDialog.value.showModal();
+    requestAnimationFrame(() => {
+      profileCloseButton.value?.focus({ preventScroll: true });
+    });
   }
 }
 
@@ -384,7 +393,16 @@ function handleProfileBackdrop(event) {
 }
 
 function restoreProfileFocus() {
-  profileTrigger.value?.focus();
+  releaseProfileScroll();
+  profileTrigger.value?.focus({ preventScroll: true });
+}
+
+function releaseProfileScroll() {
+  if (!document.body.classList.contains("profile-modal-open")) return;
+
+  document.body.classList.remove("profile-modal-open");
+  document.documentElement.style.removeProperty("--profile-modal-scroll-offset");
+  window.scrollTo({ top: profileScrollPosition, left: 0, behavior: "auto" });
 }
 
 function openGallery() {
