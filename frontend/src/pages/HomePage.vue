@@ -1,32 +1,44 @@
 <template>
-  <section ref="heroSection" id="home-hero" class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
-    <picture class="home-official-hero-picture">
-      <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-20260822.png">
-      <img
-        class="home-official-hero-image"
-        src="/assets/images/home-archive-background-dongda-meian-title-small-20260821.png"
-        alt="东大梅庵，数字化体验平台"
-      >
-    </picture>
-    <div class="home-hero-atmosphere" aria-hidden="true">
-      <span v-for="index in 8" :key="`petal-${index}`" class="home-hero-petal"></span>
-      <span v-for="index in 7" :key="`fiber-${index}`" class="home-hero-fiber"></span>
-    </div>
-  </section>
+  <div class="home-layered-scroll">
+    <section ref="heroSection" id="home-hero" class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
+      <picture class="home-official-hero-picture">
+        <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-20260822.png">
+        <img
+          class="home-official-hero-image"
+          src="/assets/images/home-archive-background-dongda-meian-title-small-20260821.png"
+          alt="东大梅庵，数字化体验平台"
+        >
+      </picture>
+      <div class="home-hero-atmosphere" aria-hidden="true">
+        <span v-for="index in 8" :key="`petal-${index}`" class="home-hero-petal"></span>
+        <span v-for="index in 7" :key="`fiber-${index}`" class="home-hero-fiber"></span>
+      </div>
+    </section>
 
-  <nav class="home-chapter-preview" :aria-label="homeCopy.chapterPreviewLabel">
-    <button type="button" @click="scrollToSection('home-xie-avatar')">
-      <span>01</span>
-      <strong>{{ homeCopy.xieTitle }}</strong>
-    </button>
-    <span class="home-chapter-preview-rule" aria-hidden="true"></span>
-    <button type="button" @click="scrollToSection('home-digital-meian')">
-      <span>02</span>
-      <strong>{{ homeCopy.galleryTitle }}</strong>
-    </button>
-  </nav>
+    <div class="home-foreground-sheet">
+      <div class="home-meian-page-turn" aria-hidden="true">
+        <picture class="home-meian-paper-cut">
+          <source media="(max-width: 700px)" srcset="/assets/images/meian-paper-cut-silhouette-mobile-20260902.svg">
+          <img src="/assets/images/meian-paper-cut-silhouette-20260902.svg" alt="">
+        </picture>
+      </div>
 
-  <section ref="xieSection" id="home-xie-avatar" class="section home-feature-section home-xie-section">
+      <div class="home-foreground-body">
+        <div class="home-chapter-preview-band">
+        <nav class="home-chapter-preview" :aria-label="homeCopy.chapterPreviewLabel">
+          <button type="button" @click="scrollToSection('home-xie-avatar')">
+            <span>01</span>
+            <strong>{{ homeCopy.xieTitle }}</strong>
+          </button>
+          <span class="home-chapter-preview-rule" aria-hidden="true"></span>
+          <button type="button" @click="scrollToSection('home-digital-meian')">
+            <span>02</span>
+            <strong>{{ homeCopy.galleryTitle }}</strong>
+          </button>
+        </nav>
+      </div>
+
+      <section ref="xieSection" id="home-xie-avatar" class="section home-feature-section home-xie-section">
     <span class="home-chapter-watermark" aria-hidden="true">01</span>
     <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.xieEyebrow }}</p>
@@ -42,9 +54,9 @@
       </div>
       <ChatPanel />
     </div>
-  </section>
+      </section>
 
-  <div v-reveal class="home-section-divider" aria-hidden="true">
+      <div v-reveal class="home-section-divider" aria-hidden="true">
     <svg class="home-divider-path home-divider-path-desktop" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet">
       <g class="home-divider-source-nodes">
         <path pathLength="1" d="M58 84 L108 58 L150 94" />
@@ -106,9 +118,9 @@
         <path pathLength="1" d="M337 84 L337 62 L354 62 L354 84" />
       </g>
     </svg>
-  </div>
+      </div>
 
-  <section ref="gallerySection" id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
+      <section ref="gallerySection" id="home-digital-meian" class="section home-feature-section home-meian-gallery-section">
     <span class="home-chapter-watermark" aria-hidden="true">02</span>
     <div v-reveal class="section-heading home-section-heading">
       <p class="eyebrow">{{ homeCopy.galleryEyebrow }}</p>
@@ -138,7 +150,10 @@
         <a class="button secondary" :href="digitalMeianUrl" target="_blank" rel="noreferrer">{{ homeCopy.openExternal }}</a>
       </div>
     </div>
-  </section>
+        </section>
+      </div>
+    </div>
+  </div>
 
   <nav :class="['home-quick-nav', { 'is-visible': activeChapter }]" :aria-label="homeCopy.quickNavLabel">
     <button

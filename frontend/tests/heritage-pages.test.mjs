@@ -43,6 +43,16 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   const styles = read("src/styles.css");
 
   assert.match(page, /home-chapter-preview/);
+  assert.match(page, /home-chapter-preview-band/);
+  assert.match(page, /home-layered-scroll/);
+  assert.match(page, /home-foreground-sheet/);
+  assert.match(page, /home-foreground-body/);
+  assert.match(page, /home-meian-page-turn/);
+  assert.match(page, /meian-paper-cut-silhouette-20260902\.svg/);
+  assert.match(page, /meian-paper-cut-silhouette-mobile-20260902\.svg/);
+  assert.doesNotMatch(page, /home-meian-transition-lines/);
+  assert.doesNotMatch(page, />梅庵<\/text>/);
+  assert.doesNotMatch(page, /home-hero-silhouette/);
   assert.match(page, /home-chapter-watermark[^>]*>01</);
   assert.match(page, /home-chapter-watermark[^>]*>02</);
   assert.match(page, /home-section-divider/);
@@ -60,10 +70,19 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(page, /activeChapter === 'home-digital-meian'/);
   assert.match(page, /IntersectionObserver/);
   assert.match(styles, /\.home-chapter-preview\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
+  assert.match(styles, /\.home-layered-scroll\s*\{[\s\S]*?isolation:\s*isolate;/);
+  assert.match(styles, /\.home-official-hero\s*\{[\s\S]*?position:\s*sticky;[\s\S]*?top:\s*0;[\s\S]*?height:\s*100dvh;/);
+  assert.match(styles, /\.home-foreground-sheet\s*\{[\s\S]*?position:\s*relative;[\s\S]*?z-index:\s*3;[\s\S]*?background:\s*transparent;/);
+  assert.match(styles, /\.home-foreground-body\s*\{[\s\S]*?inner-digital-desktop-20260901\.webp/);
+  assert.match(styles, /\.home-meian-page-turn\s*\{[\s\S]*?margin-top:\s*0;[\s\S]*?background:\s*transparent;/);
+  assert.match(styles, /\.home-meian-paper-cut\s*\{[\s\S]*?width:\s*100%;/);
+  assert.match(styles, /\.home-chapter-preview-band\s*\{[\s\S]*?background:\s*var\(--paper\);/);
+  assert.match(styles, /\.home-chapter-preview::before\s*\{\s*content:\s*none;/);
   assert.match(styles, /\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*1;/);
   assert.match(styles, /\.home-section-divider\.is-reveal-visible \.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;/);
   assert.match(styles, /\.home-xie-grid \.model-fallback\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-gallery-frame\s*\{[\s\S]*?border:\s*0;[\s\S]*?box-shadow:\s*none;/);
+  assert.match(styles, /\.home-xie-grid\s*\{[\s\S]*?background:\s*rgba\(248, 247, 243, 0\.36\);/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;[\s\S]*?\.home-section-divider\.is-reveal-visible \.home-divider-blossom\s*\{\s*animation:\s*none;/);
 });
 
@@ -116,7 +135,7 @@ test("inner routes use responsive heritage and digital background layers", () =>
   const styles = read("src/styles.css");
 
   assert.match(app, /SitePageBackground :variant="backgroundVariant"/);
-  assert.match(router, /name: "home"[\s\S]*?background: "digital"/);
+  assert.match(router, /path: "\/", name: "home", component: HomePage \}/);
   assert.match(router, /name: "meian"[\s\S]*?background: "heritage"/);
   assert.match(router, /name: "congress"[\s\S]*?background: "heritage"/);
   assert.match(router, /name: "dialogue"[\s\S]*?background: "digital"/);

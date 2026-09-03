@@ -7,7 +7,7 @@ import ArchivePage from "./pages/ArchivePage.vue";
 import ArchiveDetailPage from "./pages/ArchiveDetailPage.vue";
 
 const routes = [
-  { path: "/", name: "home", component: HomePage, meta: { background: "digital" } },
+  { path: "/", name: "home", component: HomePage },
   { path: "/overview", redirect: "/" },
   { path: "/context", redirect: "/meian" },
   { path: "/meian", name: "meian", component: MeianPage, meta: { background: "heritage" } },
