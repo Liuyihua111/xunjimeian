@@ -154,3 +154,14 @@ test("inner routes use responsive heritage and digital background layers", () =>
   assert.match(styles, /inner-digital-mobile-20260901\.webp/);
   assert.match(styles, /context-hero > \.page-motif-context img \{[\s\S]*?object-fit:\s*contain;/);
 });
+
+test("custom cursor separates pointer position from hover scaling", () => {
+  const cursor = read("src/components/SiteCursor.vue");
+  const styles = read("src/styles.css");
+  const cursorStyles = styles.slice(styles.indexOf(".site-cursor {"), styles.indexOf("@media (hover: none)"));
+
+  assert.match(cursor, /translate3d\(\$\{x\}px, \$\{y\}px, 0\)/);
+  assert.match(styles, /\.site-cursor-leader::before,[\s\S]*?transform:\s*translate\(-50%, -50%\) scale\(var\(--cursor-scale, 1\)\);/);
+  assert.match(styles, /\.site-cursor\.is-active \.site-cursor-leader\s*\{\s*--cursor-scale:\s*1\.42;/);
+  assert.doesNotMatch(cursorStyles, /^\s*scale:/m);
+});
