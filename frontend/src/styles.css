@@ -5192,8 +5192,8 @@ model-viewer:focus-visible {
    receive their hidden state once the Vue directive has mounted. */
 .motion-reveal {
   --reveal-delay: 0ms;
-  --reveal-distance: 32px;
-  --reveal-duration: 720ms;
+  --reveal-distance: 24px;
+  --reveal-duration: 620ms;
   opacity: 1;
   transform: none;
   transition:
@@ -5213,8 +5213,43 @@ model-viewer:focus-visible {
 }
 
 .motion-reveal-card {
-  --reveal-distance: 42px;
-  --reveal-duration: 780ms;
+  --reveal-distance: 24px;
+  --reveal-duration: 660ms;
+}
+
+.motion-reveal-group.motion-reveal.is-reveal-pending,
+.motion-reveal-group.motion-reveal.is-reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.motion-reveal-group > .motion-reveal-item {
+  transition:
+    opacity var(--reveal-duration) ease-out calc(var(--reveal-delay) + var(--reveal-item-delay, 0ms)),
+    transform var(--reveal-duration) cubic-bezier(0.22, 0.72, 0.2, 1) calc(var(--reveal-delay) + var(--reveal-item-delay, 0ms));
+}
+
+.motion-reveal-group.is-reveal-pending > .motion-reveal-item {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-distance), 0);
+  will-change: opacity, transform;
+}
+
+.motion-reveal-group.is-reveal-visible > .motion-reveal-item {
+  opacity: 1;
+  transform: none;
+}
+
+.motion-reveal-media img,
+.motion-reveal-item-media img {
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 680ms cubic-bezier(0.22, 0.72, 0.2, 1) var(--reveal-delay);
+}
+
+.motion-reveal-media.is-reveal-pending img,
+.motion-reveal-group.is-reveal-pending > .motion-reveal-item-media img {
+  transform: scale(1.015);
 }
 
 .heritage-timeline.motion-reveal::before {
@@ -5680,6 +5715,18 @@ model-viewer:focus-visible {
     transition: none;
   }
 
+  .motion-reveal-group > .motion-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .motion-reveal-media img,
+  .motion-reveal-item-media img {
+    transform: none;
+    transition: none;
+  }
+
   .site-header {
     transition: none;
   }
@@ -5736,13 +5783,13 @@ model-viewer:focus-visible {
 
 @media (max-width: 720px) {
   .motion-reveal {
-    --reveal-distance: 20px;
-    --reveal-duration: 560ms;
+    --reveal-distance: 14px;
+    --reveal-duration: 500ms;
   }
 
   .motion-reveal-card {
-    --reveal-distance: 24px;
-    --reveal-duration: 600ms;
+    --reveal-distance: 14px;
+    --reveal-duration: 520ms;
   }
 }
 

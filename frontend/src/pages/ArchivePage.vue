@@ -6,7 +6,7 @@
     <p>{{ t("archiveLede") }}</p>
   </section>
 
-  <section v-reveal="80" class="section archive-timeline-section">
+  <section class="section archive-timeline-section">
     <div v-if="loading" class="archive-overview-grid" aria-live="polite" aria-busy="true">
       <article v-for="index in 3" :key="index" class="archive-overview-card archive-skeleton">
         <div class="archive-card-image"></div>

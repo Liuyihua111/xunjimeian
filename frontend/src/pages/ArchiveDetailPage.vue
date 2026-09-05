@@ -28,8 +28,8 @@
     :show-embedded-result="showEmbeddedResult"
   />
 
-  <section v-if="project && !isEditorialYear" v-reveal="80" class="section archive-detail-layout">
-    <div :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
+  <section v-if="project && !isEditorialYear" class="section archive-detail-layout">
+    <div v-reveal="{ variant: 'media' }" :class="['archive-detail-media', { single: visibleImages.length === 1 }]">
       <img
         v-for="image in visibleImages"
         :key="image.path"
@@ -38,7 +38,7 @@
       >
     </div>
 
-    <div class="archive-detail-content">
+    <div v-reveal="{ delay: 80, group: true, stagger: 75 }" class="archive-detail-content">
       <article class="info-panel">
         <p class="eyebrow">年度简介</p>
         <p>{{ project.summary }}</p>
@@ -65,7 +65,7 @@
     </div>
   </section>
 
-  <section v-if="project && !isEditorialYear" v-reveal="120" class="section detail-section-grid">
+  <section v-if="project && !isEditorialYear" class="section detail-section-grid">
     <article v-for="(section, index) in project.detail_sections" :key="section.title" v-reveal="index * 90" class="intro-block">
       <p class="eyebrow">{{ project.year }}</p>
       <h2>{{ section.title }}</h2>
@@ -73,7 +73,7 @@
     </article>
   </section>
 
-  <section v-if="project && !isEditorialYear" v-reveal="140" class="section archive-links-section">
+  <section v-if="project && !isEditorialYear" v-reveal="{ group: true, stagger: 80 }" class="section archive-links-section">
     <div class="section-heading">
       <p class="eyebrow">成果链接</p>
       <h2>继续查看相关成果</h2>

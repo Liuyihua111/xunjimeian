@@ -165,3 +165,29 @@ test("custom cursor separates pointer position from hover scaling", () => {
   assert.match(styles, /\.site-cursor\.is-active \.site-cursor-leader\s*\{\s*--cursor-scale:\s*1\.42;/);
   assert.doesNotMatch(cursorStyles, /^\s*scale:/m);
 });
+
+test("scroll reveal repeats after leaving the viewport and supports reduced motion", () => {
+  const motion = read("src/motion.js");
+  const styles = read("src/styles.css");
+  const meian = read("src/pages/MeianPage.vue");
+  const congress = read("src/pages/CongressPage.vue");
+  const archive = read("src/pages/ArchivePage.vue");
+
+  assert.match(motion, /IntersectionObserver/);
+  assert.match(motion, /function resetReveal\(element\)/);
+  assert.match(motion, /if \(!entry\.isIntersecting\) \{[\s\S]*?resetReveal\(entry\.target\)/);
+  assert.match(motion, /entry\.intersectionRatio >= 0\.12/);
+  assert.match(motion, /threshold:\s*\[0, 0\.12\]/);
+  assert.doesNotMatch(motion, /observer\.unobserve\(entry\.target\)/);
+  assert.match(motion, /Math\.min\(index \* stagger, 360\)/);
+  assert.match(motion, /motion-reveal-group/);
+  assert.match(motion, /motion-reveal-item-media/);
+  assert.match(meian, /v-reveal="\{ group: true \}"/);
+  assert.match(congress, /v-reveal="\{ group: true \}"/);
+  assert.doesNotMatch(archive, /v-reveal="80" class="section archive-timeline-section"/);
+  assert.match(styles, /--reveal-distance:\s*24px;/);
+  assert.match(styles, /--reveal-duration:\s*620ms;/);
+  assert.match(styles, /scale\(1\.015\)/);
+  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.motion-reveal-group > \.motion-reveal-item \{[\s\S]*?transition:\s*none;/);
+  assert.match(styles, /@media \(max-width: 720px\)[\s\S]*?--reveal-distance:\s*14px;[\s\S]*?--reveal-duration:\s*500ms;/);
+});

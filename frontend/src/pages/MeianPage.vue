@@ -17,7 +17,7 @@
     </aside>
 
     <article class="heritage-flow">
-      <section id="meian-profile" v-reveal class="heritage-chapter heritage-opening">
+      <section id="meian-profile" v-reveal="{ group: true }" class="heritage-chapter heritage-opening">
         <figure class="heritage-lead-image">
           <img src="/assets/exhibitions/meian/exterior.webp" :alt="copy.images.exterior.alt">
           <figcaption>{{ copy.images.exterior.caption }}</figcaption>
@@ -35,7 +35,7 @@
         </div>
       </section>
 
-      <section id="meian-origin" v-reveal class="heritage-chapter">
+      <section id="meian-origin" v-reveal="{ group: true }" class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">02 / {{ copy.originKicker }}</p>
           <h2>{{ copy.originTitle }}</h2>
@@ -51,7 +51,7 @@
         </div>
       </section>
 
-      <section id="meian-spirit" v-reveal class="heritage-chapter heritage-quote-chapter">
+      <section id="meian-spirit" v-reveal="{ group: true }" class="heritage-chapter heritage-quote-chapter">
         <div class="heritage-quote-copy">
           <p class="heritage-chapter-no">03 / {{ copy.spiritKicker }}</p>
           <blockquote>{{ copy.spiritQuote }}</blockquote>
@@ -63,7 +63,7 @@
         </figure>
       </section>
 
-      <section id="meian-timeline" v-reveal class="heritage-chapter">
+      <section id="meian-timeline" v-reveal="{ group: true }" class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">04 / {{ copy.timelineKicker }}</p>
           <h2>{{ copy.timelineTitle }}</h2>
@@ -86,7 +86,7 @@
         </div>
       </section>
 
-      <section id="meian-today" v-reveal class="heritage-chapter">
+      <section id="meian-today" v-reveal="{ group: true }" class="heritage-chapter">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">05 / {{ copy.todayKicker }}</p>
           <h2>{{ copy.todayTitle }}</h2>
@@ -104,7 +104,7 @@
         </div>
       </section>
 
-      <section id="meian-video" v-reveal class="heritage-chapter meian-video-section" aria-labelledby="meian-video-title">
+      <section id="meian-video" v-reveal="{ group: true }" class="heritage-chapter meian-video-section" aria-labelledby="meian-video-title">
         <header class="heritage-section-heading">
           <p class="heritage-chapter-no">06 / {{ t("meianVideoEyebrow") }}</p>
           <h2 id="meian-video-title">{{ t("meianVideoTitle") }}</h2>
@@ -117,7 +117,7 @@
         </figure>
       </section>
 
-      <section v-reveal class="heritage-sources" :aria-label="copy.sourcesTitle">
+      <section v-reveal="{ group: true, stagger: 70 }" class="heritage-sources" :aria-label="copy.sourcesTitle">
         <h2>{{ copy.sourcesTitle }}</h2>
         <a href="https://splgwh.seu.edu.cn/2021/0426/c25044a369506/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceHeritage }}</a>
         <a href="https://history.seu.edu.cn/2023/0822/c18650a456949/page.htm" target="_blank" rel="noreferrer">{{ copy.sourceHistory }}</a>

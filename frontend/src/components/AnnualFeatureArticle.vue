@@ -119,7 +119,7 @@ const remainingBlocks = computed(() => leadBlock.value ? blocks.value.slice(1) :
 const isDownloadEntry = computed(() => props.project.embedded_result?.type === "download");
 
 function blockRevealDelay(index) {
-  return (index % 3) * 60;
+  return (index % 4) * 80;
 }
 
 function openResult() {
