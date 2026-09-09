@@ -9,6 +9,10 @@ import {
 } from "../src/components/speechExpressionMotion.js";
 
 test("speech expression samples remain inside the natural motion ranges", () => {
+  assert.equal(SPEECH_EXPRESSION_TIMING.mouthMin, 0.18);
+  assert.equal(SPEECH_EXPRESSION_TIMING.mouthMax, 0.52);
+  assert.equal(SPEECH_EXPRESSION_TIMING.blinkDelayMin, 2200);
+  assert.equal(SPEECH_EXPRESSION_TIMING.blinkDelayMax, 5000);
   assert.equal(sampleMouthTarget(() => 0), SPEECH_EXPRESSION_TIMING.mouthMin);
   assert.equal(sampleMouthTarget(() => 1), SPEECH_EXPRESSION_TIMING.mouthMax);
   assert.equal(sampleBlinkDelay(() => 0), SPEECH_EXPRESSION_TIMING.blinkDelayMin);
