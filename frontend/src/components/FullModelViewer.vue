@@ -1,6 +1,11 @@
 <template>
   <div class="split-model model-placeholder model-viewer-shell" :aria-busy="state === 'loading'">
-    <div ref="stage" class="split-model-stage" :data-model-state="state">
+    <div
+      ref="stage"
+      class="split-model-stage"
+      :data-model-state="state"
+      :data-speech-active="props.speechActive ? 'true' : 'false'"
+    >
       <div v-if="state === 'loading'" class="split-model-status" role="status">
         <span class="split-model-skeleton" aria-hidden="true"></span>
         <span>{{ copy.loading }}</span>
@@ -11,8 +16,6 @@
       </div>
     </div>
     <div class="split-model-toolbar" :aria-label="copy.controls">
-      <label>{{ copy.blink }}<input v-model.number="blink" type="range" min="0" max="1" step="0.01" :disabled="state !== 'ready' || !available.blink" :aria-label="copy.blink"></label>
-      <label>{{ copy.mouth }}<input v-model.number="mouth" type="range" min="0" max="1" step="0.01" :disabled="state !== 'ready' || !available.mouth" :aria-label="copy.mouth"></label>
       <button type="button" :disabled="state !== 'ready'" :aria-label="copy.zoomIn" :title="copy.zoomIn" @click="zoom(0.85)">+</button>
       <button type="button" :disabled="state !== 'ready'" :aria-label="copy.zoomOut" :title="copy.zoomOut" @click="zoom(1.18)">−</button>
       <button type="button" :disabled="state !== 'ready'" :aria-label="copy.reset" :title="copy.reset" @click="resetView">↺</button>
@@ -28,24 +31,31 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { disposeModel, frameModelGroup, sampleFirstFrame } from "./modelScene.js";
 import { collectExpressionTargets, setExpression } from "./modelMorphs.js";
+import { createSpeechExpressionController } from "./speechExpressionMotion.js";
 import { useI18n } from "../i18n.js";
 
+const props = defineProps({
+  speechActive: {
+    type: Boolean,
+    default: false,
+  },
+});
 const { isEnglish } = useI18n();
 const copy = computed(() => isEnglish.value ? {
   loading: "Loading model…", error: "The model could not be displayed. Please retry.", retry: "Retry",
-  blink: "Blink", mouth: "Open mouth", controls: "Model controls", zoomIn: "Zoom in", zoomOut: "Zoom out", reset: "Reset view",
+  controls: "Model controls", zoomIn: "Zoom in", zoomOut: "Zoom out", reset: "Reset view",
   unavailable: "Some expressions are unavailable in this model", canvas: "Xie Yuanding full model",
 } : {
   loading: "正在加载模型…", error: "模型暂时无法显示，请重试", retry: "重新加载",
-  blink: "眨眼", mouth: "张嘴", controls: "模型显示控制", zoomIn: "放大", zoomOut: "缩小", reset: "重置视角",
+  controls: "模型显示控制", zoomIn: "放大", zoomOut: "缩小", reset: "重置视角",
   unavailable: "当前模型部分表情暂不可用", canvas: "谢远定完整模型",
 });
 const stage = ref(null), state = ref("loading");
-const blink = ref(0), mouth = ref(0);
 const available = ref({ blink: false, mouth: false });
 let targets = { blink: [], mouth: [] };
 let scene, camera, renderer, controls, group, resizeObserver;
 let generation = 0, unmounted = false, drawRequest = 0;
+let motionPreference;
 
 function render() {
   if (drawRequest || !renderer) return;
@@ -101,9 +111,11 @@ function keyControl(event) {
 }
 function contextLost(event) {
   event.preventDefault();
+  expressionController.stop();
   state.value = "error";
 }
 function cleanup() {
+  expressionController.stop();
   cancelAnimationFrame(drawRequest); drawRequest = 0;
   resizeObserver?.disconnect();
   controls?.dispose(); controls = null;
@@ -150,9 +162,8 @@ async function initialize() {
     frameModelGroup(group, false); scene.add(group);
     targets = collectExpressionTargets(group);
     available.value = { blink: targets.blink.length > 0, mouth: targets.mouth.length > 0 };
-    blink.value = mouth.value = 0;
     setExpression(targets.blink, 0); setExpression(targets.mouth, 0);
-    state.value = "ready"; resetView();
+    state.value = "ready"; resetView(); syncSpeechMotion();
   } catch (error) {
     loaded.forEach((gltf) => disposeModel(gltf.scene));
     if (!unmounted && attempt === generation) {
@@ -161,13 +172,30 @@ async function initialize() {
     }
   }
 }
-watch([blink, mouth], () => {
-  setExpression(targets.blink, blink.value);
-  setExpression(targets.mouth, mouth.value);
-  render();
+const expressionController = createSpeechExpressionController({
+  setMouth: (value) => setExpression(targets.mouth, value),
+  setBlink: (value) => setExpression(targets.blink, value),
+  render,
 });
-onMounted(initialize);
-onBeforeUnmount(() => { unmounted = true; generation++; cleanup(); });
+
+function syncSpeechMotion() {
+  const reducedMotion = motionPreference?.matches;
+  if (props.speechActive && state.value === "ready" && !reducedMotion) expressionController.start();
+  else expressionController.stop();
+}
+
+watch(() => props.speechActive, syncSpeechMotion);
+onMounted(() => {
+  motionPreference = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  motionPreference?.addEventListener?.("change", syncSpeechMotion);
+  initialize();
+});
+onBeforeUnmount(() => {
+  unmounted = true;
+  generation++;
+  motionPreference?.removeEventListener?.("change", syncSpeechMotion);
+  cleanup();
+});
 </script>
 
 <style scoped>
@@ -182,8 +210,6 @@ onBeforeUnmount(() => { unmounted = true; generation++; cleanup(); });
 .split-model-skeleton { width: 35%; height: 60%; border-radius: 8px; background: #d7ddd980; }
 .split-model-empty { position: absolute; inset: 45% 12% auto; text-align: center; font-size: 14px; pointer-events: none; }
 .split-model-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; flex: 0 0 auto; padding: 12px 4px; border-top: 1px solid #455b5728; }
-.split-model-toolbar label { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; cursor: pointer; }
-.split-model-toolbar input { width: 72px; height: 20px; padding: 0; accent-color: #812f2c; }
 .split-model-toolbar button { width: 36px; height: 36px; padding: 0; border: 1px solid #455b5733; border-radius: 4px; background: #f6f4ef; color: #293635; font: 22px Arial, sans-serif; cursor: pointer; }
 .split-model-toolbar button:first-of-type { margin-left: auto; }
 .split-model-toolbar button:disabled { opacity: .4; cursor: default; }
@@ -191,10 +217,6 @@ onBeforeUnmount(() => { unmounted = true; generation++; cleanup(); });
 .split-model .split-model-note { flex: 0 0 auto; margin: 0 !important; font-size: 12px; color: #606e6c; }
 @media (max-width: 720px) {
   .split-model-stage { height: 420px; flex: none; }
-  .split-model-toolbar { display: grid; grid-template-columns: repeat(6, 1fr); }
-  .split-model-toolbar label { grid-column: span 3; min-width: 0; white-space: nowrap; }
-  .split-model-toolbar input { flex: 1 1 0; width: 0; min-width: 0; }
-  .split-model-toolbar button:first-of-type { grid-column: 4; margin-left: 0; }
-  .split-model-toolbar button { justify-self: end; }
+  .split-model-toolbar { justify-content: flex-end; }
 }
 </style>

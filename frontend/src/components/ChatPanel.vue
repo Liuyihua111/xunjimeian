@@ -103,6 +103,7 @@ import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { askQuestion, generateSpeech } from "../api.js";
 import { useI18n } from "../i18n.js";
 
+const emit = defineEmits(["speech-active-change"]);
 const { isEnglish, t } = useI18n();
 const promptQueries = {
   q1: "谢远定是谁？",
@@ -141,6 +142,13 @@ let id = 0;
 let activeAudio = null;
 let activeSpeechId = null;
 let speechGeneration = 0;
+let speechActive = false;
+
+function setSpeechActive(active) {
+  if (speechActive === active) return;
+  speechActive = active;
+  emit("speech-active-change", active);
+}
 
 function pushMessage(payload) {
   const messageId = id += 1;
@@ -186,9 +194,12 @@ function findMessage(messageId) {
 }
 
 function stopActiveAudio(resetStatus = true) {
+  setSpeechActive(false);
   if (activeAudio) {
     activeAudio.pause();
     activeAudio.currentTime = 0;
+    activeAudio.onplaying = null;
+    activeAudio.onpause = null;
     activeAudio.onended = null;
     activeAudio.onerror = null;
     activeAudio = null;
@@ -219,14 +230,23 @@ async function playSpeech(message) {
   activeSpeechId = message.id;
   message.speechStatus = "playing";
 
+  audio.onplaying = () => {
+    if (activeAudio === audio) setSpeechActive(true);
+  };
+  audio.onpause = () => {
+    if (activeAudio === audio) setSpeechActive(false);
+  };
+
   audio.onended = () => {
     if (activeAudio !== audio) return;
+    setSpeechActive(false);
     message.speechStatus = "idle";
     activeAudio = null;
     activeSpeechId = null;
   };
   audio.onerror = () => {
     if (activeAudio !== audio) return;
+    setSpeechActive(false);
     message.speechStatus = "error";
     message.speechError = speechCopy.value.playback;
     activeAudio = null;

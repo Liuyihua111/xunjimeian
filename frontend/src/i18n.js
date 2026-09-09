@@ -17,7 +17,6 @@ const messages = {
     langLabel: "当前中文展示",
     langButton: "EN",
     footerCopy: "寻迹梅庵社会实践项目 · 东南大学",
-    footerNote: "Vue + Django 首版，图片、模型与正式史料可持续补充。",
 
     homeEyebrow: "东南大学社会实践项目",
     homeTitle: "寻迹梅庵",
@@ -173,7 +172,6 @@ const messages = {
     langLabel: "Switch to Chinese",
     langButton: "中",
     footerCopy: "Tracing Mei'an Social Practice Project · Southeast University",
-    footerNote: "First Vue + Django version. Images, models, and verified sources can be updated over time.",
 
     homeEyebrow: "Southeast University Social Practice Project",
     homeTitle: "Tracing Mei'an",

@@ -18,8 +18,8 @@
     <div class="home-foreground-sheet">
       <div class="home-meian-page-turn" aria-hidden="true">
         <picture class="home-meian-paper-cut">
-          <source media="(max-width: 700px)" srcset="/assets/images/meian-paper-cut-silhouette-mobile-20260902.svg">
-          <img src="/assets/images/meian-paper-cut-silhouette-20260902.svg" alt="">
+          <source media="(max-width: 700px)" srcset="/assets/images/meian-paper-cut-hero-texture-mobile-20260909.svg">
+          <img src="/assets/images/meian-paper-cut-hero-texture-20260909.svg" alt="">
         </picture>
       </div>
 
@@ -46,13 +46,13 @@
     </div>
     <div class="home-xie-grid">
       <div v-reveal="80" class="home-model-column">
-        <ModelViewer :info="modelInfo" />
+        <ModelViewer :info="modelInfo" :speech-active="speechActive" />
         <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
           <span>{{ homeCopy.xieLink }}</span>
           <span class="home-profile-arrow" aria-hidden="true">→</span>
         </button>
       </div>
-      <ChatPanel />
+      <ChatPanel @speech-active-change="handleSpeechActivity" />
     </div>
       </section>
 
@@ -256,6 +256,7 @@ const heroSection = ref(null);
 const xieSection = ref(null);
 const gallerySection = ref(null);
 const activeChapter = ref("");
+const speechActive = ref(false);
 let chapterObserver;
 let profileScrollPosition = 0;
 const modelInfo = ref({
@@ -370,6 +371,10 @@ function scrollToSection(id) {
   activeChapter.value = id;
   const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
   document.getElementById(id)?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+}
+
+function handleSpeechActivity(active) {
+  speechActive.value = active;
 }
 
 function openProfile() {

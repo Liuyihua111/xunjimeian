@@ -30,5 +30,7 @@ test('delivered model embeds textures and named eye/mouth morphs', () => {
   assert.ok(gltf.images.every(i => Number.isInteger(i.bufferView)));
   const component = readFileSync(new URL('../src/components/FullModelViewer.vue', import.meta.url), 'utf8');
   assert.doesNotMatch(component, /body\.glb|clothing\.glb|autoRotate|mixer\.update/);
+  assert.doesNotMatch(component, /type="range"|v-model\.number="(?:blink|mouth)"/);
   assert.match(component, /frameModelGroup\(group, false\)/);
+  assert.match(component, /createSpeechExpressionController/);
 });

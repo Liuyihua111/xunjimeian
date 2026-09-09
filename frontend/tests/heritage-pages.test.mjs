@@ -38,6 +38,31 @@ test("archive overview keeps 2026 featured and orders earlier years newest first
   assert.match(page, /featured \? \[featured, \.\.\.rest\] : list/);
 });
 
+test("hero-texture paper cuts match the opening image paper and fade a complete Mei'an card", () => {
+  for (const variant of ["", "-mobile"]) {
+    const svg = read(`public/assets/images/meian-paper-cut-hero-texture${variant}-20260909.svg`);
+    assert.match(svg, /id="paper-foundation" fill="#f3f1ec"/);
+    assert.match(svg, /id="hero-paper-texture"/);
+    assert.match(svg, /id="paper-texture-layer"/);
+    assert.match(svg, /id="meian-pattern-card"[^>]*data-fade-depth="75%"/);
+    assert.match(svg, /id="faded-meian-pattern" mask="url\(#pattern-inward-fade\)"/);
+    assert.match(svg, /<use href="#meian-pattern-card"/);
+    assert.match(svg, /id="watercolor-paper"/);
+    assert.match(svg, /<feTurbulence/);
+    assert.match(svg, /<feDisplacementMap/);
+    assert.match(svg, /id="octagonal-window"/);
+    assert.match(svg, /id="entrance"/);
+    assert.match(svg, /id="meian-plaque"/);
+    assert.match(svg, /id="straight-architectural-edge"/);
+    assert.ok((svg.match(/<linearGradient\b/g) || []).length >= 3);
+    assert.doesNotMatch(svg, /<(?:text|animate|script|feDropShadow)\b/);
+    assert.match(svg, /href="data:image\/png;base64,/);
+    assert.doesNotMatch(svg, /href="https?:/);
+    const card = svg.split('id="meian-pattern-card"')[1]?.split('</g>')[0] || "";
+    assert.doesNotMatch(card, /\bstroke=/);
+  }
+});
+
 test("home page connects the hero, avatar, and gallery as tracked chapters", () => {
   const page = read("src/pages/HomePage.vue");
   const styles = read("src/styles.css");
@@ -48,8 +73,8 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(page, /home-foreground-sheet/);
   assert.match(page, /home-foreground-body/);
   assert.match(page, /home-meian-page-turn/);
-  assert.match(page, /meian-paper-cut-silhouette-20260902\.svg/);
-  assert.match(page, /meian-paper-cut-silhouette-mobile-20260902\.svg/);
+  assert.match(page, /meian-paper-cut-hero-texture-20260909\.svg/);
+  assert.match(page, /meian-paper-cut-hero-texture-mobile-20260909\.svg/);
   assert.doesNotMatch(page, /home-meian-transition-lines/);
   assert.doesNotMatch(page, />梅庵<\/text>/);
   assert.doesNotMatch(page, /home-hero-silhouette/);

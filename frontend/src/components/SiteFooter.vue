@@ -1,7 +1,6 @@
 <template>
   <footer class="site-footer">
     <p>{{ t("footerCopy") }}</p>
-    <p>{{ t("footerNote") }}</p>
   </footer>
 </template>
 
