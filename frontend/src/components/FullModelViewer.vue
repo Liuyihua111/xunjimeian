@@ -192,8 +192,8 @@ onBeforeUnmount(() => { unmounted = true; generation++; cleanup(); });
 @media (max-width: 720px) {
   .split-model-stage { height: 420px; flex: none; }
   .split-model-toolbar { display: grid; grid-template-columns: repeat(6, 1fr); }
-  .split-model-toolbar label { grid-column: span 3; }
-  .split-model-toolbar input { width: 100%; min-width: 40px; }
+  .split-model-toolbar label { grid-column: span 3; min-width: 0; white-space: nowrap; }
+  .split-model-toolbar input { flex: 1 1 0; width: 0; min-width: 0; }
   .split-model-toolbar button:first-of-type { grid-column: 4; margin-left: 0; }
   .split-model-toolbar button { justify-self: end; }
 }
