@@ -148,7 +148,7 @@ const messages = {
 
     archiveEyebrow: "成果归档",
     archiveTitle: "五年成果总览",
-    archiveLede: "从项目起点、数字展馆、梅庵元宇宙、AI 青年叙事到 2026 谢远定数字分身，逐年查看“寻迹梅庵”的成果积累。"
+    archiveLede: "从红色寻访、数字展馆、梅庵元宇宙、AI青年叙事到谢远定数字人，五年实践成果在此汇聚，勾勒“寻迹梅庵”从史料寻访到数智传承的完整实践脉络。"
     ,archiveLoading: "正在读取年度成果"
     ,archiveErrorTitle: "成果暂时无法读取"
     ,archiveErrorText: "请稍后重试，或返回历年成果总览"
@@ -303,7 +303,7 @@ const messages = {
 
     archiveEyebrow: "Archive",
     archiveTitle: "Five-Year Outcome Overview",
-    archiveLede: "Explore Tracing Mei'an year by year, from the project origin and digital exhibition to the 2026 Xie Yuanding avatar."
+    archiveLede: "From red-history fieldwork and a digital Mei'an exhibition to the Mei'an metaverse, AI youth storytelling, and the Xie Yuanding digital avatar, five years of practice come together to trace a complete journey from archival research to digital heritage."
     ,archiveLoading: "Loading yearly outcomes"
     ,archiveErrorTitle: "Outcomes are temporarily unavailable"
     ,archiveErrorText: "Please try again later or return to the yearly overview"

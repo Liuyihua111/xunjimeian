@@ -143,25 +143,26 @@ const zh = {
   profileKicker: "基础档案", profileTitle: "六朝松畔的一座百年小筑",
   profileText: "梅庵位于东南大学四牌楼校区西北角，西临进香河，北近鸡笼山。它从纪念教育先驱李瑞清的校园建筑，逐渐成为讲学、集会、艺术教育与红色文化展陈的重要空间。",
   facts: [
-    { label: "建成时间", value: "1914 年" }, { label: "建筑风格", value: "西方古典复兴主义" },
+    { label: "现存建筑登记", value: "1914 年" }, { label: "建筑风格", value: "西方古典复兴主义" },
     { label: "建筑面积", value: "212.4 平方米" }, { label: "历史位置", value: "四牌楼校区 · 六朝松旁" }
   ],
   originKicker: "梅庵溯源", originTitle: "因人得名，也因教育理想而延续",
   originText: [
-    "南京高等师范学校成立后，校长江谦为纪念两江师范学堂监督李瑞清的办学之功，在六朝松旁以带皮松木为梁架建起三间茅屋，并取李瑞清之号命名为“梅庵”。建筑虽小，却从一开始就被赋予纪念教育先驱、凝聚校园精神的意义。",
+    "梅庵的空间前身可追溯至三江、两江师范学堂时期六朝松旁的三间茅屋，早期曾供地理教员姚明辉使用。南京高等师范学校成立后，校长江谦为纪念两江师范学堂监督李瑞清的办学之功，取李瑞清之号将这处空间命名为“梅庵”；现存建筑档案登记建于1914年。",
     "李瑞清是近代书法家、美术教育先驱和高等教育的重要奠基者。任职两江师范学堂期间，他重视中西学术融通，也格外珍视青年人才；“梅庵”之名由此将一位教育者的理想，与师生可以进入、使用并共同维护的校园公共空间相连。",
-    "梅庵建成后，门前曾悬挂“嚼得菜根，做得大事”的校训木匾；1916 年，古琴家王燕卿曾在此授琴。进入 20 世纪 20 年代，这里又成为会议、讲习和青年活动的场所，从纪念空间逐渐承接校园中的思想交流与红色历史。"
+    "梅庵门前曾悬挂李瑞清题写的“嚼得菜根，做得大事”校训木匾。1917年，古琴家王燕卿受聘到南京高等师范学校教授古琴，梅庵由此与近代琴学教育相连；进入20世纪20年代，这里又成为会议、讲习和青年活动的重要空间。"
   ],
   spiritKicker: "菜根精神", spiritQuote: "嚼得菜根，做得大事",
-  spiritText: "这句校训强调耐劳、务实与担当。1916 年，古琴家王燕卿在此授琴，梅庵也成为梅庵琴派传播的重要空间。建筑、艺术与育人传统由此交织。",
+  spiritText: "李瑞清题写的这句校训强调耐劳、务实与担当。1917年，古琴家王燕卿受聘到南京高等师范学校教授古琴，梅庵也成为梅庵琴派传播的重要空间。建筑、艺术与育人传统由此交织。",
   timelineKicker: "建筑沿革", timelineTitle: "从三间茅屋到文物建筑",
   timeline: [
-    { year: "1914", title: "梅庵建成", text: "江谦为纪念李瑞清，在六朝松旁建三间茅屋并命名梅庵。" },
+    { year: "三江、两江时期", title: "茅屋前身", text: "六朝松旁已有三间茅屋，早期曾供地理教员姚明辉使用。" },
+    { year: "1914", title: "现存建筑登记", text: "现存梅庵建筑档案登记建于1914年，延续了早期梅庵空间与名称。" },
     { year: "1933", title: "改建平房", text: "中央大学将梅庵改建为砖混结构的音乐教室，形成中西合璧的现存形态。" },
     { year: "1947", title: "重题匾额", text: "著名史学家柳诒徵题写“梅庵”二字，匾额悬于建筑正中。" },
     { year: "1992", title: "文物保护", text: "梅庵被列为南京市文物保护单位。" },
     { year: "2006", title: "纳入国保", text: "梅庵随中央大学旧址纳入全国重点文物保护单位。" },
-    { year: "2021", title: "环境提升", text: "校园开展梅庵周边景观与展陈提升，让建筑保护与公共教育相互支撑。" },
+    { year: "2021", title: "环境提升", text: "学校形成梅庵周边景观环境提升设计，并推进相关整治工作。" },
     { year: "2023", title: "教育基地", text: "梅庵成为江苏省党史教育基地，持续服务校史与红色文化教育。" }
   ],
   todayKicker: "今日梅庵", todayTitle: "收藏历史，也继续孕育青年力量",
@@ -189,25 +190,26 @@ const en = {
   profileKicker: "Profile", profileTitle: "A century-old building beside the Six Dynasties Pine",
   profileText: "Mei'an stands in the northwest corner of Southeast University's Sipailou Campus. Created to honor educator Li Ruiqing, it later became a place for teaching, assembly, art education, and exhibitions of revolutionary history.",
   facts: [
-    { label: "Built", value: "1914" }, { label: "Style", value: "Western Classical Revival" },
+    { label: "Present building registered", value: "1914" }, { label: "Style", value: "Western Classical Revival" },
     { label: "Floor area", value: "212.4 m²" }, { label: "Location", value: "Sipailou Campus" }
   ],
   originKicker: "Origins", originTitle: "Named for an educator and sustained by an educational ideal",
   originText: [
-    "After Nanjing Higher Normal School was founded, president Jiang Qian built a three-room thatched hall beside the Six Dynasties Pine in memory of Li Ruiqing and named it after Li's art name, Mei'an. Though modest in scale, it was conceived as a memorial to an educational pioneer and a shared campus ideal.",
+    "The spatial predecessor of Mei'an can be traced to a three-room thatched hall beside the Six Dynasties Pine during the Sanjiang and Liangjiang Normal School era, when it was used by geography instructor Yao Minghui. After Nanjing Higher Normal School was founded, president Jiang Qian named the space Mei'an in memory of Li Ruiqing; the present building is registered as dating to 1914.",
     "Li Ruiqing was a calligrapher, art-education pioneer, and influential modern educator. His commitment to learning across Chinese and Western traditions and to young talent gave the building a lasting educational meaning; Mei'an turned remembrance into a public place shared by teachers and students.",
-    "The maxim 'Endure humble fare; accomplish great work' once hung at the entrance, and guqin master Wang Yanqing taught here in 1916. By the 1920s, Mei'an was also used for meetings, lectures, and youth activities, linking its memorial role with campus intellectual exchange and later revolutionary history."
+    "A wooden plaque bearing Li Ruiqing's maxim 'Endure humble fare; accomplish great work' once hung at the entrance. In 1917, guqin master Wang Yanqing joined Nanjing Higher Normal School to teach the instrument. By the 1920s, Mei'an had also become an important setting for meetings, lectures, and youth activities."
   ],
   spiritKicker: "Caigen Spirit", spiritQuote: "Endure humble fare; accomplish great work",
-  spiritText: "The maxim values endurance, practical effort, and responsibility. In 1916, guqin master Wang Yanqing taught here, making Mei'an an important home of the Mei'an school of qin music.",
+  spiritText: "Inscribed by Li Ruiqing, the maxim values endurance, practical effort, and responsibility. In 1917, guqin master Wang Yanqing joined Nanjing Higher Normal School to teach the instrument, making Mei'an an important home of the Mei'an school of qin music.",
   timelineKicker: "Architecture", timelineTitle: "From a thatched hall to protected heritage",
   timeline: [
-    { year: "1914", title: "Mei'an built", text: "Jiang Qian created a three-room thatched hall in memory of Li Ruiqing." },
+    { year: "Sanjiang–Liangjiang era", title: "Thatched-hall predecessor", text: "A three-room thatched hall beside the Six Dynasties Pine was used by geography instructor Yao Minghui." },
+    { year: "1914", title: "Present building registered", text: "The present Mei'an building is registered as dating to 1914, carrying forward the earlier space and name." },
     { year: "1933", title: "Rebuilt", text: "Central University rebuilt it as a brick-and-concrete music classroom." },
     { year: "1947", title: "Plaque renewed", text: "Historian Liu Yizheng inscribed the Mei'an plaque." },
     { year: "1992", title: "Municipal protection", text: "Mei'an became a protected cultural property of Nanjing." },
     { year: "2006", title: "National protection", text: "It became part of the nationally protected Central University historic site." },
-    { year: "2021", title: "Landscape renewal", text: "The surrounding landscape and exhibition environment were improved." },
+    { year: "2021", title: "Landscape planning", text: "The university developed a landscape improvement plan and advanced related remediation work." },
     { year: "2023", title: "Education base", text: "Mei'an was recognized as a Jiangsu Party-history education base." }
   ],
   todayKicker: "Mei'an Today", todayTitle: "Preserving history while inspiring new generations",

@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import test from "node:test";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+const pngSize = (path) => {
+  const data = readFileSync(new URL(`../${path}`, import.meta.url));
+  return [data.readUInt32BE(16), data.readUInt32BE(20)];
+};
 
 test("site header uses the official university lockup", () => {
   const header = read("src/components/SiteHeader.vue");
@@ -38,6 +42,27 @@ test("archive overview keeps 2026 featured and orders earlier years newest first
   assert.match(page, /featured \? \[featured, \.\.\.rest\] : list/);
 });
 
+test("annual archive titles use the agreed theme names and omit the 2026 hero watermark", () => {
+  const projects = JSON.parse(read("public/assets/data/projects.json")).results;
+  const copy = read("src/i18n.js");
+  const styles = read("src/styles.css");
+  const expectedTitles = new Map([
+    [2022, "寻迹梅庵，薪火相传"],
+    [2023, "数字化视域下“团二大”红色历史的时空对话"],
+    [2024, "元宇宙视域下“团二大”红色历史的“交互式”时空建构"],
+    [2025, "AI浪潮下团二大红色历史的青年叙事"],
+    [2026, "数智赋能人物新生"]
+  ]);
+
+  for (const project of projects) {
+    assert.equal(project.title, expectedTitles.get(project.year));
+  }
+  assert.match(copy, /五年实践成果在此汇聚/);
+  assert.doesNotMatch(copy, /逐年查看/);
+  assert.match(copy, /five years of practice come together/);
+  assert.doesNotMatch(styles, /\.archive-detail-hero\.featured::after/);
+});
+
 test("hero-texture paper cuts match the opening image paper and fade a complete Mei'an card", () => {
   for (const variant of ["", "-mobile"]) {
     const svg = read(`public/assets/images/meian-paper-cut-hero-texture${variant}-20260909.svg`);
@@ -63,9 +88,13 @@ test("hero-texture paper cuts match the opening image paper and fade a complete 
   }
 });
 
-test("home page connects the hero, avatar, and gallery as tracked chapters", () => {
+test("home page connects four tracked exhibition chapters and opens the model on demand", () => {
   const page = read("src/pages/HomePage.vue");
   const styles = read("src/styles.css");
+  assert.match(page, /home-archive-background-dongda-meian-gate-calligraphy-20260910\.png/);
+  assert.match(page, /home-archive-background-dongda-meian-mobile-gate-calligraphy-20260910\.png/);
+  assert.deepEqual(pngSize("public/assets/images/home-archive-background-dongda-meian-gate-calligraphy-20260910.png"), [1672, 941]);
+  assert.deepEqual(pngSize("public/assets/images/home-archive-background-dongda-meian-mobile-gate-calligraphy-20260910.png"), [941, 1672]);
 
   assert.match(page, /home-chapter-preview/);
   assert.match(page, /home-chapter-preview-band/);
@@ -80,6 +109,8 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.doesNotMatch(page, /home-hero-silhouette/);
   assert.match(page, /home-chapter-watermark[^>]*>01</);
   assert.match(page, /home-chapter-watermark[^>]*>02</);
+  assert.match(page, /home-chapter-watermark[^>]*>03</);
+  assert.match(page, /home-chapter-watermark[^>]*>04</);
   assert.match(page, /home-section-divider/);
   assert.match(page, /home-divider-path-desktop/);
   assert.match(page, /home-divider-path-mobile/);
@@ -91,8 +122,24 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(page, /quickGallery:\s*"数字梅庵展馆"/);
   assert.match(page, /quickXie:\s*"Xie Yuanding Avatar"/);
   assert.match(page, /quickGallery:\s*"Digital Mei'an"/);
-  assert.match(page, /activeChapter === 'home-xie-avatar'/);
-  assert.match(page, /activeChapter === 'home-digital-meian'/);
+  assert.match(page, /quickDocumentary:\s*"团二大纪录片"/);
+  assert.match(page, /quickSong:\s*"梅庵歌曲"/);
+  for (const id of ["home-xie-avatar", "home-digital-meian", "home-congress-documentary", "home-meian-song"]) {
+    assert.match(page, new RegExp(id));
+  }
+  assert.match(page, /HomeMediaDivider v-reveal variant="gallery-documentary"/);
+  assert.match(page, /HomeMediaDivider v-reveal variant="documentary-song"/);
+  assert.match(page, /跨时空数字人短片：《谢远定：从梅庵出发》/);
+  assert.match(page, /Across-Time Digital Avatar Short Film: Xie Yuanding, Setting Out from Mei'an/);
+  assert.match(page, /ChatPanel :show-status="false"/);
+  assert.match(page, /home-avatar-video-stage/);
+  assert.match(page, /xie-yuanding-feature-20260912\.mp4/);
+  assert.match(page, /controls[\s\S]*?playsinline[\s\S]*?preload="metadata"/);
+  assert.match(page, /HomeSongArchive :tracks="songTracks"/);
+  assert.match(page, /Array\.from\(\{ length: 10 \}/);
+  assert.match(page, /modelMounted/);
+  assert.match(page, /ModelViewer v-if="modelMounted"/);
+  assert.match(page, /function openModel\(\)/);
   assert.match(page, /IntersectionObserver/);
   assert.match(page, /profileCloseButton\.value\?\.focus\(\{ preventScroll: true \}\)/);
   assert.match(page, /profileTrigger\.value\?\.focus\(\{ preventScroll: true \}\)/);
@@ -109,12 +156,44 @@ test("home page connects the hero, avatar, and gallery as tracked chapters", () 
   assert.match(styles, /\.home-chapter-preview::before\s*\{\s*content:\s*none;/);
   assert.match(styles, /\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*1;/);
   assert.match(styles, /\.home-section-divider\.is-reveal-visible \.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;/);
-  assert.match(styles, /\.home-xie-grid \.model-fallback\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
+  assert.match(styles, /\.home-avatar-video-stage\s*\{[\s\S]*?background:/);
   assert.match(styles, /\.home-gallery-frame\s*\{[\s\S]*?border:\s*0;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-xie-grid\s*\{[\s\S]*?background:\s*rgba\(248, 247, 243, 0\.36\);/);
   assert.match(styles, /\.home-profile-dialog\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?inset:\s*0;/);
   assert.match(styles, /body\.profile-modal-open\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?--profile-modal-scroll-offset/);
+  assert.match(styles, /xie-model-meian-stage-desktop-20260912\.webp/);
+  assert.match(styles, /xie-model-meian-stage-mobile-20260912\.webp/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;[\s\S]*?\.home-section-divider\.is-reveal-visible \.home-divider-blossom\s*\{\s*animation:\s*none;/);
+
+  const video = statSync(new URL("../public/assets/video/xie-yuanding-feature-20260912.mp4", import.meta.url));
+  assert.ok(video.size > 18_000_000);
+});
+
+test("home song archive provides ten disabled placeholders until audio arrives", () => {
+  const component = read("src/components/HomeSongArchive.vue");
+
+  assert.match(component, /home-song-archive/);
+  assert.match(component, /v-for="\(track, index\) in tracks"/);
+  assert.match(component, /:disabled="!track\.src"/);
+  assert.match(component, /audioElement\.value\?\.pause\(\)/);
+});
+
+test("home media dividers use VHS cassettes and staff notation without film strips or a waveform", () => {
+  const component = read("src/components/HomeMediaDivider.vue");
+  const styles = read("src/styles.css");
+
+  assert.equal((component.match(/home-media-divider-vhs-shell/g) || []).length, 2);
+  assert.equal((component.match(/home-media-divider-vhs-reels/g) || []).length, 2);
+  assert.equal((component.match(/home-media-divider-vhs-window/g) || []).length, 2);
+  assert.equal((component.match(/home-media-divider-vhs-label/g) || []).length, 2);
+  assert.equal((component.match(/home-media-divider-tape/g) || []).length, 2);
+  assert.match(component, /home-media-divider-staff/);
+  assert.equal((component.match(/<circle cx="(?:860|910|960|1024|1081|1138)"/g) || []).length, 6);
+  assert.doesNotMatch(component, /home-media-divider-film-(?:shell|sprockets|frames|scenes)/);
+  assert.doesNotMatch(component, /C842 72 842 52 862 52/);
+  assert.match(styles, /\.home-media-divider-vhs \.home-media-divider-vhs-reels\s*\{[\s\S]*?transition-delay:\s*320ms;/);
+  assert.match(styles, /\.home-media-divider-vhs \.home-media-divider-vhs-window\s*\{[\s\S]*?transition-delay:\s*460ms;/);
+  assert.match(styles, /\.home-media-divider-sound \.home-media-divider-note-stem\s*\{[\s\S]*?transition-delay:\s*900ms;/);
 });
 
 test("chat panel keeps the window label without the secondary interview title", () => {
@@ -122,6 +201,8 @@ test("chat panel keeps the window label without the secondary interview title", 
 
   assert.match(chatPanel, /t\("chatWindow"\)/);
   assert.doesNotMatch(chatPanel, /t\("chatTitle"\)/);
+  assert.match(chatPanel, /v-if="showStatus" class="status-pill"/);
+  assert.match(chatPanel, /showStatus:[\s\S]*?default:\s*true/);
 });
 
 test("Mei'an page exposes the complete exhibition sequence and local news video", () => {
@@ -132,6 +213,11 @@ test("Mei'an page exposes the complete exhibition sequence and local news video"
   }
   assert.match(page, /meian-nanjing-news\.mp4/);
   assert.doesNotMatch(page, /li-ruiqing-statue/);
+  assert.match(page, /现存建筑登记/);
+  assert.match(page, /三江、两江时期/);
+  assert.match(page, /1917年/);
+  assert.match(page, /形成梅庵周边景观环境提升设计，并推进相关整治工作/);
+  assert.doesNotMatch(page, /1916 年/);
 });
 
 test("Second CYL Congress page exposes the complete exhibition sequence", () => {
@@ -142,6 +228,14 @@ test("Second CYL Congress page exposes the complete exhibition sequence", () => 
   }
   assert.match(page, /heritage-gallery-ideas/);
   assert.doesNotMatch(page, /marxism-exhibit/);
+  assert.match(page, /label: "到会代表"/);
+  assert.match(page, /value: "16个省"/);
+  assert.match(page, /label: "地方团组织"/);
+  assert.match(page, /代表全国2000多名团员/);
+  assert.doesNotMatch(page, /value: "2000余名"/);
+  assert.match(page, /在政策上，S\.Y\.须完全服从C\.P\.的指导/);
+  assert.match(page, /件团二大会议文件/);
+  assert.doesNotMatch(page, /6月12日|7月15日|7月24日/);
 });
 
 test("the 2023 exhibit and 2024 Windows VR download keep annual result entries", () => {

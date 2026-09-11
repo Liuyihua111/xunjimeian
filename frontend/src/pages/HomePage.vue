@@ -2,10 +2,10 @@
   <div class="home-layered-scroll">
     <section ref="heroSection" id="home-hero" class="home-official-hero" aria-label="寻迹梅庵首页主视觉">
       <picture class="home-official-hero-picture">
-        <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-20260822.png">
+        <source media="(max-width: 700px)" srcset="/assets/images/home-archive-background-dongda-meian-mobile-gate-calligraphy-20260910.png">
         <img
           class="home-official-hero-image"
-          src="/assets/images/home-archive-background-dongda-meian-title-small-20260821.png"
+          src="/assets/images/home-archive-background-dongda-meian-gate-calligraphy-20260910.png"
           alt="东大梅庵，数字化体验平台"
         >
       </picture>
@@ -26,14 +26,9 @@
       <div class="home-foreground-body">
         <div class="home-chapter-preview-band">
         <nav class="home-chapter-preview" :aria-label="homeCopy.chapterPreviewLabel">
-          <button type="button" @click="scrollToSection('home-xie-avatar')">
-            <span>01</span>
-            <strong>{{ homeCopy.xieTitle }}</strong>
-          </button>
-          <span class="home-chapter-preview-rule" aria-hidden="true"></span>
-          <button type="button" @click="scrollToSection('home-digital-meian')">
-            <span>02</span>
-            <strong>{{ homeCopy.galleryTitle }}</strong>
+          <button v-for="chapter in chapters" :key="chapter.id" type="button" @click="scrollToSection(chapter.id)">
+            <span>{{ chapter.number }}</span>
+            <strong>{{ chapter.title }}</strong>
           </button>
         </nav>
       </div>
@@ -46,14 +41,39 @@
     </div>
     <div class="home-xie-grid">
       <div v-reveal="80" class="home-model-column">
-        <ModelViewer :info="modelInfo" :speech-active="speechActive" />
-        <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
-          <span>{{ homeCopy.xieLink }}</span>
-          <span class="home-profile-arrow" aria-hidden="true">→</span>
-        </button>
+        <div class="home-avatar-video-stage" :aria-label="homeCopy.videoPlaceholder">
+          <span class="home-avatar-video-mark" aria-hidden="true"></span>
+          <p>{{ homeCopy.videoPlaceholder }}</p>
+        </div>
+        <div class="home-avatar-actions">
+          <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
+            <span>{{ homeCopy.xieLink }}</span>
+            <span class="home-profile-arrow" aria-hidden="true">→</span>
+          </button>
+          <button ref="modelTrigger" class="home-profile-trigger is-model" type="button" @click="openModel">
+            <span>{{ homeCopy.modelLink }}</span>
+            <span class="home-profile-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
       </div>
-      <ChatPanel @speech-active-change="handleSpeechActivity" />
+      <ChatPanel :show-status="false" @speech-active-change="handleSpeechActivity" />
     </div>
+    <figure v-reveal="140" class="home-xie-feature-film">
+      <div class="home-xie-feature-film-frame">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          src="/assets/video/xie-yuanding-feature-20260912.mp4"
+          @error="xieVideoFailed = true"
+        ></video>
+        <p v-if="xieVideoFailed" role="status">{{ homeCopy.videoError }}</p>
+      </div>
+      <figcaption>
+        <strong>{{ homeCopy.videoTitle }}</strong>
+        <span>{{ homeCopy.videoMeta }}</span>
+      </figcaption>
+    </figure>
       </section>
 
       <div v-reveal class="home-section-divider" aria-hidden="true">
@@ -151,28 +171,50 @@
       </div>
     </div>
         </section>
+
+        <HomeMediaDivider v-reveal variant="gallery-documentary" />
+
+        <section ref="documentarySection" id="home-congress-documentary" class="section home-feature-section home-documentary-section">
+          <span class="home-chapter-watermark" aria-hidden="true">03</span>
+          <div v-reveal class="section-heading home-section-heading">
+            <p class="eyebrow">{{ homeCopy.documentaryEyebrow }}</p>
+            <h2>{{ homeCopy.documentaryTitle }}</h2>
+          </div>
+          <div v-reveal="100" class="home-media-stage home-documentary-stage">
+            <div class="home-documentary-frame" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <p>{{ homeCopy.contentPending }}</p>
+          </div>
+        </section>
+
+        <HomeMediaDivider v-reveal variant="documentary-song" />
+
+        <section ref="songSection" id="home-meian-song" class="section home-feature-section home-song-section">
+          <span class="home-chapter-watermark" aria-hidden="true">04</span>
+          <div v-reveal class="section-heading home-section-heading">
+            <p class="eyebrow">{{ homeCopy.songEyebrow }}</p>
+            <h2>{{ homeCopy.songTitle }}</h2>
+          </div>
+          <div v-reveal="100" class="home-media-stage home-song-stage">
+            <HomeSongArchive :tracks="songTracks" :labels="homeCopy.songPlayer" />
+          </div>
+        </section>
       </div>
     </div>
   </div>
 
   <nav :class="['home-quick-nav', { 'is-visible': activeChapter }]" :aria-label="homeCopy.quickNavLabel">
     <button
+      v-for="chapter in chapters"
+      :key="chapter.id"
       type="button"
-      :class="{ 'is-active': activeChapter === 'home-xie-avatar' }"
-      :aria-current="activeChapter === 'home-xie-avatar' ? 'location' : undefined"
-      @click="scrollToSection('home-xie-avatar')"
+      :class="{ 'is-active': activeChapter === chapter.id }"
+      :aria-current="activeChapter === chapter.id ? 'location' : undefined"
+      @click="scrollToSection(chapter.id)"
     >
-      <span class="home-quick-index">01</span>
-      <span class="home-quick-label">{{ homeCopy.quickXie }}</span>
-    </button>
-    <button
-      type="button"
-      :class="{ 'is-active': activeChapter === 'home-digital-meian' }"
-      :aria-current="activeChapter === 'home-digital-meian' ? 'location' : undefined"
-      @click="scrollToSection('home-digital-meian')"
-    >
-      <span class="home-quick-index">02</span>
-      <span class="home-quick-label">{{ homeCopy.quickGallery }}</span>
+      <span class="home-quick-index">{{ chapter.number }}</span>
+      <span class="home-quick-label">{{ chapter.shortTitle }}</span>
     </button>
   </nav>
 
@@ -217,6 +259,21 @@
     </article>
   </dialog>
 
+  <dialog ref="modelDialog" class="home-model-dialog" @click="handleModelBackdrop" @close="handleModelClosed">
+    <div class="home-model-dialog-shell">
+      <header class="home-gallery-dialog-header">
+        <div>
+          <p class="eyebrow">{{ homeCopy.modelEyebrow }}</p>
+          <h2>{{ homeCopy.modelTitle }}</h2>
+        </div>
+        <button ref="modelCloseButton" type="button" class="home-gallery-close" @click="closeModel" :aria-label="homeCopy.modelClose">×</button>
+      </header>
+      <div class="home-model-dialog-stage">
+        <ModelViewer v-if="modelMounted" :info="modelInfo" :speech-active="speechActive" />
+      </div>
+    </div>
+  </dialog>
+
   <dialog ref="galleryDialog" class="home-gallery-dialog" @click="handleGalleryBackdrop">
     <div class="home-gallery-dialog-shell">
       <header class="home-gallery-dialog-header">
@@ -240,8 +297,10 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import ChatPanel from "../components/ChatPanel.vue";
+import HomeMediaDivider from "../components/HomeMediaDivider.vue";
+import HomeSongArchive from "../components/HomeSongArchive.vue";
 import ModelViewer from "../components/ModelViewer.vue";
 import { fetchModelInfo } from "../api.js";
 import { useI18n } from "../i18n.js";
@@ -250,13 +309,20 @@ const { isEnglish } = useI18n();
 const digitalMeianUrl = "https://www.720yun.com/vr/658jOzey5w8";
 const galleryDialog = ref(null);
 const profileDialog = ref(null);
+const modelDialog = ref(null);
 const profileTrigger = ref(null);
 const profileCloseButton = ref(null);
+const modelTrigger = ref(null);
+const modelCloseButton = ref(null);
 const heroSection = ref(null);
 const xieSection = ref(null);
 const gallerySection = ref(null);
+const documentarySection = ref(null);
+const songSection = ref(null);
 const activeChapter = ref("");
 const speechActive = ref(false);
+const modelMounted = ref(false);
+const xieVideoFailed = ref(false);
 let chapterObserver;
 let profileScrollPosition = 0;
 const modelInfo = ref({
@@ -270,9 +336,17 @@ const modelInfo = ref({
 const homeCopy = computed(() => {
   if (isEnglish.value) {
     return {
-      xieEyebrow: "Xie Yuanding Avatar",
-      xieTitle: "Talk with Xie Yuanding",
+      xieEyebrow: "Talk with Xie Yuanding",
+      xieTitle: "Xie Yuanding Avatar",
       xieLink: "Learn about Xie Yuanding",
+      modelLink: "View 3D avatar",
+      videoPlaceholder: "Portrait film coming soon",
+      modelEyebrow: "Digital representation",
+      modelTitle: "3D model of Xie Yuanding",
+      modelClose: "Close 3D model",
+      videoTitle: "Across-Time Digital Avatar Short Film: Xie Yuanding, Setting Out from Mei'an",
+      videoMeta: "Digital portrait archive · 01:37",
+      videoError: "The video could not be loaded. Please try again later.",
       profileEyebrow: "Person and era",
       profileTitle: "Xie Yuanding · From Mei'an to the revolutionary movement",
       profileIntro: "Xie Yuanding (1899–1928), known as Boping, was born in Zaoyang, Hubei. A student of Nanjing Higher Normal School, a predecessor of Southeast University, he became an early Party and Youth League organizer and a participant in the Second National Congress of the Socialist Youth League.",
@@ -295,19 +369,44 @@ const homeCopy = computed(() => {
       galleryTitle: "Digital Mei'an Exhibition Hall",
       galleryCardTitle: "2023 Digital Mei'an",
       galleryCardMeta: "3D modeling · VR exhibition",
+      documentaryEyebrow: "Moving-image archive",
+      documentaryTitle: "Second CYL Congress Documentary",
+      songEyebrow: "Sound archive",
+      songTitle: "Song of Mei'an",
+      songPlayer: {
+        currentTrack: "Current track",
+        collection: "Mei'an audio collection",
+        catalogue: "Track catalogue",
+        trackCount: "10 tracks",
+        play: "Play current track",
+        pause: "Pause current track",
+        progress: "Playback progress",
+        pending: "Pending"
+      },
+      contentPending: "Content coming soon",
       enlarge: "Enlarge",
       openExternal: "Open in new window",
-      chapterPreviewLabel: "Explore the two digital exhibition chapters",
+      chapterPreviewLabel: "Explore the four digital exhibition chapters",
       quickNavLabel: "Home chapter navigation",
       quickXie: "Xie Yuanding Avatar",
-      quickGallery: "Digital Mei'an"
+      quickGallery: "Digital Mei'an",
+      quickDocumentary: "CYL Congress Documentary",
+      quickSong: "Song of Mei'an"
     };
   }
 
   return {
-    xieEyebrow: "谢远定数字人",
-    xieTitle: "与谢远定对话",
+    xieEyebrow: "与谢远定对话",
+    xieTitle: "谢远定数字人",
     xieLink: "了解谢远定",
+    modelLink: "查看3D数字人",
+    videoPlaceholder: "人物影像待接入",
+    modelEyebrow: "数字形象",
+    modelTitle: "谢远定3D建模",
+    modelClose: "关闭3D模型",
+    videoTitle: "跨时空数字人短片：《谢远定：从梅庵出发》",
+    videoMeta: "人物数字化影像 · 01:37",
+    videoError: "视频暂时无法加载，请稍后重试",
     profileEyebrow: "人物与时代",
     profileTitle: "谢远定：从梅庵走出的革命先锋",
     profileIntro: "谢远定（1899—1928），伯平，湖北枣阳人，曾就读于东南大学前身南京高等师范学校。他从青年求学时期投身革命，是南京早期党团组织的重要成员，也是中国社会主义青年团第二次全国代表大会的参与者。",
@@ -330,14 +429,47 @@ const homeCopy = computed(() => {
     galleryTitle: "数字梅庵展馆",
     galleryCardTitle: "2023 数字梅庵展馆",
     galleryCardMeta: "三维建模 · VR 全景展陈",
+    documentaryEyebrow: "影像档案",
+    documentaryTitle: "团二大纪录片",
+    songEyebrow: "声音档案",
+    songTitle: "梅庵歌曲",
+    songPlayer: {
+      currentTrack: "当前曲目",
+      collection: "梅庵声音馆藏",
+      catalogue: "馆藏曲目",
+      trackCount: "共10首",
+      play: "播放当前曲目",
+      pause: "暂停当前曲目",
+      progress: "播放进度",
+      pending: "待提供"
+    },
+    contentPending: "内容待接入",
     enlarge: "放大查看",
     openExternal: "新窗口打开",
-    chapterPreviewLabel: "浏览首页两项数字展陈",
+    chapterPreviewLabel: "浏览首页四项数字展陈",
     quickNavLabel: "首页章节定位",
     quickXie: "谢远定数字人",
-    quickGallery: "数字梅庵展馆"
+    quickGallery: "数字梅庵展馆",
+    quickDocumentary: "团二大纪录片",
+    quickSong: "梅庵歌曲"
   };
 });
+
+const chapters = computed(() => [
+  { id: "home-xie-avatar", number: "01", title: homeCopy.value.xieTitle, shortTitle: homeCopy.value.quickXie },
+  { id: "home-digital-meian", number: "02", title: homeCopy.value.galleryTitle, shortTitle: homeCopy.value.quickGallery },
+  { id: "home-congress-documentary", number: "03", title: homeCopy.value.documentaryTitle, shortTitle: homeCopy.value.quickDocumentary },
+  { id: "home-meian-song", number: "04", title: homeCopy.value.songTitle, shortTitle: homeCopy.value.quickSong }
+]);
+
+const songTracks = computed(() => Array.from({ length: 10 }, (_, index) => ({
+  id: String(index + 1).padStart(2, "0"),
+  title: isEnglish.value ? "Track pending" : "曲目待提供",
+  artist: isEnglish.value ? "Mei'an audio collection" : "梅庵声音馆藏",
+  duration: "--:--",
+  src: "",
+  status: "pending"
+})));
 
 onMounted(() => {
   chapterObserver = new IntersectionObserver((entries) => {
@@ -353,17 +485,14 @@ onMounted(() => {
     threshold: [0, 0.15, 0.4]
   });
 
-  [heroSection.value, xieSection.value, gallerySection.value].forEach((section) => {
+  [heroSection.value, xieSection.value, gallerySection.value, documentarySection.value, songSection.value].forEach((section) => {
     if (section) chapterObserver.observe(section);
-  });
-
-  fetchModelInfo().then((info) => {
-    modelInfo.value = info;
   });
 });
 
 onBeforeUnmount(() => {
   chapterObserver?.disconnect();
+  modelDialog.value?.close();
   releaseProfileScroll();
 });
 
@@ -387,6 +516,35 @@ function openProfile() {
       profileCloseButton.value?.focus({ preventScroll: true });
     });
   }
+}
+
+async function openModel() {
+  if (!modelDialog.value || modelDialog.value.open) return;
+
+  profileScrollPosition = window.scrollY;
+  document.documentElement.style.setProperty("--profile-modal-scroll-offset", `-${profileScrollPosition}px`);
+  document.body.classList.add("profile-modal-open");
+  modelMounted.value = true;
+  await nextTick();
+  modelDialog.value.showModal();
+  requestAnimationFrame(() => {
+    modelCloseButton.value?.focus({ preventScroll: true });
+  });
+  modelInfo.value = await fetchModelInfo();
+}
+
+function closeModel() {
+  modelDialog.value?.close();
+}
+
+function handleModelBackdrop(event) {
+  if (event.target === event.currentTarget) closeModel();
+}
+
+function handleModelClosed() {
+  modelMounted.value = false;
+  releaseProfileScroll();
+  modelTrigger.value?.focus({ preventScroll: true });
 }
 
 function closeProfile() {

@@ -4,7 +4,7 @@
       <div>
         <p class="eyebrow">{{ t("chatWindow") }}</p>
       </div>
-      <span class="status-pill">{{ loading ? t("chatLoading") : t("chatReady") }}</span>
+      <span v-if="showStatus" class="status-pill">{{ loading ? t("chatLoading") : t("chatReady") }}</span>
     </div>
 
     <div class="chat-log" ref="chatLog" tabindex="0" aria-live="polite" :aria-busy="loading">
@@ -102,6 +102,13 @@
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { askQuestion, generateSpeech } from "../api.js";
 import { useI18n } from "../i18n.js";
+
+defineProps({
+  showStatus: {
+    type: Boolean,
+    default: true
+  }
+});
 
 const emit = defineEmits(["speech-active-change"]);
 const { isEnglish, t } = useI18n();
