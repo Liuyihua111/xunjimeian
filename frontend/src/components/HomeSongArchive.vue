@@ -1,9 +1,12 @@
 <template>
   <div class="home-song-archive">
     <section class="home-song-now" :aria-label="labels.currentTrack">
-      <div class="home-song-artwork" aria-hidden="true">
-        <span class="home-song-artwork-ring"></span>
-        <span class="home-song-artwork-center"></span>
+      <div class="home-song-artwork">
+        <img
+          class="home-song-artwork-image"
+          src="/assets/images/meian-audio-collection-cover-20260912.webp"
+          :alt="labels.coverAlt"
+        >
       </div>
 
       <div class="home-song-now-copy">

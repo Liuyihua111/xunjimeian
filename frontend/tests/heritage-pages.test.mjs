@@ -143,8 +143,8 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /IntersectionObserver/);
   assert.match(page, /profileCloseButton\.value\?\.focus\(\{ preventScroll: true \}\)/);
   assert.match(page, /profileTrigger\.value\?\.focus\(\{ preventScroll: true \}\)/);
-  assert.match(page, /document\.body\.classList\.add\("profile-modal-open"\)/);
-  assert.match(page, /function releaseProfileScroll\(\)/);
+  assert.match(page, /function lockModalScroll\(\)/);
+  assert.match(page, /function unlockModalScroll\(\)/);
   assert.match(styles, /\.home-chapter-preview\s*\{[\s\S]*?background:\s*transparent;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-layered-scroll\s*\{[\s\S]*?isolation:\s*isolate;/);
   assert.match(styles, /\.home-official-hero\s*\{[\s\S]*?position:\s*sticky;[\s\S]*?top:\s*0;[\s\S]*?height:\s*100dvh;/);
@@ -160,7 +160,7 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(styles, /\.home-gallery-frame\s*\{[\s\S]*?border:\s*0;[\s\S]*?box-shadow:\s*none;/);
   assert.match(styles, /\.home-xie-grid\s*\{[\s\S]*?background:\s*rgba\(248, 247, 243, 0\.36\);/);
   assert.match(styles, /\.home-profile-dialog\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?inset:\s*0;/);
-  assert.match(styles, /body\.profile-modal-open\s*\{[\s\S]*?position:\s*fixed;[\s\S]*?--profile-modal-scroll-offset/);
+  assert.match(styles, /html\.profile-modal-open,[\s\S]*?body\.profile-modal-open\s*\{[^}]*overflow:\s*hidden;/);
   assert.match(styles, /xie-model-meian-stage-desktop-20260912\.webp/);
   assert.match(styles, /xie-model-meian-stage-mobile-20260912\.webp/);
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.home-divider-branch,[\s\S]*?stroke-dashoffset:\s*0;[\s\S]*?\.home-section-divider\.is-reveal-visible \.home-divider-blossom\s*\{\s*animation:\s*none;/);
@@ -186,6 +186,9 @@ test("home song archive exposes the ten-track Mei'an collection", () => {
   ];
 
   assert.match(component, /home-song-archive/);
+  assert.match(component, /home-song-artwork-image/);
+  assert.match(component, /meian-audio-collection-cover-20260912\.webp/);
+  assert.doesNotMatch(component, /home-song-artwork-ring|home-song-artwork-center/);
   assert.match(component, /v-for="\(track, index\) in tracks"/);
   assert.match(component, /:disabled="!track\.src"/);
   assert.match(component, /audioElement\.value\?\.pause\(\)/);
@@ -195,6 +198,24 @@ test("home song archive exposes the ten-track Mei'an collection", () => {
     const audio = statSync(new URL(`../public/assets/audio/meian/${filename}`, import.meta.url));
     assert.ok(audio.size > 2_000_000);
   }
+
+  const cover = statSync(new URL("../public/assets/images/meian-audio-collection-cover-20260912.webp", import.meta.url));
+  assert.ok(cover.size > 40_000);
+});
+
+test("home profile and model dialogs keep their close controls visible without resetting page scroll", () => {
+  const page = read("src/pages/HomePage.vue");
+  const styles = read("src/styles.css");
+
+  assert.match(page, /function lockModalScroll\(\)/);
+  assert.doesNotMatch(page, /window\.scrollTo\(/);
+  assert.doesNotMatch(page, /--profile-modal-scroll-offset/);
+  assert.match(styles, /html\.profile-modal-open,[\s\S]*?body\.profile-modal-open\s*\{[\s\S]*?overflow:\s*hidden;/);
+  assert.doesNotMatch(styles, /body\.profile-modal-open\s*\{[^}]*position:\s*fixed;/);
+  assert.match(styles, /\.home-profile-dialog-header,[\s\S]*?\.home-model-dialog \.home-gallery-dialog-header\s*\{[\s\S]*?position:\s*sticky;[\s\S]*?z-index:\s*\d+;/);
+  assert.match(styles, /\.home-gallery-close\s*\{[\s\S]*?position:\s*relative;[\s\S]*?z-index:\s*\d+;/);
+  assert.match(styles, /\.site-main > :not\(\.site-page-background\):not\(dialog\)/);
+  assert.match(styles, /@media \(max-width:\s*700px\)[\s\S]*?\.home-profile-dialog-header\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)\s+auto;/);
 });
 
 test("home media dividers use VHS cassettes and staff notation without film strips or a waveform", () => {

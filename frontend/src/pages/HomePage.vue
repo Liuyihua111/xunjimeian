@@ -324,7 +324,6 @@ const speechActive = ref(false);
 const modelMounted = ref(false);
 const xieVideoFailed = ref(false);
 let chapterObserver;
-let profileScrollPosition = 0;
 const modelInfo = ref({
   name: "谢远定数字分身模型",
   model_url: "",
@@ -376,6 +375,7 @@ const homeCopy = computed(() => {
       songPlayer: {
         currentTrack: "Current track",
         collection: "Mei'an audio collection",
+        coverAlt: "Watercolor cover of the Mei'an audio collection",
         catalogue: "Track catalogue",
         trackCount: "10 tracks",
         play: "Play current track",
@@ -436,6 +436,7 @@ const homeCopy = computed(() => {
     songPlayer: {
       currentTrack: "当前曲目",
       collection: "梅庵声音馆藏",
+      coverAlt: "梅庵声音馆藏水彩封面",
       catalogue: "馆藏曲目",
       trackCount: "共10首",
       play: "播放当前曲目",
@@ -504,7 +505,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   chapterObserver?.disconnect();
   modelDialog.value?.close();
-  releaseProfileScroll();
+  unlockModalScroll();
 });
 
 function scrollToSection(id) {
@@ -519,10 +520,8 @@ function handleSpeechActivity(active) {
 
 function openProfile() {
   if (profileDialog.value && !profileDialog.value.open) {
-    profileScrollPosition = window.scrollY;
-    document.documentElement.style.setProperty("--profile-modal-scroll-offset", `-${profileScrollPosition}px`);
-    document.body.classList.add("profile-modal-open");
     profileDialog.value.showModal();
+    lockModalScroll();
     requestAnimationFrame(() => {
       profileCloseButton.value?.focus({ preventScroll: true });
     });
@@ -532,12 +531,10 @@ function openProfile() {
 async function openModel() {
   if (!modelDialog.value || modelDialog.value.open) return;
 
-  profileScrollPosition = window.scrollY;
-  document.documentElement.style.setProperty("--profile-modal-scroll-offset", `-${profileScrollPosition}px`);
-  document.body.classList.add("profile-modal-open");
   modelMounted.value = true;
   await nextTick();
   modelDialog.value.showModal();
+  lockModalScroll();
   requestAnimationFrame(() => {
     modelCloseButton.value?.focus({ preventScroll: true });
   });
@@ -554,7 +551,7 @@ function handleModelBackdrop(event) {
 
 function handleModelClosed() {
   modelMounted.value = false;
-  releaseProfileScroll();
+  unlockModalScroll();
   modelTrigger.value?.focus({ preventScroll: true });
 }
 
@@ -567,16 +564,18 @@ function handleProfileBackdrop(event) {
 }
 
 function restoreProfileFocus() {
-  releaseProfileScroll();
+  unlockModalScroll();
   profileTrigger.value?.focus({ preventScroll: true });
 }
 
-function releaseProfileScroll() {
-  if (!document.body.classList.contains("profile-modal-open")) return;
+function lockModalScroll() {
+  document.documentElement.classList.add("profile-modal-open");
+  document.body.classList.add("profile-modal-open");
+}
 
+function unlockModalScroll() {
+  document.documentElement.classList.remove("profile-modal-open");
   document.body.classList.remove("profile-modal-open");
-  document.documentElement.style.removeProperty("--profile-modal-scroll-offset");
-  window.scrollTo({ top: profileScrollPosition, left: 0, behavior: "auto" });
 }
 
 function openGallery() {
