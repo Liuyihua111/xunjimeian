@@ -462,13 +462,24 @@ const chapters = computed(() => [
   { id: "home-meian-song", number: "04", title: homeCopy.value.songTitle, shortTitle: homeCopy.value.quickSong }
 ]);
 
-const songTracks = computed(() => Array.from({ length: 10 }, (_, index) => ({
-  id: String(index + 1).padStart(2, "0"),
-  title: isEnglish.value ? "Track pending" : "曲目待提供",
+const songTrackLibrary = [
+  { id: "01", title: "序 月影梅庵", titleEn: "Prologue: Moonlit Mei'an", duration: "06:19", src: "/assets/audio/meian/01-prologue-moonlit-meian.mp3" },
+  { id: "02", title: "蝶恋花", titleEn: "Butterflies in Love with Flowers", duration: "03:50", src: "/assets/audio/meian/02-die-lian-hua.mp3" },
+  { id: "03", title: "咏梅", titleEn: "Ode to Plum Blossoms", duration: "05:37", src: "/assets/audio/meian/03-yong-mei.mp3" },
+  { id: "04", title: "松烟", titleEn: "Pine Soot", duration: "05:14", src: "/assets/audio/meian/04-song-yan.mp3" },
+  { id: "05", title: "秋风词", titleEn: "Song of the Autumn Wind", duration: "04:45", src: "/assets/audio/meian/05-qiu-feng-ci.mp3" },
+  { id: "06", title: "关山月", titleEn: "Moon over the Mountain Pass", duration: "03:43", src: "/assets/audio/meian/06-guan-shan-yue.mp3" },
+  { id: "07", title: "青春", titleEn: "Youth", duration: "03:31", src: "/assets/audio/meian/07-qing-chun.mp3" },
+  { id: "08", title: "时代的囚徒", titleEn: "Prisoner of the Times", duration: "03:24", src: "/assets/audio/meian/08-prisoner-of-the-times.mp3" },
+  { id: "09", title: "初心照梅庵", titleEn: "Original Aspiration Illuminates Mei'an", duration: "02:40", src: "/assets/audio/meian/09-original-intent-shines-on-meian.mp3" },
+  { id: "10", title: "尾声 大学之道", titleEn: "Epilogue: The Great Learning", duration: "04:02", src: "/assets/audio/meian/10-epilogue-the-great-learning.mp3" }
+];
+
+const songTracks = computed(() => songTrackLibrary.map((track) => ({
+  ...track,
+  title: isEnglish.value ? track.titleEn : track.title,
   artist: isEnglish.value ? "Mei'an audio collection" : "梅庵声音馆藏",
-  duration: "--:--",
-  src: "",
-  status: "pending"
+  status: "ready"
 })));
 
 onMounted(() => {

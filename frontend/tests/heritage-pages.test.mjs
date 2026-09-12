@@ -136,7 +136,7 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /xie-yuanding-feature-20260912\.mp4/);
   assert.match(page, /controls[\s\S]*?playsinline[\s\S]*?preload="metadata"/);
   assert.match(page, /HomeSongArchive :tracks="songTracks"/);
-  assert.match(page, /Array\.from\(\{ length: 10 \}/);
+  assert.match(page, /const songTrackLibrary = \[/);
   assert.match(page, /modelMounted/);
   assert.match(page, /ModelViewer v-if="modelMounted"/);
   assert.match(page, /function openModel\(\)/);
@@ -169,13 +169,32 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.ok(video.size > 18_000_000);
 });
 
-test("home song archive provides ten disabled placeholders until audio arrives", () => {
+test("home song archive exposes the ten-track Mei'an collection", () => {
   const component = read("src/components/HomeSongArchive.vue");
+  const page = read("src/pages/HomePage.vue");
+  const tracks = [
+    ["01", "序 月影梅庵", "06:19", "01-prologue-moonlit-meian.mp3"],
+    ["02", "蝶恋花", "03:50", "02-die-lian-hua.mp3"],
+    ["03", "咏梅", "05:37", "03-yong-mei.mp3"],
+    ["04", "松烟", "05:14", "04-song-yan.mp3"],
+    ["05", "秋风词", "04:45", "05-qiu-feng-ci.mp3"],
+    ["06", "关山月", "03:43", "06-guan-shan-yue.mp3"],
+    ["07", "青春", "03:31", "07-qing-chun.mp3"],
+    ["08", "时代的囚徒", "03:24", "08-prisoner-of-the-times.mp3"],
+    ["09", "初心照梅庵", "02:40", "09-original-intent-shines-on-meian.mp3"],
+    ["10", "尾声 大学之道", "04:02", "10-epilogue-the-great-learning.mp3"]
+  ];
 
   assert.match(component, /home-song-archive/);
   assert.match(component, /v-for="\(track, index\) in tracks"/);
   assert.match(component, /:disabled="!track\.src"/);
   assert.match(component, /audioElement\.value\?\.pause\(\)/);
+
+  for (const [id, title, duration, filename] of tracks) {
+    assert.match(page, new RegExp(`id: "${id}"[\\s\\S]*?title: "${title}"[\\s\\S]*?duration: "${duration}"[\\s\\S]*?${filename.replaceAll(".", "\\.")}`));
+    const audio = statSync(new URL(`../public/assets/audio/meian/${filename}`, import.meta.url));
+    assert.ok(audio.size > 2_000_000);
+  }
 });
 
 test("home media dividers use VHS cassettes and staff notation without film strips or a waveform", () => {
