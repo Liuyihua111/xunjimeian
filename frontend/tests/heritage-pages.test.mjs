@@ -65,7 +65,7 @@ test("annual archive titles use the agreed theme names and omit the 2026 hero wa
 
 test("hero-texture paper cuts match the opening image paper and fade a complete Mei'an card", () => {
   for (const variant of ["", "-mobile"]) {
-    const svg = read(`public/assets/images/meian-paper-cut-hero-texture${variant}-20260909.svg`);
+    const svg = read(`public/assets/images/meian-paper-cut-hero-texture${variant}-20260913.svg`);
     assert.match(svg, /id="paper-foundation" fill="#f3f1ec"/);
     assert.match(svg, /id="hero-paper-texture"/);
     assert.match(svg, /id="paper-texture-layer"/);
@@ -102,8 +102,8 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /home-foreground-sheet/);
   assert.match(page, /home-foreground-body/);
   assert.match(page, /home-meian-page-turn/);
-  assert.match(page, /meian-paper-cut-hero-texture-20260909\.svg/);
-  assert.match(page, /meian-paper-cut-hero-texture-mobile-20260909\.svg/);
+  assert.match(page, /meian-paper-cut-hero-texture-20260913\.svg/);
+  assert.match(page, /meian-paper-cut-hero-texture-mobile-20260913\.svg/);
   assert.doesNotMatch(page, /home-meian-transition-lines/);
   assert.doesNotMatch(page, />梅庵<\/text>/);
   assert.doesNotMatch(page, /home-hero-silhouette/);
@@ -132,7 +132,7 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /跨时空数字人短片：《谢远定：从梅庵出发》/);
   assert.match(page, /Across-Time Digital Avatar Short Film: Xie Yuanding, Setting Out from Mei'an/);
   assert.match(page, /ChatPanel :show-status="false"/);
-  assert.match(page, /home-avatar-video-stage/);
+  assert.match(page, /SpeechPortraitVideo/);
   assert.match(page, /xie-yuanding-feature-20260912\.mp4/);
   assert.match(page, /controls[\s\S]*?playsinline[\s\S]*?preload="metadata"/);
   assert.match(page, /HomeSongArchive :tracks="songTracks"/);

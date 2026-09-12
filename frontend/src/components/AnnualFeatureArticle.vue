@@ -72,6 +72,16 @@
       </template>
     </div>
 
+    <figure v-if="Number(project.year) === 2022" v-reveal class="annual-article-video">
+      <video ref="footage" controls playsinline preload="metadata"
+        src="/assets/video/meian-footage-20260913.mp4"
+        poster="/assets/video/meian-footage-20260913.webp"
+        :aria-label="isEnglish ? 'Social Practice' : '社会实践'"
+        @error="videoFailed = true"></video>
+      <figcaption>{{ isEnglish ? "Social Practice" : "社会实践" }}</figcaption>
+      <p v-if="videoFailed" role="status">{{ isEnglish ? 'The video is temporarily unavailable.' : '视频暂时无法加载，请稍后重试' }}</p>
+    </figure>
+
     <footer v-reveal class="annual-article-footer">
       <p>相关成果与原报道</p>
       <div>
@@ -98,8 +108,18 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, onBeforeUnmount, ref } from "vue";
 import AnnualResultModal from "./AnnualResultModal.vue";
+import { useI18n } from "../i18n.js";
+
+const { isEnglish } = useI18n();
+const footage = ref(null);
+const videoFailed = ref(false);
+onBeforeUnmount(() => {
+  footage.value?.pause();
+  footage.value?.removeAttribute("src");
+  footage.value?.load();
+});
 
 const props = defineProps({
   project: {

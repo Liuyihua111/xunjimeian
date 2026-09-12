@@ -32,6 +32,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { disposeModel, frameModelGroup, sampleFirstFrame } from "./modelScene.js";
 import { collectExpressionTargets, setExpression } from "./modelMorphs.js";
 import { createSpeechExpressionController } from "./speechExpressionMotion.js";
+import { applySkinTextureDisplay } from "./skinTextureDisplay.js";
 import { useI18n } from "../i18n.js";
 
 const props = defineProps({
@@ -56,6 +57,7 @@ let targets = { blink: [], mouth: [] };
 let scene, camera, renderer, controls, group, resizeObserver;
 let generation = 0, unmounted = false, drawRequest = 0;
 let motionPreference;
+let releaseSkinTextures;
 
 function render() {
   if (drawRequest || !renderer) return;
@@ -120,6 +122,7 @@ function cleanup() {
   resizeObserver?.disconnect();
   controls?.dispose(); controls = null;
   if (scene) disposeModel(scene);
+  releaseSkinTextures?.(); releaseSkinTextures = null;
   if (renderer) {
     renderer.domElement.removeEventListener("webglcontextlost", contextLost);
     renderer.domElement.removeEventListener("keydown", keyControl);
@@ -159,6 +162,7 @@ async function initialize() {
     loaded = [gltf];
     if (unmounted || attempt !== generation) { loaded.forEach((gltf) => disposeModel(gltf.scene)); return; }
     group = new THREE.Group(); group.add(sampleFirstFrame(gltf));
+    releaseSkinTextures = applySkinTextureDisplay(group);
     frameModelGroup(group, false); scene.add(group);
     targets = collectExpressionTargets(group);
     available.value = { blink: targets.blink.length > 0, mouth: targets.mouth.length > 0 };

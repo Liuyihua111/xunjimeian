@@ -18,8 +18,8 @@
     <div class="home-foreground-sheet">
       <div class="home-meian-page-turn" aria-hidden="true">
         <picture class="home-meian-paper-cut">
-          <source media="(max-width: 700px)" srcset="/assets/images/meian-paper-cut-hero-texture-mobile-20260909.svg">
-          <img src="/assets/images/meian-paper-cut-hero-texture-20260909.svg" alt="">
+          <source media="(max-width: 700px)" srcset="/assets/images/meian-paper-cut-hero-texture-mobile-20260913.svg">
+          <img src="/assets/images/meian-paper-cut-hero-texture-20260913.svg" alt="">
         </picture>
       </div>
 
@@ -41,10 +41,13 @@
     </div>
     <div class="home-xie-grid">
       <div v-reveal="80" class="home-model-column">
-        <div class="home-avatar-video-stage" :aria-label="homeCopy.videoPlaceholder">
-          <span class="home-avatar-video-mark" aria-hidden="true"></span>
-          <p>{{ homeCopy.videoPlaceholder }}</p>
-        </div>
+        <SpeechPortraitVideo
+          :speech-active="speechActive"
+          src="/assets/video/xie-yuanding-speaking-hq-20260913.mp4"
+          poster="/assets/video/xie-yuanding-speaking-hq-20260913.webp"
+          :label="homeCopy.xieTitle"
+          :error-label="homeCopy.videoError"
+        />
         <div class="home-avatar-actions">
           <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
             <span>{{ homeCopy.xieLink }}</span>
@@ -61,6 +64,7 @@
     <figure v-reveal="140" class="home-xie-feature-film">
       <div class="home-xie-feature-film-frame">
         <video
+          ref="xieFeatureVideo"
           controls
           playsinline
           preload="metadata"
@@ -180,12 +184,7 @@
             <p class="eyebrow">{{ homeCopy.documentaryEyebrow }}</p>
             <h2>{{ homeCopy.documentaryTitle }}</h2>
           </div>
-          <div v-reveal="100" class="home-media-stage home-documentary-stage">
-            <div class="home-documentary-frame" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <p>{{ homeCopy.contentPending }}</p>
-          </div>
+          <HomeDocumentaryArchive v-reveal="100" />
         </section>
 
         <HomeMediaDivider v-reveal variant="documentary-song" />
@@ -301,6 +300,8 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
 import ChatPanel from "../components/ChatPanel.vue";
 import HomeMediaDivider from "../components/HomeMediaDivider.vue";
 import HomeSongArchive from "../components/HomeSongArchive.vue";
+import HomeDocumentaryArchive from "../components/HomeDocumentaryArchive.vue";
+import SpeechPortraitVideo from "../components/SpeechPortraitVideo.vue";
 import ModelViewer from "../components/ModelViewer.vue";
 import { fetchModelInfo } from "../api.js";
 import { useI18n } from "../i18n.js";
@@ -323,7 +324,10 @@ const activeChapter = ref("");
 const speechActive = ref(false);
 const modelMounted = ref(false);
 const xieVideoFailed = ref(false);
+const xieFeatureVideo = ref(null);
 let chapterObserver;
+let featureVideoObserver;
+let chapterFrame = 0;
 const modelInfo = ref({
   name: "谢远定数字分身模型",
   model_url: "",
@@ -479,31 +483,55 @@ const songTrackLibrary = [
 const songTracks = computed(() => songTrackLibrary.map((track) => ({
   ...track,
   title: isEnglish.value ? track.titleEn : track.title,
-  artist: isEnglish.value ? "Mei'an audio collection" : "梅庵声音馆藏",
+  artist: "SEU室内合唱团",
   status: "ready"
 })));
 
-onMounted(() => {
-  chapterObserver = new IntersectionObserver((entries) => {
-    const visibleEntry = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+function updateActiveChapter() {
+  const sections = [xieSection.value, gallerySection.value, documentarySection.value, songSection.value].filter(Boolean);
+  if (!sections.length || sections[0].getBoundingClientRect().top > window.innerHeight * 0.8) {
+    activeChapter.value = "";
+    return;
+  }
+  const reached = sections.filter((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.45);
+  activeChapter.value = (reached.at(-1) || sections[0]).id;
+}
 
-    if (visibleEntry?.target.id) {
-      activeChapter.value = visibleEntry.target.id === "home-hero" ? "" : visibleEntry.target.id;
-    }
-  }, {
+function scheduleChapterUpdate() {
+  if (chapterFrame) return;
+  chapterFrame = requestAnimationFrame(() => {
+    chapterFrame = 0;
+    updateActiveChapter();
+  });
+}
+
+onMounted(() => {
+  chapterObserver = new IntersectionObserver(updateActiveChapter, {
     rootMargin: "-30% 0px -48% 0px",
     threshold: [0, 0.15, 0.4]
   });
 
-  [heroSection.value, xieSection.value, gallerySection.value, documentarySection.value, songSection.value].forEach((section) => {
+  [xieSection.value, gallerySection.value, documentarySection.value, songSection.value].forEach((section) => {
     if (section) chapterObserver.observe(section);
   });
+  window.addEventListener("scroll", scheduleChapterUpdate, { passive: true });
+  window.addEventListener("resize", scheduleChapterUpdate);
+  updateActiveChapter();
+  featureVideoObserver = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => !entry.isIntersecting || entry.intersectionRatio < 0.25)) {
+      xieFeatureVideo.value?.pause();
+    }
+  }, { threshold: [0, 0.25] });
+  if (xieFeatureVideo.value) featureVideoObserver.observe(xieFeatureVideo.value);
 });
 
 onBeforeUnmount(() => {
   chapterObserver?.disconnect();
+  featureVideoObserver?.disconnect();
+  xieFeatureVideo.value?.pause();
+  window.removeEventListener("scroll", scheduleChapterUpdate);
+  window.removeEventListener("resize", scheduleChapterUpdate);
+  cancelAnimationFrame(chapterFrame);
   modelDialog.value?.close();
   unlockModalScroll();
 });

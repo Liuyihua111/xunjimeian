@@ -113,9 +113,9 @@ defineProps({
 const emit = defineEmits(["speech-active-change"]);
 const { isEnglish, t } = useI18n();
 const promptQueries = {
-  q1: "谢远定是谁？",
-  q2: "谢远定和东南大学有什么关系？",
-  q3: "谢远定为什么参加团二大？"
+  q1: "你是谁？",
+  q2: "你和东南大学有什么关系？",
+  q3: "你为什么参加团二大？"
 };
 const prompts = computed(() => Object.keys(promptQueries).map((key) => ({
   key,
