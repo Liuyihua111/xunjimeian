@@ -131,7 +131,7 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /HomeMediaDivider v-reveal variant="documentary-song"/);
   assert.match(page, /跨时空数字人短片：《谢远定：从梅庵出发》/);
   assert.match(page, /Across-Time Digital Avatar Short Film: Xie Yuanding, Setting Out from Mei'an/);
-  assert.match(page, /ChatPanel[^>]*:show-status="false"[^>]*:mute-speech="true"/);
+  assert.match(page, /ChatPanel :show-status="false"/);
   assert.match(page, /SpeechPortraitVideo/);
   assert.match(page, /xie-yuanding-feature-20260912\.mp4/);
   assert.match(page, /controls[\s\S]*?playsinline[\s\S]*?preload="metadata"/);

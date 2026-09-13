@@ -1,9 +1,4 @@
-export function createSpeechPortraitPlayback(video, options = {}) {
-  const {
-    muted = true,
-    onBlocked = () => {},
-    onEnded = () => {}
-  } = options;
+export function createSpeechPortraitPlayback(video, onBlocked = () => {}) {
   let active = false;
   let disposed = false;
   let revision = 0;
@@ -17,7 +12,7 @@ export function createSpeechPortraitPlayback(video, options = {}) {
     active = Boolean(value) && !disposed;
     const attempt = ++revision;
     if (!active) return reset();
-    video.muted = muted;
+    video.muted = true;
     try {
       await video.play();
       if (disposed || !active) reset();
@@ -32,13 +27,6 @@ export function createSpeechPortraitPlayback(video, options = {}) {
   return {
     setActive,
     ready: () => active ? setActive(true) : reset(),
-    ended() {
-      if (disposed || !active) return;
-      active = false;
-      revision++;
-      reset();
-      onEnded();
-    },
     dispose() {
       disposed = true;
       active = false;

@@ -5,14 +5,14 @@ import { createSpeechPortraitPlayback } from "../src/components/speechPortraitPl
 import { brightenSkinPixels, isSkinMaterial, applySkinTextureDisplay } from "../src/components/skinTextureDisplay.js";
 import { documentaryLibrary } from "../src/components/documentaryLibrary.js";
 
-test("portrait follows actual speech with its own audio and resets to the idle frame", async () => {
+test("portrait follows actual speech and resets to the closed-mouth first frame", async () => {
   const video = { readyState: 1, currentTime: 4, muted: false, paused: true,
     pause() { this.paused = true; }, async play() { this.paused = false; } };
-  const controller = createSpeechPortraitPlayback(video, { muted: false });
+  const controller = createSpeechPortraitPlayback(video);
   await controller.setActive(false);
   assert.equal(video.currentTime, 0);
   await controller.setActive(true);
-  assert.equal(video.muted, false);
+  assert.equal(video.muted, true);
   assert.equal(video.paused, false);
   video.currentTime = 7;
   await controller.setActive(false);
@@ -23,24 +23,11 @@ test("portrait follows actual speech with its own audio and resets to the idle f
   assert.equal(video.paused, true);
 });
 
-test("portrait ending stops its controller and notifies the chat owner", async () => {
-  let ended = 0;
-  const video = { readyState: 1, currentTime: 0, muted: true, paused: true,
-    pause() { this.paused = true; }, async play() { this.paused = false; } };
-  const controller = createSpeechPortraitPlayback(video, { muted: false, onEnded: () => ended++ });
-  await controller.setActive(true);
-  video.currentTime = 32;
-  controller.ended();
-  assert.equal(video.paused, true);
-  assert.equal(video.currentTime, 0);
-  assert.equal(ended, 1);
-});
-
 test("late play resolution, metadata and rejection cannot leave the portrait running", async () => {
   let complete, blocked = 0;
   const video = { readyState: 0, currentTime: 8, paused: true,
     pause() { this.paused = true; }, play() { return new Promise((resolve) => { complete = () => { this.paused = false; resolve(); }; }); } };
-  const controller = createSpeechPortraitPlayback(video, { onBlocked: () => blocked++ });
+  const controller = createSpeechPortraitPlayback(video, () => blocked++);
   const starting = controller.setActive(true);
   await controller.setActive(false);
   video.readyState = 1;
@@ -107,22 +94,12 @@ test("three selected-only documentary sources exist and each is below 90 MB", ()
   assert.doesNotMatch(component, /autoplay/);
   const portrait = readFileSync(new URL("../src/components/SpeechPortraitVideo.vue", import.meta.url), "utf8");
   assert.doesNotMatch(portrait, /\bcontrols\b/);
-  assert.doesNotMatch(portrait, /\bloop\b/);
-  assert.doesNotMatch(portrait, /^\s*muted\s*$/m);
+  assert.match(portrait, /muted\s+loop\s+playsinline/);
   assert.match(portrait, /v-show="!failed && playing"/);
   assert.match(portrait, /@pause="playing = false"/);
-  assert.match(portrait, /@ended="handleEnded"/);
   const home = readFileSync(new URL("../src/pages/HomePage.vue", import.meta.url), "utf8");
-  assert.match(home, /xie-yuanding-speaking-audio-20260913\.mp4/);
-  assert.match(home, /poster="\/assets\/video\/xie-yuanding-speaking-audio-idle-20260913\.webp"/);
-  assert.match(home, /<ChatPanel[^>]+ref="chatPanel"[^>]+:mute-speech="true"/s);
-  assert.match(home, /@media-ended="handlePortraitEnded"/);
-  assert.ok(statSync(new URL("../public/assets/video/xie-yuanding-speaking-audio-20260913.mp4", import.meta.url)).size > 100_000);
-  assert.ok(statSync(new URL("../public/assets/video/xie-yuanding-speaking-audio-idle-20260913.webp", import.meta.url)).size > 1000);
-  const chat = readFileSync(new URL("../src/components/ChatPanel.vue", import.meta.url), "utf8");
-  assert.match(chat, /muteSpeech/);
-  assert.match(chat, /audio\.muted = props\.muteSpeech/);
-  assert.match(chat, /defineExpose\(\{ stopSpeech/);
+  assert.match(home, /poster="\/assets\/video\/xie-yuanding-idle-20260913\.webp"/);
+  assert.ok(statSync(new URL("../public/assets/video/xie-yuanding-idle-20260913.webp", import.meta.url)).size > 1000);
 });
 
 test("floating chapter navigation stays fixed and the feature film pauses outside the viewport", () => {
@@ -134,7 +111,7 @@ test("floating chapter navigation stays fixed and the feature film pauses outsid
   assert.match(home, /entry\.intersectionRatio < 0\.25/);
   assert.match(home, /xieFeatureVideo\.value\?\.pause\(\)/);
   assert.match(home, /window\.removeEventListener\("scroll", scheduleChapterUpdate\)/);
-  assert.match(home, /xie-yuanding-speaking-audio-20260913\.mp4/);
+  assert.match(home, /xie-yuanding-speaking-hq-20260913\.mp4/);
   const project = JSON.parse(read("public/assets/data/projects.json")).results.find(project => project.year === 2022);
   assert.equal(project.article_blocks.find(block => block.type === "image").path,
     "/assets/projects/2022/article/practice-route-20260913.webp");
