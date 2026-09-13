@@ -43,10 +43,12 @@
       <div v-reveal="80" class="home-model-column">
         <SpeechPortraitVideo
           :speech-active="speechActive"
-          src="/assets/video/xie-yuanding-speaking-hq-20260913.mp4"
-          poster="/assets/video/xie-yuanding-idle-20260913.webp"
+          src="/assets/video/xie-yuanding-speaking-audio-20260913.mp4"
+          poster="/assets/video/xie-yuanding-speaking-audio-idle-20260913.webp"
           :label="homeCopy.xieTitle"
           :error-label="homeCopy.videoError"
+          @media-ended="handlePortraitEnded"
+          @playback-failed="handlePortraitEnded"
         />
         <div class="home-avatar-actions">
           <button ref="profileTrigger" class="home-profile-trigger" type="button" @click="openProfile">
@@ -59,7 +61,7 @@
           </button>
         </div>
       </div>
-      <ChatPanel :show-status="false" @speech-active-change="handleSpeechActivity" />
+      <ChatPanel ref="chatPanel" :show-status="false" :mute-speech="true" @speech-active-change="handleSpeechActivity" />
     </div>
     <figure v-reveal="140" class="home-xie-feature-film">
       <div class="home-xie-feature-film-frame">
@@ -322,6 +324,7 @@ const documentarySection = ref(null);
 const songSection = ref(null);
 const activeChapter = ref("");
 const speechActive = ref(false);
+const chatPanel = ref(null);
 const modelMounted = ref(false);
 const xieVideoFailed = ref(false);
 const xieFeatureVideo = ref(null);
@@ -544,6 +547,10 @@ function scrollToSection(id) {
 
 function handleSpeechActivity(active) {
   speechActive.value = active;
+}
+
+function handlePortraitEnded() {
+  chatPanel.value?.stopSpeech();
 }
 
 function openProfile() {

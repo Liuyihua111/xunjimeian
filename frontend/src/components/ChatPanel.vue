@@ -103,10 +103,14 @@ import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { askQuestion, generateSpeech } from "../api.js";
 import { useI18n } from "../i18n.js";
 
-defineProps({
+const props = defineProps({
   showStatus: {
     type: Boolean,
     default: true
+  },
+  muteSpeech: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -233,6 +237,7 @@ async function playSpeech(message) {
   stopActiveAudio();
   message.speechError = "";
   const audio = new Audio(message.audioUrl);
+  audio.muted = props.muteSpeech;
   activeAudio = audio;
   activeSpeechId = message.id;
   message.speechStatus = "playing";
@@ -336,5 +341,6 @@ async function submitQuestion(rawQuestion, queryOverride = "") {
   }
 }
 
+defineExpose({ stopSpeech: resetSpeech });
 onBeforeUnmount(resetSpeech);
 </script>
