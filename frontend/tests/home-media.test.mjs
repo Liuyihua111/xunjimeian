@@ -77,8 +77,12 @@ test("shared skin materials are derived once while other maps stay original", ()
 
 test("three selected-only documentary sources exist and each is below 90 MB", () => {
   assert.equal(documentaryLibrary.length, 3);
-  assert.equal(documentaryLibrary[0].title, "寻迹梅庵");
-  assert.equal(documentaryLibrary[2].title, "社会实践");
+  assert.deepEqual(documentaryLibrary.map(film => film.title), [
+    "梅庵红色记忆·初心东南", "梅庵红色记忆·寻迹之旅", "梅庵红色记忆·青春行记"
+  ]);
+  assert.deepEqual(documentaryLibrary.map(film => film.shortTitle), ["初心东南", "寻迹之旅", "青春行记"]);
+  assert.match(documentaryLibrary[0].src, /seu-red-memories/);
+  assert.match(documentaryLibrary[1].src, /tracing-meian-documentary/);
   for (const film of documentaryLibrary) {
     const size = statSync(new URL(`../public${film.src}`, import.meta.url)).size;
     assert.ok(size > 100_000 && size < 90_000_000);
@@ -91,6 +95,11 @@ test("three selected-only documentary sources exist and each is below 90 MB", ()
   const portrait = readFileSync(new URL("../src/components/SpeechPortraitVideo.vue", import.meta.url), "utf8");
   assert.doesNotMatch(portrait, /\bcontrols\b/);
   assert.match(portrait, /muted\s+loop\s+playsinline/);
+  assert.match(portrait, /v-show="!failed && playing"/);
+  assert.match(portrait, /@pause="playing = false"/);
+  const home = readFileSync(new URL("../src/pages/HomePage.vue", import.meta.url), "utf8");
+  assert.match(home, /poster="\/assets\/video\/xie-yuanding-idle-20260913\.webp"/);
+  assert.ok(statSync(new URL("../public/assets/video/xie-yuanding-idle-20260913.webp", import.meta.url)).size > 1000);
 });
 
 test("floating chapter navigation stays fixed and the feature film pauses outside the viewport", () => {

@@ -2,7 +2,7 @@
   <div class="home-avatar-video-stage is-portrait" :aria-label="label">
     <img :src="poster" :alt="label" class="home-avatar-poster">
     <video
-      v-show="!failed"
+      v-show="!failed && playing"
       ref="portrait"
       :src="src"
       :poster="poster"
@@ -12,6 +12,8 @@
       preload="auto"
       :aria-label="label"
       @loadedmetadata="playback?.ready()"
+      @playing="playing = speechActive"
+      @pause="playing = false"
       @error="handleFailure"
     ></video>
     <p v-if="failed" class="home-avatar-video-notice" role="status">{{ errorLabel }}</p>
@@ -31,14 +33,17 @@ const props = defineProps({
 });
 const portrait = ref(null);
 const failed = ref(false);
+const playing = ref(false);
 let playback;
 
 function handleFailure() {
   failed.value = true;
+  playing.value = false;
   playback?.setActive(false);
 }
 
 watch(() => props.speechActive, (active) => {
+  if (!active) playing.value = false;
   if (!failed.value) playback?.setActive(active);
 });
 onMounted(() => {

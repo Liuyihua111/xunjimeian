@@ -10,12 +10,12 @@
       <figcaption><strong>{{ title(current) }}</strong><span>{{ current.duration }}</span></figcaption>
     </figure>
     <nav class="home-documentary-catalogue" :aria-label="isEnglish ? 'Film catalogue' : '纪录片目录'">
-      <p class="eyebrow">{{ isEnglish ? 'Film collection / 03' : '馆藏影像 / 03' }}</p>
+      <p class="eyebrow">{{ isEnglish ? "Mei'an Revolutionary Memories" : '梅庵红色记忆' }}</p>
       <button v-for="(film, index) in documentaryLibrary" :key="film.id" type="button"
         :class="{ 'is-current': film.id === current.id }" :aria-pressed="film.id === current.id"
         @click="selectFilm(film)">
         <span class="home-documentary-number">{{ String(index + 1).padStart(2, '0') }}</span>
-        <span class="home-documentary-name">{{ title(film) }}</span>
+        <span class="home-documentary-name">{{ isEnglish ? film.shortTitleEn : film.shortTitle }}</span>
         <span class="home-documentary-duration">{{ film.duration }}</span>
       </button>
     </nav>

@@ -44,7 +44,7 @@
         <SpeechPortraitVideo
           :speech-active="speechActive"
           src="/assets/video/xie-yuanding-speaking-hq-20260913.mp4"
-          poster="/assets/video/xie-yuanding-speaking-hq-20260913.webp"
+          poster="/assets/video/xie-yuanding-idle-20260913.webp"
           :label="homeCopy.xieTitle"
           :error-label="homeCopy.videoError"
         />
