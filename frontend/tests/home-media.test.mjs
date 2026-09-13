@@ -97,7 +97,7 @@ test("three selected-only documentary sources exist and each is below 90 MB", ()
   assert.match(portrait, /muted\s+loop\s+playsinline/);
   assert.match(portrait, /v-show="!failed && playing"/);
   assert.match(portrait, /@pause="playing = false"/);
-  const home = readFileSync(new URL("../src/pages/HomePage.vue", import.meta.url), "utf8");
+  const home = readFileSync(new URL("../src/components/XieExhibition.vue", import.meta.url), "utf8");
   assert.match(home, /poster="\/assets\/video\/xie-yuanding-idle-20260913\.webp"/);
   assert.ok(statSync(new URL("../public/assets/video/xie-yuanding-idle-20260913.webp", import.meta.url)).size > 1000);
 });
@@ -106,12 +106,13 @@ test("floating chapter navigation stays fixed and the feature film pauses outsid
   const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
   const css = read("src/styles.css");
   const home = read("src/pages/HomePage.vue");
+  const exhibition = read("src/components/XieExhibition.vue");
   assert.match(css, /\.site-main > nav\.home-quick-nav\s*\{\s*position:\s*fixed;/);
-  assert.match(home, /featureVideoObserver = new IntersectionObserver/);
-  assert.match(home, /entry\.intersectionRatio < 0\.25/);
-  assert.match(home, /xieFeatureVideo\.value\?\.pause\(\)/);
+  assert.match(exhibition, /featureVideoObserver = new IntersectionObserver/);
+  assert.match(exhibition, /entry\.intersectionRatio < 0\.25/);
+  assert.match(exhibition, /xieFeatureVideo\.value\?\.pause\(\)/);
   assert.match(home, /window\.removeEventListener\("scroll", scheduleChapterUpdate\)/);
-  assert.match(home, /xie-yuanding-speaking-hq-20260913\.mp4/);
+  assert.match(exhibition, /xie-yuanding-speaking-hq-20260913\.mp4/);
   const project = JSON.parse(read("public/assets/data/projects.json")).results.find(project => project.year === 2022);
   assert.equal(project.article_blocks.find(block => block.type === "image").path,
     "/assets/projects/2022/article/practice-route-20260913.webp");

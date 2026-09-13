@@ -89,7 +89,7 @@ test("hero-texture paper cuts match the opening image paper and fade a complete 
 });
 
 test("home page connects four tracked exhibition chapters and opens the model on demand", () => {
-  const page = read("src/pages/HomePage.vue");
+  const page = ["src/pages/HomePage.vue", "src/components/XieExhibition.vue", "src/components/xieExhibitionCopy.js"].map(read).join("\n");
   const styles = read("src/styles.css");
   assert.match(page, /home-archive-background-dongda-meian-gate-calligraphy-20260910\.png/);
   assert.match(page, /home-archive-background-dongda-meian-mobile-gate-calligraphy-20260910\.png/);
@@ -204,7 +204,7 @@ test("home song archive exposes the ten-track Mei'an collection", () => {
 });
 
 test("home profile and model dialogs keep their close controls visible without resetting page scroll", () => {
-  const page = read("src/pages/HomePage.vue");
+  const page = read("src/components/XieExhibition.vue");
   const styles = read("src/styles.css");
 
   assert.match(page, /function lockModalScroll\(\)/);

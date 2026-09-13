@@ -5969,6 +5969,10 @@ model-viewer:focus-visible {
     min-height: 560px;
   }
 
+  .home-xie-grid .chat-panel {
+    height: 560px;
+  }
+
   .home-xie-grid > .evidence-drawer {
     min-height: 0;
   }
