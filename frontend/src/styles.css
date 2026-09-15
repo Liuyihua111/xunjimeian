@@ -4355,6 +4355,26 @@ model-viewer:focus-visible {
   color: var(--ink);
 }
 
+.annual-article-feature-heading {
+  max-width: 760px;
+  margin: 0 0 38px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(129, 47, 44, 0.38);
+}
+
+.annual-article-feature-heading p {
+  margin: 0 0 10px;
+  color: var(--cedar);
+  font-family: var(--font-ui);
+  font-size: 13px;
+}
+
+.annual-article-feature-heading h2 {
+  margin: 0;
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1.35;
+}
+
 .annual-article-lede {
   margin-bottom: 30px;
   padding: 4px 0 4px 24px;
@@ -4428,6 +4448,17 @@ model-viewer:focus-visible {
   text-justify: inter-ideograph;
 }
 
+.annual-article-quote {
+  margin: 16px 0 22px;
+  padding: 18px 24px;
+  border-left: 3px solid rgba(155, 118, 46, 0.72);
+  color: var(--ink);
+  background: rgba(246, 240, 229, 0.58);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.85;
+}
+
 .annual-article-section-title {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -4460,6 +4491,12 @@ model-viewer:focus-visible {
   margin: 22px 0 30px;
 }
 
+.annual-article-figure.is-portrait {
+  width: min(460px, 100%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .annual-article-figure img,
 .annual-article-image-group img {
   display: block;
@@ -4468,6 +4505,39 @@ model-viewer:focus-visible {
   max-height: 680px;
   object-fit: contain;
   background: rgba(229, 222, 210, 0.58);
+}
+
+.annual-article-media-placeholder {
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 28px;
+  border-top: 1px solid rgba(155, 118, 46, 0.42);
+  border-bottom: 1px solid rgba(69, 97, 95, 0.32);
+  color: var(--muted);
+  background:
+    linear-gradient(135deg, rgba(155, 118, 46, 0.07), transparent 44%),
+    rgba(243, 241, 236, 0.72);
+  text-align: center;
+}
+
+.annual-article-figure.is-portrait .annual-article-media-placeholder {
+  aspect-ratio: 4 / 5;
+}
+
+.annual-article-media-placeholder span {
+  color: var(--gold);
+  font-family: var(--font-numeral);
+  font-size: 13px;
+}
+
+.annual-article-media-placeholder strong {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .annual-article-image-group {

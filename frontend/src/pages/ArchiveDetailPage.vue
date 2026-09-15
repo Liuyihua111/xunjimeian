@@ -18,7 +18,6 @@
     <p>{{ project?.subtitle || project?.summary || "正在读取年度成果内容。" }}</p>
     <div class="page-actions">
       <RouterLink class="button secondary" to="/archive">返回五年成果总览</RouterLink>
-      <RouterLink v-if="project?.year === 2026" class="button primary" to="/xie-dialogue">与谢远定对话</RouterLink>
     </div>
   </section>
 
@@ -116,10 +115,10 @@ const project = computed(() => {
 
 const isEditorialYear = computed(() => {
   const year = Number(project.value?.year);
-  return year >= 2022 && year <= 2025 && Boolean(project.value?.article_blocks?.length);
+  return year >= 2022 && year <= 2026 && Boolean(project.value?.article_blocks?.length);
 });
 
-const yearsWithoutEmbeddedResult = new Set([2022, 2025]);
+const yearsWithoutEmbeddedResult = new Set([2022, 2025, 2026]);
 const showEmbeddedResult = computed(() => !yearsWithoutEmbeddedResult.has(Number(project.value?.year)));
 
 const visibleImages = computed(() => {

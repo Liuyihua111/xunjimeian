@@ -731,6 +731,8 @@
       "title": "数智赋能人物新生",
       "subtitle": "以人物史料为根基，以三维形象和对话能力重现一位百年前的东大青年。",
       "summary": "2026 年，团队围绕谢远定开展线下寻访、人物史料整理、三维建模与知识库建设，形成能够展示人物形象、讲述革命经历并进行史料问答的谢远定数字人。",
+      "feature_title": "跨越百年的数字重逢——寻迹梅庵实践团让红色青春“活”在当下",
+      "feature_title_en": "A Digital Reunion Across a Century: Tracing Mei'an Brings Revolutionary Youth into the Present",
       "directions": [
         "谢远定数字人",
         "人物史料",
@@ -760,6 +762,194 @@
         }
       ],
       "links": [],
+      "article_blocks": [
+        {
+          "type": "paragraph",
+          "text": "梅庵静立四牌楼，梧桐岁岁知秋。1923年夏，中国社会主义青年团第二次全国代表大会在此召开，这是团的历史上唯一一次在高校校园内召开的全国代表大会。会场上，年轻的南京代表谢远定与一代青年共商前途；百年后，东南大学“寻迹梅庵”实践团以数字技术作答，让百年前的青春重新被看见。",
+          "text_en": "Mei'an stands quietly on the Sipailou campus as the plane trees mark the passing seasons. In the summer of 1923, the Second National Congress of the Socialist Youth League of China convened here, the only national congress in the League's history held on a university campus. Among the young delegates was Xie Yuanding of Nanjing. A century later, Southeast University's Tracing Mei'an practice team uses digital technology to bring that generation's youth back into view."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 1",
+          "placeholder_label_en": "IMAGE 01",
+          "caption": "实践团全员合影",
+          "caption_en": "Group portrait of the practice team"
+        },
+        {
+          "type": "section_heading",
+          "index": "01",
+          "text": "缘起梅庵，重访百年青春现场",
+          "text_en": "Returning to Mei'an and a Century-Old Site of Youth"
+        },
+        {
+          "type": "paragraph",
+          "text": "谢远定是东大校友，1920年考入南京高等师范学校。在校期间，他与同学创办《东南评论》、组织读书会传播马克思主义；1922年加入中国共产党，1923年以南京代表身份出席团二大。会后，他以教师身份为掩护，在武汉宣传马克思列宁主义并主编《汉声周报》。1928年，谢远定在汉口英勇就义，年仅29岁。百年过去，梅庵依旧静立，那段青春却逐渐淡出大众视野。",
+          "text_en": "Xie Yuanding was an alumnus of the institution that became Southeast University. He entered Nanjing Higher Normal School in 1920, co-founded Southeast Review with fellow students, and organized reading groups that introduced Marxism. He joined the Communist Party of China in 1922 and attended the Second Youth League Congress in 1923 as a Nanjing delegate. Later, while working under the cover of teaching, he promoted Marxism-Leninism in Wuhan and edited Hansheng Weekly. He was executed in Hankou in 1928 at the age of twenty-nine. Mei'an remains, but the youth associated with it has gradually receded from public memory."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "portrait",
+          "placeholder_label": "图 2",
+          "placeholder_label_en": "IMAGE 02",
+          "caption": "谢远定历史照片",
+          "caption_en": "Historical photograph of Xie Yuanding"
+        },
+        {
+          "type": "section_heading",
+          "index": "02",
+          "text": "金陵寻根，梳理校园红色记忆",
+          "text_en": "Tracing Nanjing's Campus Memories"
+        },
+        {
+          "type": "paragraph",
+          "text": "实践从南京出发。成员们回到梅庵旧址与东南大学校史馆，在历史现场梳理校园空间中的红色记忆，厘清梅庵、团二大与东大早期党团活动的内在联系，为后续史料整理与数字成果建设打下基础。",
+          "text_en": "The fieldwork began in Nanjing. Team members returned to the historic Mei'an site and the Southeast University History Museum, tracing revolutionary memory through the campus landscape and clarifying the connections among Mei'an, the Second Youth League Congress, and early Party and Youth League activity at the university. This work established the foundation for later archival research and digital production."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 3",
+          "placeholder_label_en": "IMAGE 03",
+          "caption": "梅庵旧址实景",
+          "caption_en": "The historic Mei'an site"
+        },
+        {
+          "type": "section_heading",
+          "index": "03",
+          "text": "西子取经，探秘数字技术前沿",
+          "text_en": "Learning from the Digital Frontier in Hangzhou"
+        },
+        {
+          "type": "paragraph",
+          "text": "7月下旬，团队赴杭州调研。在文三数字生活街区与人工智能小镇，成员们观察数字技术塑造城市生活的实践；在强脑科技，了解脑机接口带来的“人机融合”探索；在特看科技，团队围绕数字人形象还原、音色复刻与实时交互等议题与专家交流，进一步明确让谢远定以数字形象重新讲述历史的实现路径。",
+          "text_en": "In late July, the team travelled to Hangzhou. At the Wensan Digital Life District and the Artificial Intelligence Town, members observed how digital technologies are reshaping urban life. At BrainCo, they learned about explorations in brain-computer interfaces and human-machine integration. At Teke Technology, discussions with specialists focused on reconstructing a digital human's appearance, reproducing voice characteristics, and enabling real-time interaction, helping the team clarify a practical route for Xie Yuanding to narrate history through a digital presence."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 4",
+          "placeholder_label_en": "IMAGE 04",
+          "caption": "实践团在特看科技交流",
+          "caption_en": "The team in discussion at Teke Technology"
+        },
+        {
+          "type": "section_heading",
+          "index": "04",
+          "text": "江城访史，邂逅百年青年影像",
+          "text_en": "Recovering a Young Revolutionary's Image in Wuhan"
+        },
+        {
+          "type": "paragraph",
+          "text": "随后，团队辗转武汉。在武汉革命博物馆，成员们在青年运动展陈前驻足，搜集共青团与青年运动史料；在华中师范大学校史馆，团队发现谢远定的照片与生平记载。这张穿越百年的黑白肖像，为数字人形象还原提供了珍贵资料。成员们还瞻仰恽代英塑像，走进利群书社，在革命现场理解谢远定所处的时代环境。",
+          "text_en": "The team then continued to Wuhan. At the Wuhan Revolutionary Museum, members studied exhibitions on the youth movement and collected historical material on the Communist Youth League. At the Central China Normal University History Museum, they found a photograph and biographical record of Xie Yuanding. This century-old black-and-white portrait became valuable evidence for reconstructing his digital appearance. Visits to the Yun Daiying statue and the Liqun Bookstore further situated Xie's life within the revolutionary environment of his time."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 5",
+          "placeholder_label_en": "IMAGE 05",
+          "caption": "实践团在武汉革命博物馆调研",
+          "caption_en": "Research at the Wuhan Revolutionary Museum"
+        },
+        {
+          "type": "quote",
+          "text": "“武汉之行最大的收获，是让谢远定不再只是一个名字。”站在史料面前，那位百年前的青年仿佛又一次走近了他们。",
+          "text_en": "“The greatest result of our visit to Wuhan was that Xie Yuanding was no longer just a name.” In front of the historical records, the young man from a century ago seemed to draw closer once more."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 6",
+          "placeholder_label_en": "IMAGE 06",
+          "caption": "华中师大校史馆谢远定史料",
+          "caption_en": "Records of Xie Yuanding at the Central China Normal University History Museum"
+        },
+        {
+          "type": "section_heading",
+          "index": "05",
+          "text": "数智赋能，重现百年青年面容",
+          "text_en": "Reconstructing a Young Face through Digital Intelligence"
+        },
+        {
+          "type": "paragraph",
+          "text": "本次实践形成“数字人物＋智能问答＋专题史料库＋综合展示载体＋宣传作品”的成果体系，其中谢远定数字人是核心成果。团队从泛黄老照片出发，完成“照片复原—人物建模—表情驱动—网页集成”的技术链路：先以AI修复模糊影像、重建人物面容，再使用Blender与MetaHuman完成建模和表情绑定，经过动画驱动后接入网页。",
+          "text_en": "The project produced an integrated body of work encompassing a digital historical figure, intelligent question answering, a dedicated archive, an online exhibition carrier, and communication media. The Xie Yuanding digital avatar is the central result. Beginning with an aged photograph, the team completed a workflow spanning image restoration, character modelling, facial animation, and web integration. AI-assisted restoration clarified the original portrait, while Blender and MetaHuman supported modelling and expression rigging before the animated figure was integrated into the site."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 7",
+          "placeholder_label_en": "IMAGE 07",
+          "caption": "谢远定数字分身建模成果",
+          "caption_en": "Modelling result for the Xie Yuanding digital avatar"
+        },
+        {
+          "type": "paragraph",
+          "text": "依托结构化史料库构建的智能问答系统，可围绕谢远定生平、团二大历史和梅庵故事与当代青年展开跨时空互动。读者提出问题，数字人依据史料作答，重要回答标注出处，史料不足时明确提示边界。项目坚持“数字讲解员”的定位，以克制、可信的方式讲述历史。",
+          "text_en": "Built on a structured historical database, the question-answering system supports dialogue about Xie Yuanding's life, the Second Youth League Congress, and the history of Mei'an. Questions are answered from historical evidence, significant claims are accompanied by sources, and gaps in the records are stated clearly. The project positions the avatar as a digital interpreter of history, prioritising restraint and credibility over entertainment."
+        },
+        {
+          "type": "section_heading",
+          "index": "06",
+          "text": "云端筑展，汇聚五年实践成果",
+          "text_en": "Building an Online Exhibition for Five Years of Practice"
+        },
+        {
+          "type": "paragraph",
+          "text": "“寻迹梅庵”综合网页作为成果集成与展示载体，集中呈现数字人、智能问答与史料内容，并梳理2022—2026年的历届实践成果，让五年来的追寻与积累在一处形成清晰脉络。读者可以在线走近梅庵，并通过数字化方式了解百年前的青年故事。",
+          "text_en": "The Tracing Mei'an website serves as an integrated exhibition carrier for the digital avatar, historical question answering, and archival content. It also organises the team's work from 2022 to 2026, bringing five years of research and experimentation into one coherent narrative. Visitors can approach Mei'an online and encounter the stories of young people from a century ago through digital media."
+        },
+        {
+          "type": "image",
+          "path": "",
+          "ratio": "wide",
+          "placeholder_label": "图 8",
+          "placeholder_label_en": "IMAGE 08",
+          "caption": "“寻迹梅庵”综合网页首页",
+          "caption_en": "Homepage of the Tracing Mei'an integrated website"
+        },
+        {
+          "type": "section_heading",
+          "index": "07",
+          "text": "史料钩沉，厚植百年红色底蕴",
+          "text_en": "Building a Traceable Historical Foundation"
+        },
+        {
+          "type": "paragraph",
+          "text": "团队建立结构化的“谢远定专题史料库”，系统整理谢远定在南京、武汉学习、工作和参加革命活动的文献档案，梳理其活动轨迹。每条史料记录来源、摘录与可回答问题，为智能问答提供可溯源依据；同时补充团二大、梅庵、恽代英、利群书社及武汉青年运动等背景资料，使人物形象建立在扎实、完整的历史材料之上。",
+          "text_en": "The team established a structured Xie Yuanding archive, organising documents about his study, work, and revolutionary activity in Nanjing and Wuhan and mapping the course of his life. Each record includes its source, an excerpt, and the questions it can support, providing traceable evidence for the question-answering system. Materials on the Second Youth League Congress, Mei'an, Yun Daiying, the Liqun Bookstore, and Wuhan's youth movement supply the wider historical context needed for a fuller portrait."
+        },
+        {
+          "type": "section_heading",
+          "index": "08",
+          "text": "青春之声越百年",
+          "text_en": "Young Voices Across a Century"
+        },
+        {
+          "type": "paragraph",
+          "text": "在传播方面，团队制作当代东大青年与谢远定数字分身跨时空对话主题视频，完成实践调研报告，推出杭州篇、武汉篇等系列推送，并汇总2022—2025年实践档案。从线上展览到跨时空问答，从调研报告到主题视频，红色记忆以青年熟悉的方式抵达更多同龄人，让梅庵故事走出校园。",
+          "text_en": "For public communication, the team produced a video in which present-day Southeast University students engage in an across-time dialogue with Xie Yuanding's digital avatar, completed a fieldwork report, published a series of reports on Hangzhou and Wuhan, and consolidated the practice archives from 2022 to 2025. Through online exhibitions, historical dialogue, research writing, and video, the memory of Mei'an can reach younger audiences in forms they recognise."
+        },
+        {
+          "type": "section_heading",
+          "index": "结语",
+          "text": "青春对话，赓续梅庵红色薪火",
+          "text_en": "Continuing Mei'an's Revolutionary Legacy through Dialogue"
+        },
+        {
+          "type": "paragraph",
+          "text": "从梅庵出发，以数字技术让历史重逢。当谢远定以数字形象重新被看见，红色资源便从静态档案转化为可以阅读、核验和互动的数字内容。这场跨越百年的青春对话，让当代青年在一次次提问与回答中理解信仰的重量，也理解自己肩上的时代责任。",
+          "text_en": "Starting from Mei'an, the project uses digital technology to create a renewed encounter with history. As Xie Yuanding becomes visible through a digital form, historical resources move beyond static archives into content that can be read, verified, and explored. This dialogue across a century invites young people today to consider both the weight of conviction and the responsibilities of their own time."
+        }
+      ],
       "highlights": [
         "谢远定数字人",
         "谢远定3D模型",

@@ -22,7 +22,7 @@ export async function fetchProjects() {
     const presentationFields = [
       "slug", "title", "subtitle", "summary", "directions", "cities", "outputs",
       "images", "links", "highlights", "detail_sections", "inheritance_value", "reusable_assets",
-      "article_blocks", "embedded_result"
+      "article_blocks", "embedded_result", "feature_title", "feature_title_en"
     ];
 
     return {
