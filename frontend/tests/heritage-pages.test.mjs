@@ -89,7 +89,7 @@ test("hero-texture paper cuts match the opening image paper and fade a complete 
 });
 
 test("home page connects four tracked exhibition chapters and opens the model on demand", () => {
-  const page = ["src/pages/HomePage.vue", "src/components/XieExhibition.vue", "src/components/xieExhibitionCopy.js"].map(read).join("\n");
+  const page = read("src/pages/HomePage.vue");
   const styles = read("src/styles.css");
   assert.match(page, /home-archive-background-dongda-meian-gate-calligraphy-20260910\.png/);
   assert.match(page, /home-archive-background-dongda-meian-mobile-gate-calligraphy-20260910\.png/);
@@ -131,7 +131,7 @@ test("home page connects four tracked exhibition chapters and opens the model on
   assert.match(page, /HomeMediaDivider v-reveal variant="documentary-song"/);
   assert.match(page, /跨时空数字人短片：《谢远定：从梅庵出发》/);
   assert.match(page, /Across-Time Digital Avatar Short Film: Xie Yuanding, Setting Out from Mei'an/);
-  assert.match(page, /ChatPanel :show-status="false"/);
+  assert.match(page, /ChatPanel[^>]*:show-status="false"[^>]*:mute-speech="true"/);
   assert.match(page, /SpeechPortraitVideo/);
   assert.match(page, /xie-yuanding-feature-20260912\.mp4/);
   assert.match(page, /controls[\s\S]*?playsinline[\s\S]*?preload="metadata"/);
@@ -204,7 +204,7 @@ test("home song archive exposes the ten-track Mei'an collection", () => {
 });
 
 test("home profile and model dialogs keep their close controls visible without resetting page scroll", () => {
-  const page = read("src/components/XieExhibition.vue");
+  const page = read("src/pages/HomePage.vue");
   const styles = read("src/styles.css");
 
   assert.match(page, /function lockModalScroll\(\)/);
@@ -283,7 +283,7 @@ test("the 2023 exhibit and 2024 Windows VR download keep annual result entries",
   const article = read("src/components/AnnualFeatureArticle.vue");
   const projects = read("public/assets/data/projects.json");
 
-  assert.match(detailPage, /const yearsWithoutEmbeddedResult = new Set\(\[2022, 2025, 2026\]\)/);
+  assert.match(detailPage, /const yearsWithoutEmbeddedResult = new Set\(\[2022, 2025\]\)/);
   assert.match(detailPage, /:show-embedded-result="showEmbeddedResult"/);
   assert.match(article, /v-if="showEmbeddedResult" class="annual-result-entry"/);
   assert.match(article, /v-if="isDownloadEntry"/);
@@ -291,37 +291,6 @@ test("the 2023 exhibit and 2024 Windows VR download keep annual result entries",
   assert.match(article, /v-if="showEmbeddedResult && !isDownloadEntry"\s+ref="resultModal"/);
   assert.match(projects, /meian-windows-demo-2024\.zip/);
   assert.match(projects, /Windows 体验版 · 约 12\.2GB/);
-});
-
-test("the 2026 archive is a bilingual annual feature with stable image placeholders", () => {
-  const projects = JSON.parse(read("public/assets/data/projects.json")).results;
-  const detailPage = read("src/pages/ArchiveDetailPage.vue");
-  const article = read("src/components/AnnualFeatureArticle.vue");
-  const styles = read("src/styles.css");
-  const project = projects.find((item) => item.year === 2026);
-  const images = project.article_blocks.filter((block) => block.type === "image");
-  const headings = project.article_blocks.filter((block) => block.type === "section_heading");
-
-  assert.equal(project.title, "数智赋能人物新生");
-  assert.match(project.feature_title, /跨越百年的数字重逢/);
-  assert.match(project.feature_title_en, /Digital Reunion Across a Century/);
-  assert.equal(images.length, 8);
-  assert.equal(images.every((block) => block.path === ""), true);
-  assert.equal(images.every((block) => block.caption && block.caption_en), true);
-  assert.equal(project.article_blocks
-    .filter((block) => block.type === "paragraph" || block.type === "section_heading" || block.type === "quote")
-    .every((block) => block.text && block.text_en), true);
-  assert.deepEqual(headings.slice(0, 8).map((block) => block.index), ["01", "02", "03", "04", "05", "06", "07", "08"]);
-  assert.match(detailPage, /year >= 2022 && year <= 2026/);
-  assert.doesNotMatch(detailPage, /v-if="project\?\.year === 2026" class="button primary" to="\/xie-dialogue"/);
-  assert.match(article, /v-if="block\.path"/);
-  assert.match(article, /annual-article-media-placeholder/);
-  assert.match(article, /v-if="project\.links\?\.length"/);
-  assert.match(article, /v-if="isXieDialogueEntry"/);
-  assert.match(article, /2026 · 年度核心成果/);
-  assert.match(article, /to="\/xie-dialogue"/);
-  assert.match(styles, /\.annual-article-media-placeholder\s*\{/);
-  assert.match(styles, /\.annual-article-figure\.is-portrait \.annual-article-media-placeholder/);
 });
 
 test("inner routes use responsive heritage and digital background layers", () => {

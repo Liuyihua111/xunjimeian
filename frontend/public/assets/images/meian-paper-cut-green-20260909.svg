@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 260">
+  <defs>
+    <clipPath id="paper-clip"><use href="#paper-foundation"/></clipPath>
+    <radialGradient id="pine">
+      <stop stop-color="#687F74" stop-opacity=".62"/>
+      <stop offset=".42" stop-color="#687F74" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#687F74" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mist">
+      <stop stop-color="#AABBB6" stop-opacity=".72"/>
+      <stop offset=".48" stop-color="#AABBB6" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#AABBB6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moss">
+      <stop stop-color="#A8B095" stop-opacity=".62"/>
+      <stop offset=".4" stop-color="#A8B095" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#A8B095" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ochre">
+      <stop stop-color="#B49A77" stop-opacity=".45"/>
+      <stop offset=".4" stop-color="#B49A77" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#B49A77" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="foot-fade" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".65" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="foot"><path fill="url(#foot-fade)" d="M140 0h1320v248H140z"/></mask>
+    <filter id="pigment" x="-8%" y="-20%" width="116%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".055 .095" numOctaves="2" seed="29" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Curves soften the paper edge; the opaque sheet is never filtered. -->
+  <path id="paper-foundation" fill="#f3f1ec" d="M0 260L0 259C87 257 168 246 228 225C251 217 245 176 250 137C253 111 245 103 254 94C265 82 265 61 290 60C420 54 519 66 664 59C812 52 930 66 1050 58C1094 55 1111 53 1146 57C1171 58 1172 77 1190 87C1214 96 1270 91 1311 98C1351 101 1359 106 1358 133C1357 166 1348 201 1370 221C1412 243 1518 256 1600 259L1600 260Z"/>
+  <g clip-path="url(#paper-clip)">
+    <g mask="url(#foot)" filter="url(#pigment)">
+      <g id="roof-pigment">
+        <ellipse fill="url(#pine)" cx="438" cy="54" rx="195" ry="59"/>
+        <ellipse fill="url(#mist)" cx="732" cy="58" rx="204" ry="45"/>
+        <ellipse fill="url(#pine)" cx="1053" cy="55" rx="143" ry="49" opacity=".73"/>
+      </g>
+      <g id="side-pigment">
+        <ellipse fill="url(#mist)" cx="246" cy="135" rx="65" ry="99"/>
+        <ellipse fill="url(#moss)" cx="288" cy="83" rx="82" ry="76"/>
+        <ellipse fill="url(#moss)" cx="1249" cy="95" rx="142" ry="62"/>
+        <ellipse fill="url(#mist)" cx="1357" cy="157" rx="58" ry="82"/>
+      </g>
+      <g id="warm-accent">
+        <ellipse fill="url(#ochre)" cx="1185" cy="88" rx="55" ry="40"/>
+      </g>
+    </g>
+  </g>
+</svg>

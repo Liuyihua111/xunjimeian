@@ -9,3 +9,6 @@ backend/data/db.sqlite3
 backend/data/*.sqlite3
 frontend/dist/
 tmp/
+.codex/
+.agents/
+.codex-qa/

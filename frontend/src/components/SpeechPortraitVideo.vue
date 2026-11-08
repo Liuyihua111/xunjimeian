@@ -6,14 +6,13 @@
       ref="portrait"
       :src="src"
       :poster="poster"
-      muted
-      loop
       playsinline
       preload="auto"
       :aria-label="label"
       @loadedmetadata="playback?.ready()"
       @playing="playing = speechActive"
       @pause="playing = false"
+      @ended="handleEnded"
       @error="handleFailure"
     ></video>
     <p v-if="failed" class="home-avatar-video-notice" role="status">{{ errorLabel }}</p>
@@ -31,6 +30,7 @@ const props = defineProps({
   label: { type: String, required: true },
   errorLabel: { type: String, required: true }
 });
+const emit = defineEmits(["media-ended", "playback-failed"]);
 const portrait = ref(null);
 const failed = ref(false);
 const playing = ref(false);
@@ -40,6 +40,11 @@ function handleFailure() {
   failed.value = true;
   playing.value = false;
   playback?.setActive(false);
+  emit("playback-failed");
+}
+
+function handleEnded() {
+  playback?.ended();
 }
 
 watch(() => props.speechActive, (active) => {
@@ -47,7 +52,14 @@ watch(() => props.speechActive, (active) => {
   if (!failed.value) playback?.setActive(active);
 });
 onMounted(() => {
-  playback = createSpeechPortraitPlayback(portrait.value, handleFailure);
+  playback = createSpeechPortraitPlayback(portrait.value, {
+    muted: false,
+    onBlocked: handleFailure,
+    onEnded: () => {
+      playing.value = false;
+      emit("media-ended");
+    }
+  });
   playback.setActive(props.speechActive);
 });
 onBeforeUnmount(() => {

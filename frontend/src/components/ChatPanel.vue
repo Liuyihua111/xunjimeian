@@ -101,12 +101,17 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { askQuestion, generateSpeech } from "../api.js";
+import { withMinimumThinkingTime } from "./chatResponseTiming.js";
 import { useI18n } from "../i18n.js";
 
-defineProps({
+const props = defineProps({
   showStatus: {
     type: Boolean,
     default: true
+  },
+  muteSpeech: {
+    type: Boolean,
+    default: false
   }
 });
 
@@ -233,6 +238,7 @@ async function playSpeech(message) {
   stopActiveAudio();
   message.speechError = "";
   const audio = new Audio(message.audioUrl);
+  audio.muted = props.muteSpeech;
   activeAudio = audio;
   activeSpeechId = message.id;
   message.speechStatus = "playing";
@@ -317,7 +323,7 @@ async function submitQuestion(rawQuestion, queryOverride = "") {
 
   let answerId;
   try {
-    const data = await askQuestion(apiQuestion);
+    const data = await withMinimumThinkingTime(() => askQuestion(apiQuestion));
     answerId = pushMessage({
       type: "bot",
       text: data.answer || data.error?.message || t("chatError"),
@@ -336,5 +342,6 @@ async function submitQuestion(rawQuestion, queryOverride = "") {
   }
 }
 
+defineExpose({ stopSpeech: resetSpeech });
 onBeforeUnmount(resetSpeech);
 </script>

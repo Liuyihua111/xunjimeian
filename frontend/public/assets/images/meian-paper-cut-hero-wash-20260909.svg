@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 260">
+  <defs>
+    <path id="paper-shape" d="M0 260V259L175 252L246 224V101H236V84H258V58H1170V86H1348V101H1361V224L1428 247L1600 259V260Z"/>
+    <path id="straight-architectural-edge" d="M0 259L175 252L246 224V101H236V84H258V58H1170V86H1348V101H1361V224L1428 247L1600 259"/>
+    <clipPath id="paper-clip"><use href="#paper-shape"/></clipPath>
+    <filter id="watercolor-paper" x="-5%" y="-10%" width="110%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".011 .075" numOctaves="2" seed="17" result="paper-noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="paper-noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" result="soft-edge"/>
+      <feGaussianBlur in="soft-edge" stdDeviation=".42"/>
+    </filter>
+    <filter id="fade-soften" x="-10%" y="-65%" width="120%" height="230%">
+      <feGaussianBlur stdDeviation="5.5"/>
+    </filter>
+    <mask id="pattern-inward-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="260" style="mask-type:alpha">
+      <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="square" filter="url(#fade-soften)">
+        <use href="#straight-architectural-edge" stroke-width="260" opacity=".105"/>
+        <use href="#straight-architectural-edge" stroke-width="220" opacity=".12"/>
+        <use href="#straight-architectural-edge" stroke-width="180" opacity=".14"/>
+        <use href="#straight-architectural-edge" stroke-width="140" opacity=".16"/>
+        <use href="#straight-architectural-edge" stroke-width="100" opacity=".18"/>
+        <use href="#straight-architectural-edge" stroke-width="60" opacity=".21"/>
+        <use href="#straight-architectural-edge" stroke-width="24" opacity=".27"/>
+      </g>
+    </mask>
+    <linearGradient id="wall-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#cbb687" stop-opacity=".86"/>
+      <stop offset=".38" stop-color="#ddcca5" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#ede4d2" stop-opacity=".36"/>
+    </linearGradient>
+    <linearGradient id="roof-wash" x1="0" y1="0" x2="1" y2=".12">
+      <stop stop-color="#596c67" stop-opacity=".86"/>
+      <stop offset=".48" stop-color="#7f908a" stop-opacity=".74"/>
+      <stop offset="1" stop-color="#655f55" stop-opacity=".66"/>
+    </linearGradient>
+    <linearGradient id="stone-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#8b9188" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#b5afa0" stop-opacity=".26"/>
+    </linearGradient>
+    <linearGradient id="paper-depth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset=".72" stop-color="#fff"/>
+      <stop offset=".94" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bottom-clear" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="260" style="mask-type:alpha">
+      <path d="M0 0H1600V260H0Z" fill="url(#paper-depth)"/>
+    </mask>
+    <g id="window-unit">
+      <path d="M1 2H61V73H1Z" fill="#5f5b51" fill-opacity=".48"/>
+      <path d="M8 8H54V68H8Z" fill="#9aa39c" fill-opacity=".38"/>
+      <path d="M29 8H34V68H29ZM8 29H54V34H8Z" fill="#625e54" fill-opacity=".34"/>
+      <path d="M4 73H58V78H4Z" fill="#7e8178" fill-opacity=".3"/>
+    </g>
+    <g id="meian-pattern-card" data-fade-depth="50%" filter="url(#watercolor-paper)">
+      <path d="M258 96H1170V226H258Z" fill="url(#wall-wash)"/>
+      <path d="M1170 111H1348V226H1170Z" fill="#d5c6a8" fill-opacity=".63"/>
+      <path d="M258 96H1170V124C984 116 798 130 611 119C469 111 356 123 258 116Z" fill="#eadfc9" fill-opacity=".25"/>
+      <path d="M249 59H1178V87H249ZM1170 87H1355V105H1170Z" fill="url(#roof-wash)"/>
+      <path d="M237 84H1190V101H237ZM1160 101H1362V115H1160Z" fill="#7f8881" fill-opacity=".55"/>
+      <path d="M258 101H1170V110H258ZM1170 115H1348V123H1170Z" fill="#aba99a" fill-opacity=".52"/>
+      <g fill="url(#stone-wash)">
+        <path d="M286 108H310V226H286ZM470 108H494V226H470ZM653 108H677V226H653ZM836 108H860V226H836Z"/>
+        <path d="M974 118H997V226H974ZM1090 118H1113V226H1090ZM1304 123H1328V226H1304Z"/>
+      </g>
+      <g fill="#f0ece2" fill-opacity=".28">
+        <path d="M310 111H470V226H310ZM494 111H653V226H494ZM677 111H836V226H677Z"/>
+        <path d="M860 111H974V226H860ZM997 122H1090V226H997ZM1113 122H1304V226H1113Z"/>
+      </g>
+      <g opacity=".68">
+        <use href="#window-unit" x="348" y="135"/>
+        <use href="#window-unit" x="531" y="135"/>
+        <use href="#window-unit" x="714" y="135"/>
+        <use href="#window-unit" x="1228" y="141" transform="translate(91 20) scale(.83)"/>
+      </g>
+      <g id="octagonal-window">
+        <path d="M880 151L895 136H919L934 151V176L919 191H895L880 176Z" fill="#625e54" fill-opacity=".55"/>
+        <path d="M889 154L899 144H915L925 154V173L915 183H899L889 173Z" fill="#c9c7b9" fill-opacity=".62"/>
+        <path d="M905 144H910V183H905ZM889 162H925V167H889Z" fill="#777b73" fill-opacity=".38"/>
+      </g>
+      <g id="entrance">
+        <path d="M978 108H1110V119H978ZM967 119H1121V127H967Z" fill="#7d8179" fill-opacity=".65"/>
+        <path d="M1007 146H1080V226H1007Z" fill="#514e47" fill-opacity=".62"/>
+        <path d="M1015 154H1072V226H1015Z" fill="#979d95" fill-opacity=".4"/>
+        <path d="M1041 154H1047V226H1041ZM1015 176H1072V182H1015Z" fill="#5f615b" fill-opacity=".36"/>
+        <path d="M996 226H1091V232H996ZM984 232H1103V238H984Z" fill="#85867d" fill-opacity=".44"/>
+      </g>
+      <g id="meian-plaque">
+        <path d="M1017 125H1070V144H1017Z" fill="#5e6059" fill-opacity=".72"/>
+        <path d="M1027 130H1031V139H1027ZM1034 130H1038V139H1034ZM1049 130H1053V139H1049ZM1056 130H1060V139H1056Z" fill="#e9dfca" fill-opacity=".7"/>
+      </g>
+      <path d="M272 226H984V232H272ZM1103 226H1336V232H1103ZM284 236H972V241H284ZM1115 236H1324V241H1115Z" fill="#888b83" fill-opacity=".28"/>
+      <path d="M244 70C411 62 556 70 733 64C902 59 1047 68 1190 62V80C1025 75 856 81 688 76C519 72 381 81 244 76Z" fill="#4f625e" fill-opacity=".1"/>
+      <path d="M260 111C440 103 590 116 760 108C936 100 1082 112 1170 105V119C1014 124 845 116 677 124C510 132 376 115 260 126Z" fill="#9d714e" fill-opacity=".1"/>
+    </g>
+  </defs>
+  <use id="paper-foundation" fill="#f3f1ec" href="#paper-shape"/>
+  <g clip-path="url(#paper-clip)" mask="url(#bottom-clear)">
+    <g id="faded-meian-pattern" mask="url(#pattern-inward-fade)">
+      <use href="#meian-pattern-card"/>
+    </g>
+  </g>
+</svg>

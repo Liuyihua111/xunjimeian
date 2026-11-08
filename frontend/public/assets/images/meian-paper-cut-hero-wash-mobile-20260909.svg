@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260">
+  <defs>
+    <path id="paper-shape" d="M0 260V259L74 252L112 226V105H104V88H124V62H646V88H786V104H798V226L830 248L900 259V260Z"/>
+    <path id="straight-architectural-edge" d="M0 259L74 252L112 226V105H104V88H124V62H646V88H786V104H798V226L830 248L900 259"/>
+    <clipPath id="paper-clip"><use href="#paper-shape"/></clipPath>
+    <filter id="watercolor-paper" x="-6%" y="-10%" width="112%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".014 .08" numOctaves="2" seed="17" result="paper-noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="paper-noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" result="soft-edge"/>
+      <feGaussianBlur in="soft-edge" stdDeviation=".46"/>
+    </filter>
+    <filter id="fade-soften" x="-14%" y="-65%" width="128%" height="230%">
+      <feGaussianBlur stdDeviation="5.5"/>
+    </filter>
+    <mask id="pattern-inward-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="260" style="mask-type:alpha">
+      <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="square" filter="url(#fade-soften)">
+        <use href="#straight-architectural-edge" stroke-width="260" opacity=".11"/>
+        <use href="#straight-architectural-edge" stroke-width="220" opacity=".125"/>
+        <use href="#straight-architectural-edge" stroke-width="180" opacity=".145"/>
+        <use href="#straight-architectural-edge" stroke-width="140" opacity=".165"/>
+        <use href="#straight-architectural-edge" stroke-width="100" opacity=".185"/>
+        <use href="#straight-architectural-edge" stroke-width="60" opacity=".215"/>
+        <use href="#straight-architectural-edge" stroke-width="24" opacity=".27"/>
+      </g>
+    </mask>
+    <linearGradient id="wall-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#cbb687" stop-opacity=".86"/>
+      <stop offset=".4" stop-color="#ddcca5" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#ede4d2" stop-opacity=".34"/>
+    </linearGradient>
+    <linearGradient id="roof-wash" x1="0" y1="0" x2="1" y2=".12">
+      <stop stop-color="#596c67" stop-opacity=".86"/>
+      <stop offset=".5" stop-color="#7f908a" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#655f55" stop-opacity=".64"/>
+    </linearGradient>
+    <linearGradient id="stone-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#8b9188" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#b5afa0" stop-opacity=".24"/>
+    </linearGradient>
+    <linearGradient id="paper-depth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset=".72" stop-color="#fff"/>
+      <stop offset=".94" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bottom-clear" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="260" style="mask-type:alpha">
+      <path d="M0 0H900V260H0Z" fill="url(#paper-depth)"/>
+    </mask>
+    <g id="window-unit">
+      <path d="M1 2H41V71H1Z" fill="#5f5b51" fill-opacity=".47"/>
+      <path d="M6 8H36V65H6Z" fill="#9aa39c" fill-opacity=".36"/>
+      <path d="M19 8H23V65H19ZM6 29H36V34H6Z" fill="#625e54" fill-opacity=".32"/>
+    </g>
+    <g id="meian-pattern-card" data-fade-depth="50%" filter="url(#watercolor-paper)">
+      <path d="M124 101H646V228H124Z" fill="url(#wall-wash)"/>
+      <path d="M646 112H786V228H646Z" fill="#d5c6a8" fill-opacity=".62"/>
+      <path d="M124 101H646V122C524 115 417 128 311 119C235 113 177 122 124 117Z" fill="#eadfc9" fill-opacity=".24"/>
+      <path d="M117 63H654V89H117ZM646 89H793V105H646Z" fill="url(#roof-wash)"/>
+      <path d="M104 88H661V102H104ZM638 104H799V116H638Z" fill="#7f8881" fill-opacity=".54"/>
+      <path d="M124 102H646V111H124ZM646 116H786V124H646Z" fill="#aba99a" fill-opacity=".5"/>
+      <g fill="url(#stone-wash)">
+        <path d="M145 109H163V228H145ZM256 109H274V228H256ZM367 109H385V228H367Z"/>
+        <path d="M478 109H496V228H478ZM573 119H590V228H573ZM690 123H707V228H690ZM757 123H774V228H757Z"/>
+      </g>
+      <g opacity=".66">
+        <use href="#window-unit" x="187" y="137"/>
+        <use href="#window-unit" x="298" y="137"/>
+        <use href="#window-unit" x="409" y="137"/>
+        <use href="#window-unit" x="724" y="145" transform="translate(85 20) scale(.78)"/>
+      </g>
+      <g id="octagonal-window">
+        <path d="M509 151L521 139H539L551 151V174L539 186H521L509 174Z" fill="#625e54" fill-opacity=".54"/>
+        <path d="M517 154L525 146H535L543 154V171L535 179H525L517 171Z" fill="#c9c7b9" fill-opacity=".6"/>
+      </g>
+      <g id="entrance">
+        <path d="M566 110H654V120H566ZM558 120H662V127H558Z" fill="#7d8179" fill-opacity=".63"/>
+        <path d="M584 148H637V228H584Z" fill="#514e47" fill-opacity=".6"/>
+        <path d="M591 155H630V228H591Z" fill="#979d95" fill-opacity=".38"/>
+        <path d="M608 155H613V228H608ZM591 177H630V182H591Z" fill="#5f615b" fill-opacity=".34"/>
+        <path d="M576 228H645V233H576ZM567 233H654V239H567Z" fill="#85867d" fill-opacity=".42"/>
+      </g>
+      <g id="meian-plaque">
+        <path d="M591 127H630V144H591Z" fill="#5e6059" fill-opacity=".7"/>
+        <path d="M599 131H602V140H599ZM605 131H608V140H605ZM614 131H617V140H614ZM620 131H623V140H620Z" fill="#e9dfca" fill-opacity=".68"/>
+      </g>
+      <path d="M136 228H567V233H136ZM654 228H777V233H654ZM146 237H558V241H146ZM663 237H767V241H663Z" fill="#888b83" fill-opacity=".26"/>
+      <path d="M112 74C236 65 369 73 507 67C604 62 696 70 796 66V82C677 76 560 83 447 78C320 73 211 82 112 77Z" fill="#4f625e" fill-opacity=".1"/>
+      <path d="M124 111C232 104 348 117 462 109C573 102 666 113 786 107V121C662 126 550 118 439 125C315 132 215 116 124 126Z" fill="#9d714e" fill-opacity=".1"/>
+    </g>
+  </defs>
+  <use id="paper-foundation" fill="#f3f1ec" href="#paper-shape"/>
+  <g clip-path="url(#paper-clip)" mask="url(#bottom-clear)">
+    <g id="faded-meian-pattern" mask="url(#pattern-inward-fade)">
+      <use href="#meian-pattern-card"/>
+    </g>
+  </g>
+</svg>

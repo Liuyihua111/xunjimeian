@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 260">
+  <defs>
+    <path id="outer-edge" d="M0 259C87 257 168 246 228 225C251 217 245 176 250 137C253 111 245 103 254 94C265 82 265 61 290 60C420 54 519 66 664 59C812 52 930 66 1050 58C1094 55 1111 53 1146 57C1171 58 1172 77 1190 87C1214 96 1270 91 1311 98C1351 101 1359 106 1358 133C1357 166 1348 201 1370 221C1412 243 1518 256 1600 259"/>
+    <clipPath id="paper-clip"><use href="#paper-foundation"/></clipPath>
+    <filter id="soft-distance" filterUnits="userSpaceOnUse" x="-90" y="-90" width="1780" height="440">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <!-- Nested white coverage is a distance mask, not visible linework. -->
+    <mask id="inward-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="260" style="mask-type:alpha">
+      <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft-distance)">
+        <use href="#outer-edge" stroke-width="140" opacity=".09"/>
+        <use href="#outer-edge" stroke-width="116" opacity=".14"/>
+        <use href="#outer-edge" stroke-width="92" opacity=".19"/>
+        <use href="#outer-edge" stroke-width="68" opacity=".22"/>
+        <use href="#outer-edge" stroke-width="44" opacity=".22"/>
+        <use href="#outer-edge" stroke-width="22" opacity=".20"/>
+      </g>
+    </mask>
+    <linearGradient id="paper-join" gradientUnits="userSpaceOnUse" x1="0" y1="178" x2="0" y2="245">
+      <stop stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bottom-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="260" style="mask-type:alpha">
+      <path d="M0 0h1600v260H0Z" fill="url(#paper-join)"/>
+    </mask>
+    <linearGradient id="green-wash" gradientUnits="userSpaceOnUse" x1="0" y1="55" x2="0" y2="190">
+      <stop stop-color="#687F74"/>
+      <stop offset=".42" stop-color="#AABBB6"/>
+      <stop offset="1" stop-color="#A8B095"/>
+    </linearGradient>
+    <radialGradient id="warm-wash" gradientUnits="userSpaceOnUse" cx="1280" cy="110" r="125">
+      <stop stop-color="#B49A77" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#B49A77" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path id="paper-foundation" fill="#f3f1ec" d="M0 260L0 259C87 257 168 246 228 225C251 217 245 176 250 137C253 111 245 103 254 94C265 82 265 61 290 60C420 54 519 66 664 59C812 52 930 66 1050 58C1094 55 1111 53 1146 57C1171 58 1172 77 1190 87C1214 96 1270 91 1311 98C1351 101 1359 106 1358 133C1357 166 1348 201 1370 221C1412 243 1518 256 1600 259L1600 260Z"/>
+  <g clip-path="url(#paper-clip)">
+    <g mask="url(#bottom-fade)">
+      <g id="inward-pigment" mask="url(#inward-fade)">
+        <path d="M0 0h1600v260H0Z" fill="url(#green-wash)"/>
+        <path d="M0 0h1600v260H0Z" fill="url(#warm-wash)"/>
+      </g>
+    </g>
+  </g>
+</svg>
+

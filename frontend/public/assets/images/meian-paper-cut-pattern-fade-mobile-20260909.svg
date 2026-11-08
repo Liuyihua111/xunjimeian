@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260">
+  <defs>
+    <path id="paper-shape" d="M0 260V259L74 252L112 226V105H104V88H124V62H646V88H786V104H798V226L830 248L900 259V260Z"/>
+    <path id="straight-architectural-edge" d="M0 259L74 252L112 226V105H104V88H124V62H646V88H786V104H798V226L830 248L900 259"/>
+    <clipPath id="paper-clip"><use href="#paper-shape"/></clipPath>
+    <filter id="pattern-soften" x="-5%" y="-8%" width="110%" height="116%">
+      <feGaussianBlur stdDeviation="0.75"/>
+    </filter>
+    <filter id="fade-soften" x="-12%" y="-45%" width="124%" height="190%">
+      <feGaussianBlur stdDeviation="5.5"/>
+    </filter>
+    <mask id="pattern-inward-fade" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="260" style="mask-type:alpha">
+      <g fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="square" filter="url(#fade-soften)">
+        <use href="#straight-architectural-edge" stroke-width="148" opacity=".17"/>
+        <use href="#straight-architectural-edge" stroke-width="116" opacity=".19"/>
+        <use href="#straight-architectural-edge" stroke-width="86" opacity=".21"/>
+        <use href="#straight-architectural-edge" stroke-width="60" opacity=".23"/>
+        <use href="#straight-architectural-edge" stroke-width="36" opacity=".25"/>
+        <use href="#straight-architectural-edge" stroke-width="16" opacity=".30"/>
+      </g>
+    </mask>
+    <linearGradient id="wall-wash" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#d6c6a7"/>
+      <stop offset=".58" stop-color="#e2d8c0"/>
+      <stop offset="1" stop-color="#eee9dc"/>
+    </linearGradient>
+    <linearGradient id="roof-wash" x1="0" y1="0" x2="1" y2=".2">
+      <stop stop-color="#657b72"/>
+      <stop offset=".55" stop-color="#8ea09a"/>
+      <stop offset="1" stop-color="#768b85"/>
+    </linearGradient>
+    <linearGradient id="paper-depth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset=".62" stop-color="#fff"/>
+      <stop offset=".91" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="bottom-clear" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="260" style="mask-type:alpha">
+      <path d="M0 0H900V260H0Z" fill="url(#paper-depth)"/>
+    </mask>
+    <g id="window-unit">
+      <rect width="41" height="70" rx="1" fill="#70847d" fill-opacity=".72"/>
+      <rect x="5" y="6" width="31" height="58" fill="#c9d0c7" fill-opacity=".76"/>
+      <path d="M19 6H22V64H19ZM5 27H36V31H5Z" fill="#7d8e88" fill-opacity=".7"/>
+    </g>
+    <g id="meian-pattern-card" filter="url(#pattern-soften)">
+      <path d="M124 101H646V228H124Z" fill="url(#wall-wash)"/>
+      <path d="M646 112H786V228H646Z" fill="#dcd2bb"/>
+      <path d="M117 63H654V89H117ZM646 89H793V105H646Z" fill="url(#roof-wash)"/>
+      <path d="M104 88H661V102H104ZM638 104H799V116H638Z" fill="#8fa098" fill-opacity=".76"/>
+      <path d="M124 102H646V111H124ZM646 116H786V124H646Z" fill="#b6b7a7"/>
+      <g fill="#a3aa9c" fill-opacity=".7">
+        <path d="M145 109H163V228H145ZM256 109H274V228H256ZM367 109H385V228H367Z"/>
+        <path d="M478 109H496V228H478ZM573 119H590V228H573ZM690 123H707V228H690ZM757 123H774V228H757Z"/>
+      </g>
+      <g opacity=".74">
+        <use href="#window-unit" x="187" y="137"/>
+        <use href="#window-unit" x="298" y="137"/>
+        <use href="#window-unit" x="409" y="137"/>
+        <use href="#window-unit" x="721" y="145" transform="translate(82 17) scale(.78)"/>
+      </g>
+      <g id="octagonal-window">
+        <path d="M509 151L521 139H539L551 151V174L539 186H521L509 174Z" fill="#71867f" fill-opacity=".78"/>
+        <path d="M517 154L525 146H535L543 154V171L535 179H525L517 171Z" fill="#d9ddd3"/>
+      </g>
+      <g id="entrance">
+        <path d="M566 110H654V120H566ZM558 120H662V127H558Z" fill="#889991"/>
+        <path d="M584 148H637V228H584Z" fill="#72867e"/>
+        <path d="M591 155H630V228H591Z" fill="#c4ccc2" fill-opacity=".55"/>
+        <path d="M608 155H613V228H608ZM591 177H630V181H591Z" fill="#7c8f87"/>
+        <path d="M576 228H645V233H576ZM567 233H654V239H567Z" fill="#9a9f92"/>
+      </g>
+      <g id="meian-plaque">
+        <rect x="591" y="127" width="39" height="17" rx="1" fill="#687d75"/>
+        <path d="M599 131H602V140H599ZM605 131H608V140H605ZM614 131H617V140H614ZM620 131H623V140H620Z" fill="#eee8d9" fill-opacity=".9"/>
+      </g>
+      <path d="M136 228H567V233H136ZM654 228H777V233H654ZM146 237H558V241H146ZM663 237H767V241H663Z" fill="#9da69c" fill-opacity=".6"/>
+    </g>
+  </defs>
+  <use id="paper-foundation" fill="#f3f1ec" href="#paper-shape"/>
+  <g clip-path="url(#paper-clip)" mask="url(#bottom-clear)">
+    <g id="faded-meian-pattern" mask="url(#pattern-inward-fade)">
+      <use href="#meian-pattern-card"/>
+    </g>
+  </g>
+</svg>

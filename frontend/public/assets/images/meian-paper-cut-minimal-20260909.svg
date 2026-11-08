@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 260">
+  <defs>
+    <clipPath id="paper-clip"><use href="#paper-foundation"/></clipPath>
+    <linearGradient id="roof-tone" x1="0" y1="0" x2=".15" y2="1">
+      <stop stop-color="#938a78" stop-opacity=".62"/>
+      <stop offset=".32" stop-color="#aaa18e" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#bcb5a4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="entry-tone" x1="1" y1="0" x2=".1" y2="1">
+      <stop stop-color="#a18a6d" stop-opacity=".55"/>
+      <stop offset=".4" stop-color="#ac987e" stop-opacity=".23"/>
+      <stop offset="1" stop-color="#bcb2a1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="end-tone" x2=".6" y2="1">
+      <stop stop-color="#788579" stop-opacity=".36"/>
+      <stop offset=".38" stop-color="#929b8d" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#bcc1b5" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="side-fade">
+      <stop stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".15" stop-color="#fff"/>
+      <stop offset=".85" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="sides"><path d="M195 36h1230v215H195z" fill="url(#side-fade)"/></mask>
+    <filter id="paper-pigment" x="-10%" y="-30%" width="120%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".06 .1" numOctaves="2" seed="9" result="grain"/>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+    <filter id="trace-soften"><feGaussianBlur stdDeviation="1.6"/></filter>
+  </defs>
+  <!-- Unfiltered paper carries the foreground; pigments never reveal the hero. -->
+  <path id="paper-foundation" fill="#f3f1ec" d="M0 260v-1c90-1 180-19 244-36V97h-8V82h16V58h934v29h172v13h15v13h-15v111c68 15 151 35 242 35v1z"/>
+  <g clip-path="url(#paper-clip)">
+    <g mask="url(#sides)" filter="url(#paper-pigment)">
+      <g id="roof-wash" fill="url(#roof-tone)">
+        <path d="M249 56h395l-43 29-222 18-129-3z"/>
+        <path d="M705 56h294l-27 14-140 32-127-9z" opacity=".72"/>
+        <path d="M1090 56h100v35l-68 33-32-19z" opacity=".48"/>
+      </g>
+      <g id="entry-wash" fill="url(#entry-tone)">
+        <path d="m1002 110 115-5-15 24-63 61-29-12z"/>
+        <path d="M1190 88h170v38l-71 29-64-29z" opacity=".76"/>
+      </g>
+      <g id="end-wash" fill="url(#end-tone)">
+        <path d="m241 86 42 19 21 81-25 43-38-13z"/>
+        <path d="m1326 111 38-9v127l-43-34z" opacity=".7"/>
+      </g>
+    </g>
+    <g id="interior-traces" fill="#808475" opacity=".085" filter="url(#trace-soften)">
+      <path id="octagonal-window" fill-rule="evenodd" d="m882 149 13-13h25l13 13v27l-13 13h-25l-13-13z m7 3v21l9 9h19l9-9v-21l-9-9h-19z"/>
+      <path id="entrance" d="M1008 153h69v71l-69-9z"/>
+    </g>
+  </g>
+</svg>
